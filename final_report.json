@@ -1,0 +1,217 @@
+[
+  {
+    "timestamp": "2025-11-23T21:48:36.917892",
+    "level": "INFO",
+    "message": "Logger initialized",
+    "data": {
+      "log_dir": "logs"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.930037",
+    "level": "INFO",
+    "message": "============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.930037",
+    "level": "INFO",
+    "message": "ML NETWORK WORM INITIALIZED",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.932036",
+    "level": "INFO",
+    "message": "============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.932036",
+    "level": "INFO",
+    "message": "Local IP: 192.168.0.21",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.933037",
+    "level": "INFO",
+    "message": "Target Ranges: ['192.168.0.0/24']",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.933037",
+    "level": "INFO",
+    "message": "Stealth Mode: False",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.933037",
+    "level": "INFO",
+    "message": "ML Enabled: True",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:37.934540",
+    "level": "INFO",
+    "message": "============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.006612",
+    "level": "INFO",
+    "message": "Intelligent Scanner initialized",
+    "data": {
+      "ml_enabled": true,
+      "stealth_mode": false
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.014224",
+    "level": "INFO",
+    "message": "Loading exploit modules...",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.016222",
+    "level": "WARNING",
+    "message": "paramiko not available, SSH exploit will be limited",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.070049",
+    "level": "SUCCESS",
+    "message": "Loaded 17 exploit modules",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.070049",
+    "level": "INFO",
+    "message": "Exploit Manager initialized",
+    "data": {
+      "exploit_count": 17,
+      "credentials_count": 80
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.072560",
+    "level": "INFO",
+    "message": "IDS Detector initialized",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.072560",
+    "level": "INFO",
+    "message": "Stealth Engine initialized",
+    "data": {
+      "stealth_mode": false,
+      "randomize_timing": false
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.073558",
+    "level": "INFO",
+    "message": "Starting propagation",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.074559",
+    "level": "INFO",
+    "message": "\n============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.074559",
+    "level": "INFO",
+    "message": "PROPAGATION ITERATION 1",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.074559",
+    "level": "INFO",
+    "message": "============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.075558",
+    "level": "INFO",
+    "message": "Starting network reconnaissance",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.076092",
+    "level": "INFO",
+    "message": "Starting network scan",
+    "data": {
+      "ranges": [
+        "192.168.0.0/24"
+      ]
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:38.076092",
+    "level": "INFO",
+    "message": "Scanning 251 hosts",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:48:52.423061",
+    "level": "INFO",
+    "message": "Scan: 192.168.0.20 - alive (ICMP)",
+    "data": {
+      "activity": "scan",
+      "target": "192.168.0.20",
+      "result": "alive (ICMP)"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:52.432060",
+    "level": "INFO",
+    "message": "Scan: 192.168.0.19 - alive (ICMP)",
+    "data": {
+      "activity": "scan",
+      "target": "192.168.0.19",
+      "result": "alive (ICMP)"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:48:52.471935",
+    "level": "INFO",
+    "message": "Scan: 192.168.0.14 - alive (ICMP)",
+    "data": {
+      "activity": "scan",
+      "target": "192.168.0.14",
+      "result": "alive (ICMP)"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:49:06.995262",
+    "level": "INFO",
+    "message": "Scan: 192.168.0.35 - alive (ICMP)",
+    "data": {
+      "activity": "scan",
+      "target": "192.168.0.35",
+      "result": "alive (ICMP)"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:52:23.799100",
+    "level": "INFO",
+    "message": "Scan: 192.168.0.173 - alive (ICMP)",
+    "data": {
+      "activity": "scan",
+      "target": "192.168.0.173",
+      "result": "alive (ICMP)"
+    }
+  },
+  {
+    "timestamp": "2025-11-23T21:54:30.501682",
+    "level": "WARNING",
+    "message": "\nInterrupted by user",
+    "data": {}
+  },
+  {
+    "timestamp": "2025-11-23T21:54:30.501682",
+    "level": "INFO",
+    "message": "Shutting down worm",
+    "data": {}
+  }
+]
