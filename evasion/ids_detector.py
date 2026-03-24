@@ -292,7 +292,13 @@ class IDSDetector:
 
 
 if __name__ == "__main__":
-    from config import Config
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        from config import Config
+    except ImportError:
+        from configs.config import Config
     
     config = Config()
     detector = IDSDetector(config)

@@ -324,7 +324,13 @@ class MultiProtocolC2:
 
 if __name__ == "__main__":
     # Test multi-protocol C2
-    from config import Config
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    try:
+        from config import Config
+    except ImportError:
+        from configs.config import Config
     
     config = Config()
     c2 = MultiProtocolC2(config)

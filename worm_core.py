@@ -12,11 +12,16 @@ from datetime import datetime, timedelta
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from config import Config
+# Handle both root and configs directory for config
+try:
+    from config import Config
+except ImportError:
+    from configs.config import Config
+
 from utils.logger import logger
 from utils.network_utils import get_local_ip, is_ip_in_range
-from scanner.intelligent_scanner import IntelligentScanner
-from rl_engine.propagation_agent import PropagationAgent, RealWorldPropagationAgent
+from scanner import IntelligentScanner
+from rl_engine import PropagationAgent, RealWorldPropagationAgent
 
 
 class WormCore:

@@ -1,0 +1,125 @@
+# Docker Compose for Multi-Lab Testing Environment
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # Lab 1: Web Server Farm
+  web-server-1:
+    image: httpd:2.4
+    container_name: lab_web_1
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.10
+    ports:
+      - "8081:80"
+    extra_hosts:
+      - "test.local:127.0.0.1"
+
+  web-server-2:
+    image: nginx:latest
+    container_name: lab_web_2
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.11
+    ports:
+      - "8082:80"
+
+  # Lab 2: Database Servers
+  mysql-server:
+    image: mysql:5.7
+    container_name: lab_mysql
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.20
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: testdb
+
+  postgres-server:
+    image: postgres:14
+    container_name: lab_postgres
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.21
+    environment:
+      POSTGRES_PASSWORD: postgres123
+
+  # Lab 3: Development Servers
+  jenkins-server:
+    image: jenkins/jenkins:lts
+    container_name: lab_jenkins
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.30
+    ports:
+      - "8083:8080"
+
+  gitlab-server:
+    image: gitlab/gitlab-ce:latest
+    container_name: lab_gitlab
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.31
+    ports:
+      - "8084:80"
+
+  # Lab 4: Cache & Message Queue
+  redis-server:
+    image: redis:7-alpine
+    container_name: lab_redis
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.40
+    command: redis-server --requirepass redis123
+
+  rabbitmq-server:
+    image: rabbitmq:3-management
+    container_name: lab_rabbitmq
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.41
+
+  # Lab 5: Container Platforms
+  docker-host:
+    image: docker:dind
+    container_name: lab_docker
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.50
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+
+  kubernetes-node:
+    image: kindest/node:v1.27.0
+    container_name: lab_k8s
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.51
+
+  # Lab 6: Vulnerable Apps
+  DVWA:
+    image: vulnerable/dvwa
+    container_name: lab_dvwa
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.60
+    ports:
+      - "8085:80"
+
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: lab_juice
+    networks:
+      wormy_lab:
+        ipv4_address: 192.168.100.61
+    ports:
+      - "8086:3000"
+
+networks:
+  wormy_lab:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24

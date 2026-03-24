@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2025-11-23T21:48:36.917892",
+    "timestamp": "2026-03-24T18:05:13.207760",
     "level": "INFO",
     "message": "Logger initialized",
     "data": {
@@ -8,97 +8,82 @@
     }
   },
   {
-    "timestamp": "2025-11-23T21:48:37.930037",
+    "timestamp": "2026-03-24T18:05:13.243541",
     "level": "INFO",
     "message": "============================================================",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.930037",
+    "timestamp": "2026-03-24T18:05:13.243729",
     "level": "INFO",
     "message": "ML NETWORK WORM INITIALIZED",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.932036",
+    "timestamp": "2026-03-24T18:05:13.243836",
     "level": "INFO",
     "message": "============================================================",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.932036",
+    "timestamp": "2026-03-24T18:05:13.243966",
     "level": "INFO",
-    "message": "Local IP: 192.168.0.21",
+    "message": "Local IP: 192.168.1.136",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.933037",
+    "timestamp": "2026-03-24T18:05:13.244066",
     "level": "INFO",
-    "message": "Target Ranges: ['192.168.0.0/24']",
+    "message": "Target Ranges: ['127.0.0.1/32']",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.933037",
+    "timestamp": "2026-03-24T18:05:13.244161",
     "level": "INFO",
     "message": "Stealth Mode: False",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.933037",
+    "timestamp": "2026-03-24T18:05:13.244251",
     "level": "INFO",
-    "message": "ML Enabled: True",
+    "message": "ML Enabled: False",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:37.934540",
+    "timestamp": "2026-03-24T18:05:13.244341",
     "level": "INFO",
     "message": "============================================================",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.006612",
-    "level": "INFO",
-    "message": "Intelligent Scanner initialized",
-    "data": {
-      "ml_enabled": true,
-      "stealth_mode": false
-    }
-  },
-  {
-    "timestamp": "2025-11-23T21:48:38.014224",
+    "timestamp": "2026-03-24T18:05:13.244698",
     "level": "INFO",
     "message": "Loading exploit modules...",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.016222",
-    "level": "WARNING",
-    "message": "paramiko not available, SSH exploit will be limited",
-    "data": {}
-  },
-  {
-    "timestamp": "2025-11-23T21:48:38.070049",
+    "timestamp": "2026-03-24T18:05:13.302254",
     "level": "SUCCESS",
-    "message": "Loaded 17 exploit modules",
+    "message": "Loaded 25 exploit modules",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.070049",
+    "timestamp": "2026-03-24T18:05:13.302440",
     "level": "INFO",
     "message": "Exploit Manager initialized",
     "data": {
-      "exploit_count": 17,
-      "credentials_count": 80
+      "exploit_count": 25,
+      "credentials_count": 88
     }
   },
   {
-    "timestamp": "2025-11-23T21:48:38.072560",
+    "timestamp": "2026-03-24T18:05:13.302851",
     "level": "INFO",
     "message": "IDS Detector initialized",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.072560",
+    "timestamp": "2026-03-24T18:05:13.302937",
     "level": "INFO",
     "message": "Stealth Engine initialized",
     "data": {
@@ -107,111 +92,217 @@
     }
   },
   {
-    "timestamp": "2025-11-23T21:48:38.073558",
+    "timestamp": "2026-03-24T18:05:13.303147",
     "level": "INFO",
     "message": "Starting propagation",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.074559",
+    "timestamp": "2026-03-24T18:05:13.303292",
     "level": "INFO",
     "message": "\n============================================================",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.074559",
+    "timestamp": "2026-03-24T18:05:13.303374",
     "level": "INFO",
     "message": "PROPAGATION ITERATION 1",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.074559",
+    "timestamp": "2026-03-24T18:05:13.303444",
     "level": "INFO",
     "message": "============================================================",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.075558",
+    "timestamp": "2026-03-24T18:05:13.303508",
     "level": "INFO",
     "message": "Starting network reconnaissance",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:38.076092",
+    "timestamp": "2026-03-24T18:05:13.303570",
     "level": "INFO",
-    "message": "Starting network scan",
-    "data": {
-      "ranges": [
-        "192.168.0.0/24"
-      ]
-    }
-  },
-  {
-    "timestamp": "2025-11-23T21:48:38.076092",
-    "level": "INFO",
-    "message": "Scanning 251 hosts",
+    "message": "Starting network scan on 1 ranges",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:48:52.423061",
+    "timestamp": "2026-03-24T18:05:13.303657",
     "level": "INFO",
-    "message": "Scan: 192.168.0.20 - alive (ICMP)",
+    "message": "Scanning 127.0.0.1/32 (1 addresses)",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906199",
+    "level": "SUCCESS",
+    "message": "Discovered 1 hosts",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906361",
+    "level": "SUCCESS",
+    "message": "Discovered 1 hosts",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906437",
+    "level": "INFO",
+    "message": "Selecting next target with ML",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906530",
+    "level": "INFO",
+    "message": "ML Decision: RL_Agent - Target: 127.0.0.1 (confidence: 0.50)",
     "data": {
-      "activity": "scan",
-      "target": "192.168.0.20",
-      "result": "alive (ICMP)"
+      "activity": "ml_decision",
+      "model": "RL_Agent",
+      "decision": "Target: 127.0.0.1",
+      "confidence": 0.5,
+      "ip": "127.0.0.1",
+      "priority": 100,
+      "vuln_score": 100
     }
   },
   {
-    "timestamp": "2025-11-23T21:48:52.432060",
+    "timestamp": "2026-03-24T18:05:13.906636",
     "level": "INFO",
-    "message": "Scan: 192.168.0.19 - alive (ICMP)",
+    "message": "Attempting to exploit 127.0.0.1",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906742",
+    "level": "INFO",
+    "message": "Attempting exploitation of 127.0.0.1",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906848",
+    "level": "INFO",
+    "message": "Found 1 applicable exploits for 127.0.0.1",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906917",
+    "level": "INFO",
+    "message": "Trying Web_Exploit on 127.0.0.1",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.906981",
+    "level": "INFO",
+    "message": "Web: Attempting exploitation of 127.0.0.1",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.908299",
+    "level": "DEBUG",
+    "message": "Web: Found admin panel at http://127.0.0.1:8080/admin",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.909013",
+    "level": "DEBUG",
+    "message": "Web: Found admin panel at http://127.0.0.1:8080/administrator",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.909115",
+    "level": "SUCCESS",
+    "message": "Web: Valid credentials - root:root",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:13.909211",
+    "level": "SUCCESS",
+    "message": "Exploit: Web_Exploit on 127.0.0.1 - SUCCESS",
     "data": {
-      "activity": "scan",
-      "target": "192.168.0.19",
-      "result": "alive (ICMP)"
+      "activity": "exploit",
+      "target": "127.0.0.1",
+      "exploit": "Web_Exploit",
+      "success": true,
+      "method": "Default_Credentials",
+      "url": "http://127.0.0.1:8080/administrator",
+      "username": "root",
+      "password": "root",
+      "access_level": "Admin"
     }
   },
   {
-    "timestamp": "2025-11-23T21:48:52.471935",
-    "level": "INFO",
-    "message": "Scan: 192.168.0.14 - alive (ICMP)",
+    "timestamp": "2026-03-24T18:05:13.909291",
+    "level": "SUCCESS",
+    "message": "Infected: 127.0.0.1 via Default_Credentials",
     "data": {
-      "activity": "scan",
-      "target": "192.168.0.14",
-      "result": "alive (ICMP)"
+      "activity": "infection",
+      "target": "127.0.0.1",
+      "method": "Default_Credentials",
+      "os": "Unknown",
+      "ports": [
+        3306,
+        3389,
+        5432,
+        6379,
+        8080,
+        2323,
+        27017
+      ],
+      "exploit_result": {
+        "method": "Default_Credentials",
+        "url": "http://127.0.0.1:8080/administrator",
+        "username": "root",
+        "password": "root",
+        "access_level": "Admin"
+      }
     }
   },
   {
-    "timestamp": "2025-11-23T21:49:06.995262",
+    "timestamp": "2026-03-24T18:05:13.909369",
     "level": "INFO",
-    "message": "Scan: 192.168.0.35 - alive (ICMP)",
+    "message": "Evasion: Action_Recorded - exploit_success on 127.0.0.1",
     "data": {
-      "activity": "scan",
-      "target": "192.168.0.35",
-      "result": "alive (ICMP)"
+      "activity": "evasion",
+      "technique": "Action_Recorded",
+      "result": "exploit_success on 127.0.0.1",
+      "target": "127.0.0.1",
+      "action": "exploit_success",
+      "count": 1
     }
   },
   {
-    "timestamp": "2025-11-23T21:52:23.799100",
+    "timestamp": "2026-03-24T18:05:14.409722",
     "level": "INFO",
-    "message": "Scan: 192.168.0.173 - alive (ICMP)",
-    "data": {
-      "activity": "scan",
-      "target": "192.168.0.173",
-      "result": "alive (ICMP)"
-    }
+    "message": "\n============================================================",
+    "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:54:30.501682",
+    "timestamp": "2026-03-24T18:05:14.409880",
+    "level": "INFO",
+    "message": "PROPAGATION ITERATION 2",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:14.409952",
+    "level": "INFO",
+    "message": "============================================================",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:14.410017",
+    "level": "INFO",
+    "message": "Selecting next target with ML",
+    "data": {}
+  },
+  {
+    "timestamp": "2026-03-24T18:05:14.410089",
     "level": "WARNING",
-    "message": "\nInterrupted by user",
+    "message": "No more targets available",
     "data": {}
   },
   {
-    "timestamp": "2025-11-23T21:54:30.501682",
-    "level": "INFO",
-    "message": "Shutting down worm",
+    "timestamp": "2026-03-24T18:05:14.410156",
+    "level": "SUCCESS",
+    "message": "Propagation complete",
     "data": {}
   }
 ]
