@@ -87,28 +87,27 @@ class ProgressiveWormTrainer:
         # DQN Agent
         self.agent = PropagationAgent(state_size, action_size, use_dqn=True)
         
-        # Progressive Labs - difficulty increases
+        # Progressive Labs - mapped to Docker Lab Network (192.168.100.0/24)
         self.labs = {
             # Level 1: Easy (difficulty 0.2)
-            0: {'ip': '192.168.200.10', 'name': 'Web_Easy', 'level': 1, 'difficulty': 0.2, 'ports': [80], 'default_creds': True},
-            1: {'ip': '192.168.200.11', 'name': 'FTP_Easy', 'level': 1, 'difficulty': 0.2, 'ports': [21], 'default_creds': True},
+            0: {'ip': '192.168.100.10', 'name': 'Redis_Easy', 'level': 1, 'difficulty': 0.2, 'ports': [6379], 'default_creds': True, 'known_creds': ['redis123']},
+            1: {'ip': '192.168.100.11', 'name': 'MySQL_Easy', 'level': 1, 'difficulty': 0.2, 'ports': [3306], 'default_creds': True, 'known_creds': ['root', '']},
             
             # Level 2: Medium (difficulty 0.4)
-            2: {'ip': '192.168.200.12', 'name': 'SSH_Med', 'level': 2, 'difficulty': 0.4, 'ports': [22], 'random_creds': True},
-            3: {'ip': '192.168.200.13', 'name': 'MySQL_Med', 'level': 2, 'difficulty': 0.4, 'ports': [3306], 'known_creds': ['root', 'mysql123']},
+            2: {'ip': '192.168.100.12', 'name': 'PostgreSQL_Med', 'level': 2, 'difficulty': 0.4, 'ports': [5432], 'known_creds': ['admin', 'admin123']},
+            3: {'ip': '192.168.100.13', 'name': 'MongoDB_Med', 'level': 2, 'difficulty': 0.4, 'ports': [27017], 'known_creds': ['admin', 'admin123']},
             
             # Level 3: Hard (difficulty 0.6)
-            4: {'ip': '192.168.200.14', 'name': 'Multi_Hard', 'level': 3, 'difficulty': 0.6, 'ports': [5432, 6379], 'hidden_ports': True},
-            5: {'ip': '192.168.200.15', 'name': 'Jenkins_Hard', 'level': 3, 'difficulty': 0.6, 'ports': [8080], 'requires_enum': True},
+            4: {'ip': '192.168.100.14', 'name': 'MSSQL_Hard', 'level': 3, 'difficulty': 0.6, 'ports': [1433], 'known_creds': ['sa', 'SqlPassword123!']},
+            5: {'ip': '192.168.100.30', 'name': 'Jenkins_Hard', 'level': 3, 'difficulty': 0.6, 'ports': [8080], 'requires_enum': True},
             
             # Level 4: Expert (difficulty 0.8)
-            6: {'ip': '192.168.200.16', 'name': 'Mongo_Expert', 'level': 4, 'difficulty': 0.8, 'ports': [27017], 'auth_required': True},
-            7: {'ip': '192.168.200.17', 'name': 'Elastic_Expert', 'level': 4, 'difficulty': 0.8, 'ports': [9200], 'firewalled': True},
+            6: {'ip': '192.168.100.20', 'name': 'RabbitMQ_Expert', 'level': 4, 'difficulty': 0.8, 'ports': [5672], 'auth_required': True, 'known_creds': ['guest', 'guest']},
+            7: {'ip': '192.168.100.60', 'name': 'Elastic_Expert', 'level': 4, 'difficulty': 0.8, 'ports': [9200], 'firewalled': True},
             
             # Level 5: Impossible (difficulty 1.0)
-            8: {'ip': '192.168.200.18', 'name': 'Docker_Impossible', 'level': 5, 'difficulty': 1.0, 'ports': [2375], 'privileged': True},
-            9: {'ip': '192.168.200.19', 'name': 'Multi_Impossible', 'level': 5, 'difficulty': 1.0, 'ports': [21, 22, 80, 443], 'firewalled': True},
-            10: {'ip': '192.168.200.20', 'name': 'DVWA_Impossible', 'level': 5, 'difficulty': 1.0, 'ports': [80], 'vulnerable': True},
+            8: {'ip': '192.168.100.40', 'name': 'DVWA_Impossible', 'level': 5, 'difficulty': 1.0, 'ports': [8081], 'vulnerable': True},
+            9: {'ip': '192.168.100.50', 'name': 'JuiceShop_Impossible', 'level': 5, 'difficulty': 1.0, 'ports': [8082], 'firewalled': True},
         }
         
         # Extended actions (30 total)
