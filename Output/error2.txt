@@ -1,0 +1,1564 @@
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 5 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+  📈 Progress Round 12:
+     Total Episodes: 2400
+     Total Infections: 0
+     Real Successes: 0
+     Credentials Learned: 89
+     Epsilon: 0.0010
+
+======================================================================
+  ROUND 13/15
+  Epsilon: 0.0010 | Best Reward: 150.0
+======================================================================
+
+============================================================
+  LAB 6: Nexus (192.168.200.16)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [8081]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 6 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 5: Jenkins (192.168.200.15)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 5 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 2: MySQL (192.168.200.12)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [3306]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 2 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 0: Web (192.168.200.10)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con admin:password
+    Reward: 150.0 | Infecciones: 1 | Exitos reales: 1
+
+  Episode 2/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 2 | Exitos reales: 2
+
+  Episode 3/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 3 | Exitos reales: 3
+
+  Episode 4/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 4 | Exitos reales: 4
+
+  Episode 5/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 5 | Exitos reales: 5
+
+  Episode 6/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 6 | Exitos reales: 6
+
+  Episode 7/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 7 | Exitos reales: 7
+
+  Episode 8/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 8 | Exitos reales: 8
+
+  Episode 9/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 9 | Exitos reales: 9
+
+  Episode 10/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 10 | Exitos reales: 10
+
+  Episode 11/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 11 | Exitos reales: 11
+
+  Episode 12/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 12 | Exitos reales: 12
+
+  Episode 13/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 13 | Exitos reales: 13
+
+  Episode 14/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 14 | Exitos reales: 14
+
+  Episode 15/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 15 | Exitos reales: 15
+
+  Episode 16/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 16 | Exitos reales: 16
+
+  Episode 17/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 17 | Exitos reales: 17
+
+  Episode 18/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 18 | Exitos reales: 18
+
+  Episode 19/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 19 | Exitos reales: 19
+
+  Episode 20/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 20 | Exitos reales: 20
+
+  Episode 21/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 21 | Exitos reales: 21
+
+  Episode 22/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 22 | Exitos reales: 22
+
+  Episode 23/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 23 | Exitos reales: 23
+
+  Episode 24/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 24 | Exitos reales: 24
+
+  Episode 25/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 25 | Exitos reales: 25
+
+  📊 Lab 0 Summary:
+     Infecciones: 25
+     Exitos reales: 25
+     Reward promedio: 150.0
+
+============================================================
+  LAB 3: Postgres (192.168.200.13)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [5432]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 3 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 1: SSH (192.168.200.11)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 1 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 7: MongoDB (192.168.200.17)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 7 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 4: Redis (192.168.200.14)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 4 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+  📈 Progress Round 13:
+     Total Episodes: 2600
+     Total Infections: 0
+     Real Successes: 0
+     Credentials Learned: 90
+     Epsilon: 0.0010
+
+======================================================================
+  ROUND 14/15
+  Epsilon: 0.0010 | Best Reward: 150.0
+======================================================================
+
+============================================================
+  LAB 0: Web (192.168.200.10)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con admin:password
+    Reward: 150.0 | Infecciones: 1 | Exitos reales: 1
+
+  Episode 2/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 2 | Exitos reales: 2
+
+  Episode 3/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 3 | Exitos reales: 3
+
+  Episode 4/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 4 | Exitos reales: 4
+
+  Episode 5/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 5 | Exitos reales: 5
+
+  Episode 6/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 6 | Exitos reales: 6
+
+  Episode 7/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 7 | Exitos reales: 7
+
+  Episode 8/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 8 | Exitos reales: 8
+
+  Episode 9/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 9 | Exitos reales: 9
+
+  Episode 10/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 10 | Exitos reales: 10
+
+  Episode 11/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 11 | Exitos reales: 11
+
+  Episode 12/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 12 | Exitos reales: 12
+
+  Episode 13/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 13 | Exitos reales: 13
+
+  Episode 14/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 14 | Exitos reales: 14
+
+  Episode 15/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 15 | Exitos reales: 15
+
+  Episode 16/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 16 | Exitos reales: 16
+
+  Episode 17/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 17 | Exitos reales: 17
+
+  Episode 18/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 18 | Exitos reales: 18
+
+  Episode 19/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 19 | Exitos reales: 19
+
+  Episode 20/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 20 | Exitos reales: 20
+
+  Episode 21/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 21 | Exitos reales: 21
+
+  Episode 22/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 22 | Exitos reales: 22
+
+  Episode 23/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 23 | Exitos reales: 23
+
+  Episode 24/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 24 | Exitos reales: 24
+
+  Episode 25/25
+    Puertos abiertos: [80]
+    ✓ EXITO REAL! Puerto 80 con test:123456
+    Reward: 150.0 | Infecciones: 25 | Exitos reales: 25
+
+  📊 Lab 0 Summary:
+     Infecciones: 25
+     Exitos reales: 25
+     Reward promedio: 150.0
+
+============================================================
+  LAB 1: SSH (192.168.200.11)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [22]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 1 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 7: MongoDB (192.168.200.17)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [27017]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 7 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 4: Redis (192.168.200.14)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 12/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 13/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 14/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 15/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 16/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 17/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 18/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 19/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 20/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 21/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 22/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 23/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 24/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 25/25
+    Puertos abiertos: [6379]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  📊 Lab 4 Summary:
+     Infecciones: 0
+     Exitos reales: 0
+     Reward promedio: 0.0
+
+============================================================
+  LAB 5: Jenkins (192.168.200.15)
+  Episodios: 25 | Epsilon: 0.0010
+============================================================
+
+  Episode 1/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 2/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 3/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 4/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 5/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 6/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 7/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 8/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 9/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 10/25
+    Puertos abiertos: [8080]
+    Reward: 0.0 | Infecciones: 0 | Exitos reales: 0
+
+  Episode 11/25
+    Puertos abiertos: [8080]
+^CTraceback (most recent call last):
+  File "/home/rby/Desktop/Proyectos/Wormy/training/advanced_dqn_training.py", line 580, in <module>
+    main()
+    ~~~~^^
+  File "/home/rby/Desktop/Proyectos/Wormy/training/advanced_dqn_training.py", line 572, in main
+    history = trainer.train(total_episodes=200, num_rounds=15)
+  File "/home/rby/Desktop/Proyectos/Wormy/training/advanced_dqn_training.py", line 520, in train
+    self.train_on_lab(lab_id, episodes_per_lab)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/training/advanced_dqn_training.py", line 459, in train_on_lab
+    self.agent.replay(batch_size=32)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/rl_engine/__init__.py", line 149, in replay
+    next_q = self.target_network(next_states_tensor).detach().numpy()
+             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/rby/Desktop/Proyectos/Wormy/rl_engine/__init__.py", line 78, in forward
+    return self.fc(x)
+           ~~~~~~~^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/venv/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    forward_call = (self._slow_forward if torch._C._get_tracing_state() else self.forward)
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+KeyboardInterrupt
+
+
+Wormy main  ? ✗

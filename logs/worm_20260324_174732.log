@@ -1,0 +1,18 @@
+2026-03-24 17:47:32,242 - MLWorm - INFO - Logger initialized
+2026-03-24 17:47:32,278 - MLWorm - INFO - ============================================================
+2026-03-24 17:47:32,278 - MLWorm - INFO - ML NETWORK WORM INITIALIZED
+2026-03-24 17:47:32,278 - MLWorm - INFO - ============================================================
+2026-03-24 17:47:32,278 - MLWorm - INFO - Local IP: 192.168.1.136
+2026-03-24 17:47:32,278 - MLWorm - INFO - Target Ranges: ['127.0.0.1/32']
+2026-03-24 17:47:32,278 - MLWorm - INFO - Stealth Mode: False
+2026-03-24 17:47:32,279 - MLWorm - INFO - ML Enabled: False
+2026-03-24 17:47:32,279 - MLWorm - INFO - ============================================================
+2026-03-24 17:47:32,279 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 17:47:32,340 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 17:47:32,340 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 17:47:32,340 - MLWorm - INFO - IDS Detector initialized
+2026-03-24 17:47:32,340 - MLWorm - INFO - Stealth Engine initialized
+2026-03-24 17:47:32,341 - MLWorm - INFO - Starting propagation
+2026-03-24 17:47:32,341 - MLWorm - CRITICAL - Geofence violation: 192.168.1.136 not in allowed networks
+2026-03-24 17:47:32,341 - MLWorm - INFO - SUCCESS: Propagation complete
+2026-03-24 17:47:32,341 - MLWorm - INFO - Logs exported to final_report.json

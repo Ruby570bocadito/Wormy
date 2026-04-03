@@ -1,0 +1,9 @@
+{"timestamp": "2026-04-04T00:15:56.047197", "level": "INFO", "message": "Logger initialized", "data": {"log_dir": "logs"}}
+{"timestamp": "2026-04-04T00:15:56.139697", "level": "WARNING", "message": "msgpack not installed: pip install msgpack requests", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.143674", "level": "DEBUG", "message": "Loaded 35 credentials from common_creds.txt (generic)", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.144077", "level": "DEBUG", "message": "Loaded 34 credentials from ssh_creds.txt (ssh)", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.144336", "level": "DEBUG", "message": "Loaded 21 credentials from smb_creds.txt (smb)", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.144674", "level": "DEBUG", "message": "Loaded 24 credentials from web_creds.txt (web)", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.147825", "level": "DEBUG", "message": "Generated 488 password mutations", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.147992", "level": "INFO", "message": "CredentialManager initialized: 114 creds loaded", "data": {}}
+{"timestamp": "2026-04-04T00:15:56.148324", "level": "SUCCESS", "message": "Discovered credential added for pivoting: admin", "data": {}}

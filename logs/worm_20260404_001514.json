@@ -1,0 +1,2 @@
+{"timestamp": "2026-04-04T00:15:14.752682", "level": "INFO", "message": "Logger initialized", "data": {"log_dir": "logs"}}
+{"timestamp": "2026-04-04T00:15:14.847067", "level": "WARNING", "message": "msgpack not installed: pip install msgpack requests", "data": {}}

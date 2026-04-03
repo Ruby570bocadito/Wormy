@@ -1,0 +1,22 @@
+2026-04-04 00:33:46 - INFO - Logger initialized
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 192.168.1.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Host registered: 192.168.1.2 (Windows) - Payload: v2
+2026-04-04 00:33:46 - INFO - Host registered: 192.168.1.3 (Linux) - Payload: v3
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.2 (Linux) - Payload: v2
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.3 (Linux) - Payload: v3
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.4 (Linux) - Payload: v4
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.5 (Linux) - Payload: v5
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.2 (Windows) - Payload: v2
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Self-healing on 10.0.0.1: health_restored, detection_risk_reduced, status_restored
+2026-04-04 00:33:46 - INFO - Host Monitor initialized
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:46 - INFO - Host registered: 10.0.0.2 (Windows) - Payload: v1

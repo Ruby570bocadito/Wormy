@@ -1,0 +1,10 @@
+{"timestamp": "2026-04-04T00:27:13.982636", "level": "INFO", "message": "Logger initialized", "data": {"log_dir": "logs"}}
+{"timestamp": "2026-04-04T00:27:14.003247", "level": "INFO", "message": "Audit reports generated: {'json': '/tmp/tmplrxbsi4q/audit_report_20260404_002714.json', 'csv': '/tmp/tmplrxbsi4q/audit_report_20260404_002714.csv', 'text': '/tmp/tmplrxbsi4q/audit_report_20260404_002714.txt'}", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.018327", "level": "DEBUG", "message": "Service detection failed for 127.0.0.1:22: [Errno 111] Connection refused", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.019913", "level": "DEBUG", "message": "Loaded 35 credentials from common_creds.txt (generic)", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.020235", "level": "DEBUG", "message": "Loaded 34 credentials from ssh_creds.txt (ssh)", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.020421", "level": "DEBUG", "message": "Loaded 21 credentials from smb_creds.txt (smb)", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.020641", "level": "DEBUG", "message": "Loaded 24 credentials from web_creds.txt (web)", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.022803", "level": "DEBUG", "message": "Generated 491 password mutations", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.022916", "level": "INFO", "message": "CredentialManager initialized: 114 creds loaded", "data": {}}
+{"timestamp": "2026-04-04T00:27:14.023199", "level": "SUCCESS", "message": "Discovered credential added for pivoting: admin", "data": {}}

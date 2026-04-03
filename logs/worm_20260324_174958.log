@@ -1,0 +1,44 @@
+2026-03-24 17:49:58,027 - MLWorm - INFO - Logger initialized
+2026-03-24 17:49:58,113 - MLWorm - INFO - ============================================================
+2026-03-24 17:49:58,113 - MLWorm - INFO - ML NETWORK WORM INITIALIZED
+2026-03-24 17:49:58,113 - MLWorm - INFO - ============================================================
+2026-03-24 17:49:58,113 - MLWorm - INFO - Local IP: 192.168.1.136
+2026-03-24 17:49:58,113 - MLWorm - INFO - Target Ranges: ['127.0.0.1/32']
+2026-03-24 17:49:58,113 - MLWorm - INFO - Stealth Mode: False
+2026-03-24 17:49:58,114 - MLWorm - INFO - ML Enabled: False
+2026-03-24 17:49:58,114 - MLWorm - INFO - ============================================================
+2026-03-24 17:49:58,114 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 17:49:58,210 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 17:49:58,210 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 17:49:58,211 - MLWorm - INFO - IDS Detector initialized
+2026-03-24 17:49:58,211 - MLWorm - INFO - Stealth Engine initialized
+2026-03-24 17:49:58,211 - MLWorm - INFO - Starting propagation
+2026-03-24 17:49:58,212 - MLWorm - INFO - 
+============================================================
+2026-03-24 17:49:58,212 - MLWorm - INFO - PROPAGATION ITERATION 1
+2026-03-24 17:49:58,212 - MLWorm - INFO - ============================================================
+2026-03-24 17:49:58,212 - MLWorm - INFO - Starting network reconnaissance
+2026-03-24 17:49:58,212 - MLWorm - INFO - Starting network scan on 1 ranges
+2026-03-24 17:49:58,212 - MLWorm - INFO - Scanning 127.0.0.1/32 (1 addresses)
+2026-03-24 17:49:58,815 - MLWorm - INFO - SUCCESS: Discovered 1 hosts
+2026-03-24 17:49:58,816 - MLWorm - INFO - SUCCESS: Discovered 1 hosts
+2026-03-24 17:49:58,816 - MLWorm - INFO - Selecting next target with ML
+2026-03-24 17:49:58,816 - MLWorm - INFO - ML Decision: RL_Agent - Target: 127.0.0.1 (confidence: 0.50)
+2026-03-24 17:49:58,816 - MLWorm - INFO - Attempting to exploit 127.0.0.1
+2026-03-24 17:49:58,816 - MLWorm - INFO - Attempting exploitation of 127.0.0.1
+2026-03-24 17:49:58,816 - MLWorm - INFO - Found 1 applicable exploits for 127.0.0.1
+2026-03-24 17:49:58,816 - MLWorm - INFO - Trying Web_Exploit on 127.0.0.1
+2026-03-24 17:49:58,816 - MLWorm - INFO - Web: Attempting exploitation of 127.0.0.1
+2026-03-24 17:49:58,818 - MLWorm - DEBUG - Web: Found admin panel at http://127.0.0.1:8080/admin
+2026-03-24 17:49:58,818 - MLWorm - INFO - SUCCESS: Web: Valid credentials - administrator:administrator
+2026-03-24 17:49:58,819 - MLWorm - INFO - SUCCESS: Exploit: Web_Exploit on 127.0.0.1 - SUCCESS
+2026-03-24 17:49:58,819 - MLWorm - INFO - SUCCESS: Infected: 127.0.0.1 via Default_Credentials
+2026-03-24 17:49:58,819 - MLWorm - INFO - Evasion: Action_Recorded - exploit_success on 127.0.0.1
+2026-03-24 17:49:59,319 - MLWorm - INFO - 
+============================================================
+2026-03-24 17:49:59,320 - MLWorm - INFO - PROPAGATION ITERATION 2
+2026-03-24 17:49:59,320 - MLWorm - INFO - ============================================================
+2026-03-24 17:49:59,320 - MLWorm - INFO - Selecting next target with ML
+2026-03-24 17:49:59,320 - MLWorm - WARNING - No more targets available
+2026-03-24 17:49:59,320 - MLWorm - INFO - SUCCESS: Propagation complete
+2026-03-24 17:49:59,321 - MLWorm - INFO - Logs exported to final_report.json

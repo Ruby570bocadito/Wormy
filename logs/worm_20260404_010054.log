@@ -1,0 +1,18 @@
+2026-04-04 01:00:54 - INFO - Logger initialized
+2026-04-04 01:00:54 - DEBUG - Loaded 35 credentials from common_creds.txt (generic)
+2026-04-04 01:00:54 - DEBUG - Loaded 34 credentials from ssh_creds.txt (ssh)
+2026-04-04 01:00:54 - DEBUG - Loaded 21 credentials from smb_creds.txt (smb)
+2026-04-04 01:00:54 - DEBUG - Loaded 24 credentials from web_creds.txt (web)
+2026-04-04 01:00:54 - DEBUG - Generated 490 password mutations
+2026-04-04 01:00:54 - INFO - CredentialManager initialized: 114 creds loaded
+2026-04-04 01:00:54 - DEBUG - Service detection failed for 127.0.0.1:22: [Errno 111] Connection refused
+2026-04-04 01:00:54 - INFO - Audit reports generated: {'json': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.json', 'csv': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.csv', 'text': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.txt'}
+2026-04-04 01:00:54 - INFO - Host Monitor initialized
+2026-04-04 01:00:54 - INFO - Host registered: 192.168.1.1 (Linux) - Payload: v1
+2026-04-04 01:00:54 - INFO - Host registered: 192.168.1.2 (Windows) - Payload: v2
+2026-04-04 01:00:54 - INFO - Host Monitor initialized
+2026-04-04 01:00:54 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 01:00:54 - INFO - Self-healing on 10.0.0.1: health_restored, detection_risk_reduced, status_restored
+2026-04-04 01:00:54 - WARNING - python-nmap not installed: pip install python-nmap
+2026-04-04 01:00:54 - WARNING - reportlab not installed: pip install reportlab
+2026-04-04 01:00:54 - DEBUG - Avoided IDS signature: suricata_http

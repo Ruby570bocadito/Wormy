@@ -1,0 +1,13 @@
+2026-04-04 00:33:12 - INFO - Logger initialized
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:12 - INFO - Self-healing on 10.0.0.1: health_restored, detection_risk_reduced, status_restored
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host Monitor initialized
+2026-04-04 00:33:12 - INFO - Host registered: 10.0.0.1 (Linux) - Payload: v1
+2026-04-04 00:33:12 - INFO - Host registered: 10.0.0.2 (Windows) - Payload: v1
+2026-04-04 00:33:13 - INFO - Host Monitor initialized

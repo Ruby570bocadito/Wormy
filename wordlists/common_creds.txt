@@ -1,0 +1,95 @@
+# Common Credentials for Pentesting
+# Format: username:password
+# WARNING: Only use in authorized environments!
+
+# Default System Accounts
+root:root
+root:toor
+root:password
+root:admin
+root:123456
+admin:admin
+admin:password
+admin:123456
+admin:admin123
+administrator:administrator
+administrator:password
+administrator:admin
+
+# Common SSH Credentials
+pi:raspberry
+ubuntu:ubuntu
+debian:debian
+centos:centos
+kali:kali
+user:user
+test:test
+guest:guest
+
+# Database Defaults
+mysql:mysql
+postgres:postgres
+oracle:oracle
+sa:sa
+db2admin:db2admin
+
+# Web Application Defaults
+tomcat:tomcat
+weblogic:weblogic
+jboss:jboss
+apache:apache
+nginx:nginx
+
+# Network Devices
+cisco:cisco
+admin:cisco
+admin:admin123
+root:calvin
+admin:1234
+
+# IoT Devices
+admin:
+root:
+admin:admin
+admin:password
+admin:12345
+support:support
+
+# Common Weak Passwords
+admin:qwerty
+admin:letmein
+admin:welcome
+admin:monkey
+root:12345678
+root:password123
+user:password
+user:123456
+
+# Service Accounts
+service:service
+backup:backup
+monitor:monitor
+nagios:nagios
+zabbix:zabbix
+
+# Windows Defaults
+Administrator:Password1
+Administrator:Admin123
+Administrator:P@ssw0rd
+Guest:
+DefaultAccount:
+
+# FTP Defaults
+ftp:ftp
+anonymous:anonymous
+ftpuser:ftpuser
+
+# VNC Defaults
+admin:password
+user:password
+vnc:vnc
+
+# Telnet Defaults
+admin:admin
+root:root
+user:user

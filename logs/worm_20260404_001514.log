@@ -1,0 +1,2 @@
+2026-04-04 00:15:14 - INFO - Logger initialized
+2026-04-04 00:15:14 - WARNING - msgpack not installed: pip install msgpack requests

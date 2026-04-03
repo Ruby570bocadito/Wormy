@@ -1,0 +1,544 @@
+
+                               ┌──────────────────────Hardware──────────────────────┐
+  ⠀⠀⠀⠀⠀⠀⠀⠀⣤⡀⠀⣶⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       PC: MS-7E26 (1.0)
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣆⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      │ ├: AMD Ryzen 5 7600X (12) @ 5.46 GHz
+  ⠀⠀⠀⠀⠀⠀⠀⠸⣷⣮⣿⣿⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀      │ ├: AMD Radeon RX 7800 XT [Discrete]
+  ⠀⠀⠀⠀⠀⢀⡠⠒⠉⠀⠀⠀⠀⠀⠀⠈⠁⠲⢖⠒⡀⠀⠀      │ ├: AMD Raphael [Integrated]
+  ⠀⠀⠀⡠⠴⣏⠀⢀⡀⠀⢀⡀⠀⠀⠀⡀⠀⠀⡀⠱⡈⢄⠀      │ ├󱄄: 2560x1440 in 27", 144 Hz [External]
+  ⠀⠀⢠⠁⠀⢸⠐⠁⠀⠄⠀⢸⠀⠀⢎⠀⠂⠀⠈⡄⢡⠀⢣      │ ├󰋊: 83.82 GiB / 1.28 TiB (6%) - btrfs
+  ⠀⢀⠂⠀⠀⢸⠈⠢⠤⠤⠐⢁⠄⠒⠢⢁⣂⡐⠊⠀⡄⠀⠸      │ ├: 5.49 GiB / 30.45 GiB (18%)
+  ⠀⡘⠀⠀⠀⢸⠀⢠⠐⠒⠈⠀⠀⠀⠀⠀⠀⠈⢆⠜⠀⠀⢸      └ └󰓡 : 1016.01 MiB / 45.68 GiB (2%)
+  ⠀⡇⠀⠀⠀⠀⡗⢺⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⡄⢀⠎      └────────────────────────────────────────────────────┘
+  ⠀⢃⠀⠀⠀⢀⠃⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠷⡃⠀
+  ⠀⠈⠢⣤⠀⠈⠀⠀⠑⠠⠤⣀⣀⣀⣀⣀⡀⠤⠒⠁⠀⢡⠀      ┌──────────────────────Software──────────────────────┐
+  ⡀⣀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⠀       OS: Omarchy 3.4.2
+  ⠑⢄⠉⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⠀      │ ├󰘬: dev
+  ⠀⠀⠑⠢⢱⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠁⠀      │ ├󰔫: edge
+  ⠀⠀⠀⠀⢀⠠⠓⠢⠤⣀⣀⡀⠀⠀⣀⣀⡀⠤⠒⠑⢄⠀⠀      │ ├: Linux 6.19.9-arch1-1
+  ⠀⠀⠀⠰⠥⠤⢄⢀⡠⠄⡈⡀⠀⠀⣇⣀⠠⢄⠀⠒⠤⠣⠀      │ ├: Hyprland 0.54.2 (Wayland)
+  ⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀      │ ├: alacritty 0.16.1
+                               │ ├󰏖: 1077 (pacman), 5 (flatpak-system), 1 (flatpak-user)
+                               │ ├󰸌: Aether ●●●●●●●●
+                               └ └: JetBrainsMono Nerd Font (9pt, Regular)
+                               └────────────────────────────────────────────────────┘
+
+                               ┌────────────────Age / Uptime / Update───────────────┐
+                               󱦟 OS Age: 0 days
+                               󱫐 Uptime: 3 hours, 5 mins
+                                Update: Tuesday, March 24 2026 at 15:23
+                               └────────────────────────────────────────────────────┘
+
+
+~ ❯ cd Desktop/
+
+~/Desktop ❯ ls
+Permissions Size User Date Modified Name
+drwxr-xr-x     - rby  24 Mar 17:15   Proyectos
+.rw-r--r--    25 rby  24 Mar 16:47  󰡯 vemv
+
+~/Desktop ❯ cd Proyectos/
+
+…/Desktop/Proyectos ❯ ls
+Permissions Size User Date Modified Name
+drwxr-xr-x     - rby  24 Mar 17:41   Specter
+drwxr-xr-x     - rby  24 Mar 19:14   Wormy
+
+…/Desktop/Proyectos ❯ cd Wormy/
+
+Wormy main  ? ❯ ls
+Permissions Size User Date Modified Name
+drwxr-xr-x     - rby  24 Mar 18:25   __pycache__
+drwxr-xr-x     - rby  24 Mar 17:15   attacks
+drwxr-xr-x     - rby  24 Mar 17:15   c2
+drwxr-xr-x     - rby  24 Mar 18:24   configs
+drwxr-xr-x     - rby  24 Mar 17:15   core
+drwxr-xr-x     - rby  24 Mar 17:15   evasion
+drwxr-xr-x     - rby  24 Mar 17:15   exploits
+drwxr-xr-x     - rby  24 Mar 17:15   infection
+drwxr-xr-x     - rby  24 Mar 18:27   logs
+drwxr-xr-x     - rby  24 Mar 17:15   ml_models
+drwxr-xr-x     - rby  24 Mar 19:14   models
+drwxr-xr-x     - rby  24 Mar 17:15   monitoring
+drwxr-xr-x     - rby  24 Mar 19:32   Output
+drwxr-xr-x     - rby  24 Mar 17:42   payloads
+drwxr-xr-x     - rby  24 Mar 17:40   post_exploit
+drwxr-xr-x     - rby  24 Mar 17:28   rl_engine
+drwxr-xr-x     - rby  24 Mar 17:28   scanner
+drwxr-xr-x     - rby  24 Mar 19:11   scripts
+drwxr-xr-x     - rby  24 Mar 17:15   swarm
+drwxr-xr-x     - rby  24 Mar 17:15   test_logs
+drwxr-xr-x     - rby  24 Mar 18:24   testing
+drwxr-xr-x     - rby  24 Mar 17:38   tests
+drwxr-xr-x     - rby  24 Mar 19:13   training
+drwxr-xr-x     - rby  24 Mar 17:15   utils
+drwxr-xr-x     - rby  24 Mar 17:35   venv
+drwxr-xr-x     - rby  24 Mar 17:15   wordlists
+.rw-r--r--  2.6k rby  24 Mar 17:59   docker-compose-lab.yml
+.rw-r--r--  1.2k rby  24 Mar 17:45   Dockerfile.test
+.rw-r--r--  7.5k rby  24 Mar 18:05   final_report.json
+.rw-r--r--  1.9k rby  24 Mar 17:19   OBJECTIVE.md
+.rw-r--r--  8.1k rby  24 Mar 18:20  󰂺 README.md
+.rw-r--r--   633 rby  24 Mar 17:34   requirements.txt
+.rw-r--r--  6.2k rby  24 Mar 17:15   SECURITY_GUIDE.md
+.rw-r--r--   50k rby  24 Mar 19:01   training_history.json
+.rw-r--r--  388k rby  24 Mar 19:03   training_history_advanced.json
+.rw-r--r--  282k rby  24 Mar 19:08   training_history_comprehensive.json
+.rw-r--r--  730k rby  24 Mar 19:19   training_history_progressive.json
+.rw-r--r--  1.4k rby  24 Mar 18:31   training_stats.json
+.rw-r--r--   15k rby  24 Mar 18:25   worm_core.py
+
+Wormy main  ? ❯ python3 training/progressive_objective_training.py
+======================================================================
+  PROGRESSIVE OBJECTIVE-BASED WORM TRAINING
+  Difficulty: Easy → Impossible
+  Objectives: Network Discovery → Full Attack Chain
+======================================================================
+======================================================================
+  PROGRESSIVE OBJECTIVE-BASED WORM TRAINING
+  Rounds: 20 | Target: Complete all objectives
+======================================================================
+
+============================================================
+  DETECTING AVAILABLE LABS
+============================================================
+  ✓ Lab 0: Web_Easy             Level 1 (Easy) Ports: [80]
+  ✓ Lab 1: FTP_Easy             Level 1 (Easy) Ports: [21]
+  ✓ Lab 2: SSH_Med              Level 2 (Medium) Ports: [22]
+  ✓ Lab 3: MySQL_Med            Level 2 (Medium) Ports: [3306]
+  ✗ Lab 4: Multi_Hard           - Not reachable
+  ✓ Lab 5: Jenkins_Hard         Level 3 (Hard) Ports: [8080]
+  ✓ Lab 6: Mongo_Expert         Level 4 (Expert) Ports: [27017]
+  ✗ Lab 7: Elastic_Expert       - Not reachable
+  ✗ Lab 8: Docker_Impossible    - Not reachable
+  ✗ Lab 9: Multi_Impossible     - Not reachable
+  ✗ Lab 10: DVWA_Impossible      - Not reachable
+
+======================================================================
+  ROUND 1/20
+  Difficulty: Level 1
+  Epsilon: 1.0000 | Best: -inf
+  Objectives: 0/6 completed
+======================================================================
+
+  Current Objectives:
+    ○ Network Discovery: Discover all available hosts and ports
+    ○ Initial Access: Successfully exploit at least 1 target
+    ○ Persistence: Achieve persistence on infected host
+    ○ Lateral Movement: Spread to at least 2 more hosts
+    ○ Data Exfiltration: Extract sensitive data from targets
+    ○ Complete Chain: Full attack chain: infect → persist → spread → exfil
+
+============================================================
+  LAB 2: SSH_Med | Level 2 (Medium)
+============================================================
+  Ep 1: R= 288.0 | Inf=True | Ev=False | Pst=True | C2=False | Obj=1/6 | ε=0.970
+  Ep 2: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=1/6 | ε=0.941
+  Ep 3: R= 293.0 | Inf=True | Ev=True | Pst=False | C2=False | Obj=1/6 | ε=0.913
+  Ep 4: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.885
+  Ep 5: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.859
+  Ep 6: R=  74.0 | Inf=False | Ev=True | Pst=False | C2=True | Obj=2/6 | ε=0.833
+  Ep 7: R=  51.0 | Inf=False | Ev=False | Pst=True | C2=True | Obj=2/6 | ε=0.715
+  Ep 8: R= 235.0 | Inf=True | Ev=False | Pst=True | C2=False | Obj=2/6 | ε=0.561
+  Ep 9: R=  86.0 | Inf=False | Ev=False | Pst=True | C2=True | Obj=2/6 | ε=0.377
+  Ep 10: R= 119.0 | Inf=False | Ev=True | Pst=True | C2=True | Obj=2/6 | ε=0.254
+  Ep 11: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.239
+  Ep 12: R= 299.0 | Inf=True | Ev=False | Pst=False | C2=True | Obj=2/6 | ε=0.212
+  Ep 13: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.187
+  Ep 14: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.176
+  Ep 15: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.161
+  Ep 16: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.147
+  Ep 17: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.134
+  Ep 18: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.126
+  Ep 19: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.119
+  Ep 20: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.112
+  Ep 21: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.102
+  Ep 22: R= 258.0 | Inf=True | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.085
+  Ep 23: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.077
+  Ep 24: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.066
+  Ep 25: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.059
+  Ep 26: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.054
+  Ep 27: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.048
+  Ep 28: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.045
+  Ep 29: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.040
+  Ep 30: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.036
+  Ep 31: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.034
+  Ep 32: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.030
+  Ep 33: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.027
+  Ep 34: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.025
+  Ep 35: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.024
+  Ep 36: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.021
+  Ep 37: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.020
+  Ep 38: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.017
+  Ep 39: R= 175.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.013
+  Ep 40: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.012
+  Ep 41: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.011
+  Ep 42: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.010
+  Ep 43: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.009
+  Ep 44: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.009
+  Ep 45: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.008
+  Ep 46: R= 175.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.006
+  Ep 47: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.006
+  Ep 48: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.005
+  Ep 49: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.005
+  Ep 50: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.004
+
+  📊 Lab 2 Summary: Infections=46, Avg Reward=226.6
+
+============================================================
+  LAB 1: FTP_Easy | Level 1 (Easy)
+============================================================
+  Ep 1: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.004
+  Ep 2: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.004
+  Ep 3: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.004
+  Ep 4: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.003
+  Ep 5: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.003
+  Ep 6: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.003
+  Ep 7: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.002
+  Ep 8: R= 190.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.002
+  Ep 9: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.002
+  Ep 10: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.002
+  Ep 11: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.002
+  Ep 12: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 31: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 32: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 33: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 34: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 35: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 36: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 37: R= 233.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 38: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 39: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 40: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 41: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 42: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 43: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 44: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 45: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 46: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 47: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 48: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 49: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 50: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+
+  📊 Lab 1 Summary: Infections=50, Avg Reward=237.1
+
+============================================================
+  LAB 3: MySQL_Med | Level 2 (Medium)
+============================================================
+  Ep 1: R= 190.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 2: R= 243.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 3: R= 238.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 4: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 5: R= 348.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 6: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 7: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 8: R= 163.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 9: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 10: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 11: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 12: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 163.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 270.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 195.0 | Inf=True | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R=  93.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 31: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 32: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 33: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 34: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 35: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 36: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 37: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 38: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 39: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 40: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 41: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 42: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 43: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 44: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 45: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 46: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 47: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 48: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 49: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 50: R= 200.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+
+  📊 Lab 3 Summary: Infections=6, Avg Reward=270.8
+
+============================================================
+  LAB 0: Web_Easy | Level 1 (Easy)
+============================================================
+  Ep 1: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 2: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 3: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 4: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 5: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 6: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 7: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 8: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 9: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 10: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 11: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 12: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 165.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 31: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 32: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 33: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 34: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 35: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 36: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 37: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 38: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 39: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 40: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 41: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 42: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 43: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 44: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 45: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 46: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 47: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 48: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 49: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 50: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+
+  📊 Lab 0 Summary: Infections=0, Avg Reward=301.8
+
+  📈 Round 1 Summary:
+     Episodes: 200
+     Infections: 102
+     Objectives: 2/6
+     Scans: 206, Exploits: 102
+     Evasion: 946, Persistence: 0
+     Lateral: 0, C2: 0
+
+======================================================================
+  ROUND 2/20
+  Difficulty: Level 1
+  Epsilon: 0.0010 | Best: 373.0
+  Objectives: 2/6 completed
+======================================================================
+
+  Current Objectives:
+    ✓ Network Discovery: Discover all available hosts and ports
+    ✓ Initial Access: Successfully exploit at least 1 target
+    ○ Persistence: Achieve persistence on infected host
+    ○ Lateral Movement: Spread to at least 2 more hosts
+    ○ Data Exfiltration: Extract sensitive data from targets
+    ○ Complete Chain: Full attack chain: infect → persist → spread → exfil
+
+============================================================
+  LAB 2: SSH_Med | Level 2 (Medium)
+============================================================
+  Ep 1: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 2: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 3: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 4: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 5: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 6: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 7: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 8: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 9: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 10: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 11: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 12: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 31: R= 200.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 32: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 33: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 34: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 35: R= 165.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 36: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 37: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 38: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 39: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 40: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 41: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 42: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 43: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 44: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 45: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 46: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 47: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 48: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 49: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 50: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+
+  📊 Lab 2 Summary: Infections=0, Avg Reward=286.1
+
+============================================================
+  LAB 3: MySQL_Med | Level 2 (Medium)
+============================================================
+  Ep 1: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 2: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 3: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 4: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 5: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 6: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 7: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 8: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 9: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 10: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 11: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 12: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 165.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 198.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 198.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 31: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 32: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 33: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 34: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 35: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 36: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 37: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 38: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 39: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 40: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 41: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 42: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 43: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 44: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 45: R= 268.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 46: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 47: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 48: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 49: R= 233.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 50: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+
+  📊 Lab 3 Summary: Infections=0, Avg Reward=274.5
+
+============================================================
+  LAB 0: Web_Easy | Level 1 (Easy)
+============================================================
+  Ep 1: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 2: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 3: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 4: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 5: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 6: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 7: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 8: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 9: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 10: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 11: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 12: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 13: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 14: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 15: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 16: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 17: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 18: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 19: R= 235.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 20: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 21: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 22: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 23: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 24: R= 305.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 25: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 26: R= 340.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 27: R= 270.0 | Inf=False | Ev=False | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 28: R= 303.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 29: R= 338.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+  Ep 30: R= 373.0 | Inf=False | Ev=True | Pst=False | C2=False | Obj=2/6 | ε=0.001
+^CTraceback (most recent call last):
+  File "/home/rby/Desktop/Proyectos/Wormy/training/progressive_objective_training.py", line 637, in <module>
+    main()
+    ~~~~^^
+  File "/home/rby/Desktop/Proyectos/Wormy/training/progressive_objective_training.py", line 629, in main
+    history = trainer.train(total_episodes=300, num_rounds=20)
+  File "/home/rby/Desktop/Proyectos/Wormy/training/progressive_objective_training.py", line 572, in train
+    self.train_on_lab(lab_id, episodes_per_lab)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/training/progressive_objective_training.py", line 480, in train_on_lab
+    self.agent.replay(batch_size=32)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/rby/Desktop/Proyectos/Wormy/rl_engine/__init__.py", line 157, in replay
+    current_q[i][action] = reward + self.gamma * np.max(next_q[i])
+                                                 ~~~~~~^^^^^^^^^^^
+  File "/home/rby/.local/lib/python3.14/site-packages/numpy/_core/fromnumeric.py", line 3006, in _max_dispatcher
+    def _max_dispatcher(a, axis=None, out=None, keepdims=None, initial=None,
+
+KeyboardInterrupt
+^X
+
+Wormy main  ? ✗

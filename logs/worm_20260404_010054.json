@@ -1,0 +1,18 @@
+{"timestamp": "2026-04-04T01:00:54.574510", "level": "INFO", "message": "Logger initialized", "data": {"log_dir": "logs"}}
+{"timestamp": "2026-04-04T01:00:54.588341", "level": "DEBUG", "message": "Loaded 35 credentials from common_creds.txt (generic)", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.588568", "level": "DEBUG", "message": "Loaded 34 credentials from ssh_creds.txt (ssh)", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.588700", "level": "DEBUG", "message": "Loaded 21 credentials from smb_creds.txt (smb)", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.588869", "level": "DEBUG", "message": "Loaded 24 credentials from web_creds.txt (web)", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.590544", "level": "DEBUG", "message": "Generated 490 password mutations", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.590626", "level": "INFO", "message": "CredentialManager initialized: 114 creds loaded", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.607094", "level": "DEBUG", "message": "Service detection failed for 127.0.0.1:22: [Errno 111] Connection refused", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.610169", "level": "INFO", "message": "Audit reports generated: {'json': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.json', 'csv': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.csv', 'text': '/tmp/tmpwlxhbu56/audit_report_20260404_010054.txt'}", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.653797", "level": "INFO", "message": "Host Monitor initialized", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.654083", "level": "INFO", "message": "Host registered: 192.168.1.1 (Linux) - Payload: v1", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.654300", "level": "INFO", "message": "Host registered: 192.168.1.2 (Windows) - Payload: v2", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.654401", "level": "INFO", "message": "Host Monitor initialized", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.654497", "level": "INFO", "message": "Host registered: 10.0.0.1 (Linux) - Payload: v1", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.654582", "level": "INFO", "message": "Self-healing on 10.0.0.1: health_restored, detection_risk_reduced, status_restored", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.657720", "level": "WARNING", "message": "python-nmap not installed: pip install python-nmap", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.658931", "level": "WARNING", "message": "reportlab not installed: pip install reportlab", "data": {}}
+{"timestamp": "2026-04-04T01:00:54.700975", "level": "DEBUG", "message": "Avoided IDS signature: suricata_http", "data": {}}

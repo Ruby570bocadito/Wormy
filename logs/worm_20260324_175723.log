@@ -1,0 +1,44 @@
+2026-03-24 17:57:23,410 - MLWorm - INFO - Logger initialized
+2026-03-24 17:57:23,454 - MLWorm - INFO - Starting network scan on 1 ranges
+2026-03-24 17:57:23,455 - MLWorm - INFO - Scanning 10.255.255.0/32 (1 addresses)
+2026-03-24 17:57:29,963 - MLWorm - INFO - SUCCESS: Discovered 0 hosts
+2026-03-24 17:57:29,963 - MLWorm - INFO - Starting network scan on 1 ranges
+2026-03-24 17:57:29,963 - MLWorm - ERROR - Error scanning 192.168.1.1/33: '192.168.1.1/33' does not appear to be an IPv4 or IPv6 network
+2026-03-24 17:57:29,963 - MLWorm - INFO - SUCCESS: Discovered 0 hosts
+2026-03-24 17:57:29,965 - MLWorm - INFO - Starting network scan on 1 ranges
+2026-03-24 17:57:29,965 - MLWorm - INFO - Scanning 127.0.0.1/32 (1 addresses)
+2026-03-24 17:57:30,568 - MLWorm - INFO - SUCCESS: Discovered 1 hosts
+2026-03-24 17:57:30,569 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 17:57:30,624 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 17:57:30,624 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 17:57:30,626 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,626 - MLWorm - INFO - ML NETWORK WORM INITIALIZED
+2026-03-24 17:57:30,626 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,626 - MLWorm - INFO - Local IP: 192.168.1.136
+2026-03-24 17:57:30,627 - MLWorm - INFO - Target Ranges: ['127.0.0.1/32']
+2026-03-24 17:57:30,627 - MLWorm - INFO - Stealth Mode: False
+2026-03-24 17:57:30,627 - MLWorm - INFO - ML Enabled: False
+2026-03-24 17:57:30,627 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,627 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 17:57:30,627 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 17:57:30,627 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 17:57:30,627 - MLWorm - INFO - IDS Detector initialized
+2026-03-24 17:57:30,628 - MLWorm - INFO - Stealth Engine initialized
+2026-03-24 17:57:30,628 - MLWorm - WARNING - Invalid kill switch code
+2026-03-24 17:57:30,629 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,629 - MLWorm - INFO - ML NETWORK WORM INITIALIZED
+2026-03-24 17:57:30,629 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,630 - MLWorm - INFO - Local IP: 192.168.1.136
+2026-03-24 17:57:30,630 - MLWorm - INFO - Target Ranges: ['127.0.0.1/32']
+2026-03-24 17:57:30,630 - MLWorm - INFO - Stealth Mode: False
+2026-03-24 17:57:30,630 - MLWorm - INFO - ML Enabled: False
+2026-03-24 17:57:30,630 - MLWorm - INFO - ============================================================
+2026-03-24 17:57:30,630 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 17:57:30,630 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 17:57:30,630 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 17:57:30,630 - MLWorm - INFO - IDS Detector initialized
+2026-03-24 17:57:30,630 - MLWorm - INFO - Stealth Engine initialized
+2026-03-24 17:57:30,630 - MLWorm - CRITICAL - KILL SWITCH ACTIVATED: Correct code provided
+2026-03-24 17:57:30,630 - MLWorm - INFO - Shutting down worm
+2026-03-24 17:57:30,631 - MLWorm - INFO - Logs exported to final_report.json
+2026-03-24 17:57:30,631 - MLWorm - INFO - Shutdown complete

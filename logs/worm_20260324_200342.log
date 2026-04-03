@@ -1,0 +1,44 @@
+2026-03-24 20:03:42,736 - MLWorm - INFO - Logger initialized
+2026-03-24 20:03:43,643 - MLWorm - INFO - Loading exploit modules...
+2026-03-24 20:03:43,707 - MLWorm - INFO - SUCCESS: Loaded 25 exploit modules
+2026-03-24 20:03:43,707 - MLWorm - INFO - Exploit Manager initialized
+2026-03-24 20:03:58,013 - MLWorm - INFO - Attempting exploitation of 192.168.200.10
+2026-03-24 20:03:58,014 - MLWorm - INFO - Found 1 applicable exploits for 192.168.200.10
+2026-03-24 20:03:58,014 - MLWorm - INFO - Trying Web_Exploit on 192.168.200.10
+2026-03-24 20:03:58,014 - MLWorm - INFO - Web: Attempting exploitation of 192.168.200.10
+2026-03-24 20:03:58,018 - MLWorm - DEBUG - Web: Checking common vulnerabilities on http://192.168.200.10:80
+2026-03-24 20:03:58,018 - MLWorm - DEBUG - Web: Checking file upload on http://192.168.200.10:80
+2026-03-24 20:03:58,018 - MLWorm - WARNING - Exploit: Web_Exploit on 192.168.200.10 - FAILED
+2026-03-24 20:04:01,019 - MLWorm - WARNING - All exploits failed for 192.168.200.10
+2026-03-24 20:04:01,019 - MLWorm - INFO - Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:01,020 - MLWorm - INFO - Found 1 applicable exploits for 192.168.200.10
+2026-03-24 20:04:01,020 - MLWorm - INFO - Trying Web_Exploit on 192.168.200.10
+2026-03-24 20:04:01,020 - MLWorm - INFO - Web: Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:01,023 - MLWorm - DEBUG - Web: Checking common vulnerabilities on http://192.168.200.10:80
+2026-03-24 20:04:01,023 - MLWorm - DEBUG - Web: Checking file upload on http://192.168.200.10:80
+2026-03-24 20:04:01,023 - MLWorm - WARNING - Exploit: Web_Exploit on 192.168.200.10 - FAILED
+2026-03-24 20:04:04,024 - MLWorm - WARNING - All exploits failed for 192.168.200.10
+2026-03-24 20:04:04,024 - MLWorm - INFO - Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:04,024 - MLWorm - INFO - Found 1 applicable exploits for 192.168.200.10
+2026-03-24 20:04:04,024 - MLWorm - INFO - Trying Web_Exploit on 192.168.200.10
+2026-03-24 20:04:04,025 - MLWorm - INFO - Web: Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:04,028 - MLWorm - DEBUG - Web: Checking common vulnerabilities on http://192.168.200.10:80
+2026-03-24 20:04:04,028 - MLWorm - DEBUG - Web: Checking file upload on http://192.168.200.10:80
+2026-03-24 20:04:04,028 - MLWorm - WARNING - Exploit: Web_Exploit on 192.168.200.10 - FAILED
+2026-03-24 20:04:07,028 - MLWorm - WARNING - All exploits failed for 192.168.200.10
+2026-03-24 20:04:07,030 - MLWorm - INFO - Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:07,030 - MLWorm - INFO - Found 1 applicable exploits for 192.168.200.10
+2026-03-24 20:04:07,030 - MLWorm - INFO - Trying Web_Exploit on 192.168.200.10
+2026-03-24 20:04:07,030 - MLWorm - INFO - Web: Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:07,034 - MLWorm - DEBUG - Web: Checking common vulnerabilities on http://192.168.200.10:80
+2026-03-24 20:04:07,034 - MLWorm - DEBUG - Web: Checking file upload on http://192.168.200.10:80
+2026-03-24 20:04:07,034 - MLWorm - WARNING - Exploit: Web_Exploit on 192.168.200.10 - FAILED
+2026-03-24 20:04:10,034 - MLWorm - WARNING - All exploits failed for 192.168.200.10
+2026-03-24 20:04:10,707 - MLWorm - INFO - Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:10,708 - MLWorm - INFO - Found 1 applicable exploits for 192.168.200.10
+2026-03-24 20:04:10,708 - MLWorm - INFO - Trying Web_Exploit on 192.168.200.10
+2026-03-24 20:04:10,708 - MLWorm - INFO - Web: Attempting exploitation of 192.168.200.10
+2026-03-24 20:04:10,712 - MLWorm - DEBUG - Web: Checking common vulnerabilities on http://192.168.200.10:80
+2026-03-24 20:04:10,712 - MLWorm - DEBUG - Web: Checking file upload on http://192.168.200.10:80
+2026-03-24 20:04:10,712 - MLWorm - WARNING - Exploit: Web_Exploit on 192.168.200.10 - FAILED
+2026-03-24 20:04:13,712 - MLWorm - WARNING - All exploits failed for 192.168.200.10
