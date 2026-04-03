@@ -1,9 +1,0 @@
-2026-04-04 00:15:56 - INFO - Logger initialized
-2026-04-04 00:15:56 - WARNING - msgpack not installed: pip install msgpack requests
-2026-04-04 00:15:56 - DEBUG - Loaded 35 credentials from common_creds.txt (generic)
-2026-04-04 00:15:56 - DEBUG - Loaded 34 credentials from ssh_creds.txt (ssh)
-2026-04-04 00:15:56 - DEBUG - Loaded 21 credentials from smb_creds.txt (smb)
-2026-04-04 00:15:56 - DEBUG - Loaded 24 credentials from web_creds.txt (web)
-2026-04-04 00:15:56 - DEBUG - Generated 488 password mutations
-2026-04-04 00:15:56 - INFO - CredentialManager initialized: 114 creds loaded
-2026-04-04 00:15:56 - INFO - SUCCESS: Discovered credential added for pivoting: admin

@@ -1,9 +1,0 @@
-{"timestamp": "2026-04-04T00:28:33.873771", "level": "INFO", "message": "Logger initialized", "data": {"log_dir": "logs"}}
-{"timestamp": "2026-04-04T00:28:33.892367", "level": "DEBUG", "message": "Loaded 35 credentials from common_creds.txt (generic)", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.892661", "level": "DEBUG", "message": "Loaded 34 credentials from ssh_creds.txt (ssh)", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.892823", "level": "DEBUG", "message": "Loaded 21 credentials from smb_creds.txt (smb)", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.893040", "level": "DEBUG", "message": "Loaded 24 credentials from web_creds.txt (web)", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.895205", "level": "DEBUG", "message": "Generated 483 password mutations", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.895314", "level": "INFO", "message": "CredentialManager initialized: 114 creds loaded", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.917417", "level": "DEBUG", "message": "Service detection failed for 127.0.0.1:22: [Errno 111] Connection refused", "data": {}}
-{"timestamp": "2026-04-04T00:28:33.921439", "level": "INFO", "message": "Audit reports generated: {'json': '/tmp/tmpntt7zopd/audit_report_20260404_002833.json', 'csv': '/tmp/tmpntt7zopd/audit_report_20260404_002833.csv', 'text': '/tmp/tmpntt7zopd/audit_report_20260404_002833.txt'}", "data": {}}
