@@ -1,9 +1,17 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 ML Network Worm - Main Core v3.0
 Full integration: Professional Scanner, Knowledge Graph, RL Brain, Credential Intelligence,
 Brute Force Engine, Vulnerability Scanner, Exploit Chains, Lateral Movement,
 Polymorphic Evasion, C2 Server, Async Exploitation, Audit Reports, Interactive CLI
 """
+
+
 
 import time
 import sys

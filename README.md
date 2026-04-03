@@ -1,6 +1,8 @@
 # Wormy — ML Network Worm v3.0
 
-**ML-Driven Autonomous Network Propagation Platform with Real Exploits**
+> **Developed by [Ruby570bocadito](https://github.com/Ruby570bocadito)**
+>
+> ML-Driven Autonomous Network Propagation Platform with Real Exploits
 
 An intelligent network propagation research platform that uses Deep Q-Learning (DQN) to autonomously discover, exploit, and propagate across networks. Features real exploit execution, credential intelligence, lateral movement, and self-healing.
 

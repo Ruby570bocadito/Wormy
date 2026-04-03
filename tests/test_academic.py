@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Academic Unit Tests for ML Network Worm
 Unit testing demonstrating software engineering practices
 """
+
+
 
 import unittest
 import sys

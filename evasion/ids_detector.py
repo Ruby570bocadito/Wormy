@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 IDS/IPS Detection Module
 Detects presence of intrusion detection systems and honeypots
 """
+
+
 
 import time
 import random

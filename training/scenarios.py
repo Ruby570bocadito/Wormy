@@ -1,4 +1,10 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Realistic Training Scenarios
 Training environments that simulate real-world network topologies
 with actual service configurations, vulnerability distributions,
@@ -12,6 +18,8 @@ Scenarios:
 5. IoT/OT Network (25 hosts) - Industrial IoT with vulnerable devices
 6. Mixed Environment (60 hosts) - Realistic corporate network
 """
+
+
 
 import sys
 import os

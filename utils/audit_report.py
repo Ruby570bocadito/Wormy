@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Audit Report Generator
 Generates comprehensive reports in JSON, CSV, and text formats
 """
+
+
 
 import os
 import sys

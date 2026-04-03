@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Integration Tests - End-to-end workflow tests
 Tests complete worm propagation flow with mocked components
 """
+
+
 
 import sys
 import os

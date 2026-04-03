@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 PDF Report Generator
 Generates professional PDF audit reports with charts, findings, and recommendations.
 """
+
+
 
 import os
 import sys

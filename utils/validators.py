@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Input Validation and Sanitization
 Validates IPs, ports, CIDRs, file paths, and user input
 """
+
+
 
 import os
 import re

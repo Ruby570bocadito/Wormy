@@ -1,4 +1,10 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Realistic Training Engine
 Trains the RL agent on realistic network scenarios with:
 - Multiple scenario types (office, enterprise, datacenter, cloud, IoT)
@@ -8,6 +14,8 @@ Trains the RL agent on realistic network scenarios with:
 - Model persistence and loading
 - Online learning improvements
 """
+
+
 
 import sys
 import os

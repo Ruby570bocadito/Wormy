@@ -1,7 +1,15 @@
 """
+Wormy ML Network Worm v3.0
+Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
+Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+"""
+
+"""
 Test Completo de ML Network Worm v2.0
 Prueba exhaustiva de todos los componentes
 """
+
+
 
 import sys
 import os
