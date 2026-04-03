@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Models (checkpoints)
+models/*.pt
+models/*.h5
+models/*.pkl
+saved/
+
+# Training artifacts
+training_history*.json
+training_stats.json
+*.pth
+
+# Reports (generated)
+reports/
+final_report.json
+final_worm_report.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.save
+error*.txt
