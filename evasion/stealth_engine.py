@@ -33,7 +33,12 @@ class StealthEngine:
     
     def __init__(self, config):
         self.config = config
-        self.crypto = CryptoManager()
+        self.crypto = None
+        if CRYPTO_AVAILABLE:
+            try:
+                self.crypto = CryptoManager()
+            except Exception:
+                pass
         self.last_action_time = {}
         self.action_count = {}
         
