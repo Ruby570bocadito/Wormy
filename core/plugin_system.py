@@ -12,6 +12,7 @@ Dynamic loading and management of exploit modules
 import os
 import sys
 import importlib
+import importlib.util
 import inspect
 from typing import Dict, List, Optional, Type, Any
 from dataclasses import dataclass, field
