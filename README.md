@@ -248,95 +248,148 @@ Start with `python3 worm_core.py --dry-run --interactive`
 
 ## Architecture
 
+### System Overview
+
+```mermaid
+graph TB
+    subgraph "Worm Core v3.0"
+        WC[worm_core.py]
+        SM[Scanner]
+        RL[RL Brain v2.0]
+        EM[Exploit Manager]
+        KG[Knowledge Graph]
+        HM[Host Monitor]
+    end
+    
+    subgraph "Intelligence"
+        CI[Credential Manager]
+        BFE[Brute Force Engine]
+        PG[Password Generator]
+        VU[Vuln Scanner]
+        EC[Exploit Chains]
+    end
+    
+    subgraph "Evasion"
+        PE[Polymorphic Engine]
+        IE[IDS/IPS Evasion]
+        AF[Anti-Forensics]
+        EB[EDR Bypass]
+        ME[Memory Execution]
+    end
+    
+    subgraph "Post-Exploit"
+        LM[Lateral Movement]
+        PD[Payload Deployer]
+        PE2[Persistence]
+        CD[Credential Dumping]
+    end
+    
+    subgraph "Dashboards"
+        AD[Armitage :5001]
+        WD[Web Dashboard :5000]
+        CLI[Interactive CLI]
+    end
+    
+    WC --> SM
+    WC --> RL
+    WC --> EM
+    WC --> KG
+    WC --> HM
+    EM --> CI
+    EM --> BFE
+    EM --> VU
+    EM --> EC
+    CI --> PG
+    WC --> PE
+    WC --> IE
+    WC --> AF
+    WC --> EB
+    WC --> ME
+    EM --> LM
+    EM --> PD
+    EM --> PE2
+    LM --> CD
+    WC --> AD
+    WC --> WD
+    WC --> CLI
 ```
-worm_core.py (Orchestrator v3.0)
-│
-├── Professional Scanner
-│   ├── Async port scanning with progress bar
-│   ├── TTL-based OS detection
-│   ├── Banner grabbing + version extraction
-│   ├── CVE matching + vulnerability scoring
-│   └── Nmap integration (optional)
-│
-├── RL Brain (DQN) — AUTO-TRAINED
-│   ├── 15 features/host state space
-│   ├── Shaped rewards (+20 infection, +15 high-value, +3/cred)
-│   ├── Soft target updates (τ=0.005)
-│   ├── Realistic scenario training (5 scenarios)
-│   └── Online learning during operation
-│
-├── Credential Intelligence
-│   ├── UCB1 bandit ranking
-│   ├── Password mutation engine (leet, years, patterns)
-│   ├── Password spraying with lockout detection
-│   ├── Credential pivoting (auto-reuse discovered creds)
-│   └── 1,737+ wordlist entries across 7 files
-│
-├── Exploit Manager (26 modules, ALL REAL)
-│   ├── SMB (impacket: null session, auth, PTH)
-│   ├── SSH (paramiko: brute force, key auth)
-│   ├── Web (requests: login, SQLi, cmd injection)
-│   ├── MySQL, PostgreSQL, MongoDB, Redis (real auth)
-│   ├── FTP, Telnet, VNC, SNMP, RDP (real protocols)
-│   ├── Docker, Kubernetes, Elasticsearch (API)
-│   ├── Jenkins, Tomcat, Log4j, Struts, WebLogic
-│   └── Metasploit RPC (25 exploits mapped)
-│
-├── Payload Deployer
-│   ├── SSH payload upload + execution
-│   ├── SMB file drop
-│   ├── Web shell deployment
-│   ├── Reverse shell establishment
-│   └── Command execution on infected hosts
-│
-├── Persistence Engine
-│   ├── Linux: cron, systemd, bashrc, SSH keys
-│   ├── Windows: Registry Run keys, scheduled tasks
-│   └── Cross-platform: web shells
-│
-├── Lateral Movement Engine
-│   ├── SSH pivot (paramiko)
-│   ├── Pass-the-Hash (impacket)
-│   ├── PSExec (impacket)
-│   ├── WMI execution
-│   ├── RDP verification
-│   └── WinRM (requests)
-│
-├── Knowledge Graph
-│   ├── Hosts, services, credentials, networks
-│   ├── BFS path finding for propagation
-│   └── Export to JSON
-│
-├── Host Monitor
-│   ├── Per-host system metrics
-│   ├── Unique payload per host (mutation)
-│   ├── Activity logging + correlation
-│   ├── Health monitoring + self-healing
-│   └── Continuous background monitoring
-│
-├── Evasion
-│   ├── IDS/IPS evasion (signature avoidance, fragmentation, decoys)
-│   ├── Anti-Forensics (log clearing, history, secure delete)
-│   ├── EDR Bypass (AMSI, PPID spoofing, process hollowing)
-│   ├── Memory Execution (shellcode, PE, PowerShell, Python bytecode)
-│   └── Polymorphic Engine (5 mutation levels)
-│
-├── C2 Server
-│   ├── HTTP/HTTPS/DNS/TCP protocols
-│   ├── DGA (Domain Generation Algorithm)
-│   └── Multi-protocol fallback
-│
-├── Async Exploit Dispatcher
-│   ├── Parallel exploitation
-│   └── Configurable concurrency
-│
-└── Reporting
-    ├── Armitage Dashboard (http://localhost:5001)
-    ├── Web Dashboard (http://localhost:5000)
-    ├── CLI dashboard (real-time terminal)
-    ├── Audit reports (JSON + CSV + Text)
-    ├── PDF reports (professional)
-    └── Topology visualization (ASCII + HTML + PNG)
+
+### Propagation Flow
+
+```mermaid
+sequenceDiagram
+    participant W as Worm Core
+    participant S as Scanner
+    participant KG as Knowledge Graph
+    participant RL as RL Brain v2.0
+    participant EM as Exploit Manager
+    participant CI as Credential Manager
+    participant LM as Lateral Movement
+    participant EV as Evasion Engine
+    participant HM as Host Monitor
+    
+    W->>S: scan_network()
+    S-->>W: discovered hosts
+    W->>KG: update_graph(hosts)
+    W->>RL: select_next_target()
+    RL-->>W: best target
+    W->>EV: apply_evasion()
+    EV-->>W: mutated payload
+    W->>EM: exploit_target()
+    EM->>CI: get_credentials()
+    CI-->>EM: ranked credentials
+    EM-->>W: success/failure
+    W->>KG: mark_infected()
+    W->>HM: register_host()
+    W->>LM: try_lateral_movement()
+    LM-->>W: pivot results
+    W->>RL: provide_feedback()
+    W->>EV: post_exploit_cleanup()
+```
+
+### RL Brain Architecture
+
+```mermaid
+graph LR
+    subgraph "State Space (15 features/host)"
+        VULN[Vulnerability Score]
+        PORT[Port Count + Binary]
+        OS[OS Encoding]
+        CRED[Credential Count]
+        HIST[Exploit History]
+        STRAT[Strategic Value]
+        RISK[Detection Risk]
+        HOP[Hop Distance]
+    end
+    
+    subgraph "DQN Network"
+        I[Input Layer<br/>15×N] --> H1[Dense 128<br/>ReLU + Dropout]
+        H1 --> H2[Dense 128<br/>ReLU + Dropout]
+        H2 --> H3[Dense 64<br/>ReLU]
+        H3 --> O[Output Layer<br/>N actions]
+    end
+    
+    subgraph "Training"
+        PER[Prioritized Replay]
+        HUB[Huber Loss]
+        GC[Gradient Clip]
+        RN[Reward Norm]
+        STU[Soft Target τ=0.005]
+    end
+    
+    VULN --> I
+    PORT --> I
+    OS --> I
+    CRED --> I
+    HIST --> I
+    STRAT --> I
+    RISK --> I
+    HOP --> I
+    
+    O --> PER
+    PER --> HUB
+    HUB --> GC
+    RN --> STU
 ```
 
 ---
