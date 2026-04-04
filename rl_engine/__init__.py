@@ -5,11 +5,16 @@ Copyright (c) 2024 Ruby570bocadito. All rights reserved.
 """
 
 """
-RL Engine - Reinforcement Learning for Network Propagation
-Implements DQN agent for intelligent target selection
+RL Engine v2.0 - Enhanced Reinforcement Learning for Network Propagation
+Features:
+- 15 features per host state space (was 3)
+- Prioritized Experience Replay (PER)
+- Gradient clipping
+- Reward normalization
+- Adaptive epsilon decay
+- Soft target updates (tau=0.005)
+- Huber loss for stability
 """
-
-
 
 import random
 import numpy as np
@@ -17,23 +22,89 @@ from collections import deque
 from typing import List, Dict, Optional, Tuple
 
 
+class PrioritizedReplayMemory:
+    """Prioritized Experience Replay - samples important experiences more often"""
+    
+    def __init__(self, capacity: int = 10000, alpha: float = 0.6):
+        self.capacity = capacity
+        self.alpha = alpha  # How much prioritization (0 = uniform, 1 = full prioritization)
+        self.memory = deque(maxlen=capacity)
+        self.priorities = deque(maxlen=capacity)
+    
+    def push(self, experience, priority: float = 1.0):
+        """Add experience with priority"""
+        self.memory.append(experience)
+        self.priorities.append(priority ** self.alpha)
+    
+    def sample(self, batch_size: int, beta: float = 0.4) -> Tuple[List, List, np.ndarray]:
+        """Sample batch with importance sampling weights"""
+        if len(self.memory) < batch_size:
+            batch = list(self.memory)
+            weights = np.ones(len(batch))
+            return batch, list(range(len(batch))), weights
+        
+        probs = np.array(self.priorities)
+        probs = probs / probs.sum()
+        indices = np.random.choice(len(self.memory), batch_size, p=probs)
+        
+        # Importance sampling weights
+        weights = (len(self.memory) * probs[indices]) ** (-beta)
+        weights = weights / weights.max()
+        
+        batch = [self.memory[i] for i in indices]
+        return batch, indices.tolist(), weights
+    
+    def update_priorities(self, indices: List[int], priorities: List[float]):
+        """Update priorities after learning"""
+        for idx, priority in zip(indices, priorities):
+            if idx < len(self.priorities):
+                self.priorities[idx] = (abs(priority) + 1e-6) ** self.alpha
+    
+    def __len__(self):
+        return len(self.memory)
+
+
 class PropagationAgent:
     """
-    DQN Agent for network propagation
-    Learns optimal target selection strategy
+    Enhanced DQN Agent for network propagation
+    
+    Improvements over v1:
+    - Prioritized Experience Replay
+    - Gradient clipping (max_norm=1.0)
+    - Reward normalization
+    - Huber loss instead of MSE
+    - Adaptive epsilon decay
+    - Soft target updates
     """
     
-    def __init__(self, state_size: int, action_size: int, use_dqn: bool = True):
+    def __init__(self, state_size: int, action_size: int, use_dqn: bool = True,
+                 use_per: bool = True):
         self.state_size = state_size
         self.action_size = action_size
         self.use_dqn = use_dqn
+        self.use_per = use_per
         
-        self.memory = deque(maxlen=10000)
-        self.gamma = 0.95
+        # Replay memory
+        if use_per:
+            self.memory = PrioritizedReplayMemory(capacity=10000, alpha=0.6)
+        else:
+            self.memory = deque(maxlen=10000)
+        
+        # Hyperparameters
+        self.gamma = 0.99  # Discount factor (increased from 0.95)
         self.epsilon = 1.0
         self.epsilon_min = 0.01
-        self.epsilon_decay = 0.995
-        self.learning_rate = 0.001
+        self.epsilon_decay = 0.997  # Slower decay for more exploration
+        self.learning_rate = 0.0005  # Lower learning rate for stability
+        self.gradient_clip = 1.0  # Max gradient norm
+        self.beta_start = 0.4  # PER beta start
+        self.beta_frames = 100000  # PER beta frames to reach 1.0
+        self.frame_idx = 0
+        
+        # Reward normalization
+        self.reward_mean = 0.0
+        self.reward_std = 1.0
+        self.reward_count = 0
         
         self.q_network = None
         self.target_network = None
@@ -41,27 +112,33 @@ class PropagationAgent:
         self._build_model()
     
     def _build_model(self):
-        """Build neural network for Q-learning"""
+        """Build neural network with Huber loss and gradient clipping"""
         try:
             import tensorflow as tf
             from tensorflow import keras
             from tensorflow.keras import layers
             
             model = keras.Sequential([
-                layers.Dense(64, activation='relu', input_shape=(self.state_size,)),
+                layers.Dense(128, activation='relu', input_shape=(self.state_size,)),
+                layers.Dropout(0.1),
+                layers.Dense(128, activation='relu'),
+                layers.Dropout(0.1),
                 layers.Dense(64, activation='relu'),
-                layers.Dense(32, activation='relu'),
                 layers.Dense(self.action_size, activation='linear')
             ])
             
             model.compile(
-                optimizer=keras.optimizers.Adam(learning_rate=self.learning_rate),
-                loss='mse'
+                optimizer=keras.optimizers.Adam(
+                    learning_rate=self.learning_rate,
+                    clipnorm=self.gradient_clip
+                ),
+                loss=tf.keras.losses.Huber(delta=1.0)
             )
             
             self.q_network = model
             self.target_network = keras.models.clone_model(model)
             self.target_network.build()
+            self.target_network.set_weights(model.get_weights())
             
         except ImportError:
             try:
@@ -73,13 +150,15 @@ class PropagationAgent:
                     def __init__(self, state_size, action_size):
                         super().__init__()
                         self.fc = nn.Sequential(
-                            nn.Linear(state_size, 64),
+                            nn.Linear(state_size, 128),
                             nn.ReLU(),
-                            nn.Linear(64, 64),
+                            nn.Dropout(0.1),
+                            nn.Linear(128, 128),
                             nn.ReLU(),
-                            nn.Linear(64, 32),
+                            nn.Dropout(0.1),
+                            nn.Linear(128, 64),
                             nn.ReLU(),
-                            nn.Linear(32, action_size)
+                            nn.Linear(64, action_size)
                         )
                     
                     def forward(self, x):
@@ -88,8 +167,11 @@ class PropagationAgent:
                 self.q_network = DQNNetwork(self.state_size, self.action_size)
                 self.target_network = DQNNetwork(self.state_size, self.action_size)
                 self.target_network.load_state_dict(self.q_network.state_dict())
-                self.optimizer = optim.Adam(self.q_network.parameters(), lr=self.learning_rate)
-                self.criterion = nn.MSELoss()
+                self.optimizer = optim.Adam(
+                    self.q_network.parameters(), 
+                    lr=self.learning_rate
+                )
+                self.criterion = nn.SmoothL1Loss()  # Huber loss
                 self.use_torch = True
                 self._torch = torch
                 
@@ -97,17 +179,17 @@ class PropagationAgent:
                 self.q_network = None
                 self.target_network = None
     
+    def normalize_reward(self, reward: float) -> float:
+        """Normalize rewards for stable training"""
+        self.reward_count += 1
+        self.reward_mean += (reward - self.reward_mean) / self.reward_count
+        self.reward_std += (abs(reward) - self.reward_std) / self.reward_count
+        if self.reward_std < 1e-6:
+            self.reward_std = 1.0
+        return (reward - self.reward_mean) / max(self.reward_std, 1e-6)
+    
     def act(self, state: List[float], available_actions: List[int] = None) -> int:
-        """
-        Choose action using epsilon-greedy policy
-        
-        Args:
-            state: Current state representation
-            available_actions: List of valid action indices
-            
-        Returns:
-            Selected action index
-        """
+        """Choose action using epsilon-greedy with mask"""
         if random.random() < self.epsilon:
             if available_actions:
                 return random.choice(available_actions)
@@ -136,18 +218,42 @@ class PropagationAgent:
         return random.randint(0, self.action_size - 1)
     
     def remember(self, state, action, reward, next_state, done):
-        """Store experience in replay memory"""
-        self.memory.append((state, action, reward, next_state, done))
+        """Store experience with priority"""
+        priority = abs(reward) + 1.0  # Higher priority for larger rewards
+        
+        if self.use_per and hasattr(self.memory, 'push'):
+            self.memory.push((state, action, reward, next_state, done), priority)
+        else:
+            self.memory.append((state, action, reward, next_state, done))
+    
+    def step_epsilon_decay(self):
+        """Decay epsilon every step"""
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decay
+            self.epsilon = max(self.epsilon, self.epsilon_min)
     
     def replay(self, batch_size: int = 32):
-        """Train on batch of experiences"""
-        if len(self.memory) < batch_size or self.q_network is None:
-            return
+        """Train on batch with PER, gradient clipping, and reward normalization"""
+        mem_len = len(self.memory)
+        if mem_len < batch_size or self.q_network is None:
+            return None
         
-        batch = random.sample(self.memory, batch_size)
+        # Get beta for importance sampling
+        beta = min(1.0, self.beta_start + self.frame_idx * (1.0 - self.beta_start) / self.beta_frames)
+        self.frame_idx += 1
+        
+        if self.use_per and hasattr(self.memory, 'sample'):
+            batch, indices, weights = self.memory.sample(batch_size, beta)
+        else:
+            batch = random.sample(self.memory, batch_size)
+            indices = list(range(batch_size))
+            weights = np.ones(batch_size)
         
         states = np.array([exp[0] for exp in batch])
         next_states = np.array([exp[3] for exp in batch])
+        actions = np.array([exp[1] for exp in batch])
+        rewards = np.array([self.normalize_reward(exp[2]) for exp in batch])
+        dones = np.array([exp[4] for exp in batch])
         
         if hasattr(self, 'use_torch') and self.use_torch:
             states_tensor = self._torch.FloatTensor(states)
@@ -158,62 +264,78 @@ class PropagationAgent:
             
             current_q = self.q_network(states_tensor).detach().numpy()
             
-            for i, (state, action, reward, next_state, done) in enumerate(batch):
-                if done:
-                    current_q[i][action] = reward
+            for i in range(batch_size):
+                if dones[i]:
+                    current_q[i][actions[i]] = rewards[i]
                 else:
-                    current_q[i][action] = reward + self.gamma * np.max(next_q[i])
+                    current_q[i][actions[i]] = rewards[i] + self.gamma * np.max(next_q[i])
             
             self.optimizer.zero_grad()
             output = self.q_network(states_tensor)
             loss = self.criterion(output, self._torch.FloatTensor(current_q))
             loss.backward()
+            
+            # Gradient clipping
+            self._torch.nn.utils.clip_grad_norm_(self.q_network.parameters(), self.gradient_clip)
             self.optimizer.step()
+            
+            # Update PER priorities
+            if self.use_per and hasattr(self.memory, 'update_priorities'):
+                td_errors = np.abs(current_q[range(batch_size), actions] - 
+                                  (rewards + self.gamma * np.max(next_q, axis=1) * (1 - dones)))
+                self.memory.update_priorities(indices, td_errors.tolist())
+            
+            return loss.item()
         else:
             current_q = self.q_network.predict(states, verbose=0)
             next_q = self.target_network.predict(next_states, verbose=0)
             
-            for i, (state, action, reward, next_state, done) in enumerate(batch):
-                if done:
-                    current_q[i][action] = reward
+            for i in range(batch_size):
+                if dones[i]:
+                    current_q[i][actions[i]] = rewards[i]
                 else:
-                    current_q[i][action] = reward + self.gamma * np.max(next_q[i])
+                    current_q[i][actions[i]] = rewards[i] + self.gamma * np.max(next_q[i])
             
-            self.q_network.fit(states, current_q, epochs=1, verbose=0)
-        
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
+            history = self.q_network.fit(states, current_q, sample_weight=weights, 
+                                        epochs=1, verbose=0)
+            
+            # Update PER priorities
+            if self.use_per and hasattr(self.memory, 'update_priorities'):
+                td_errors = np.abs(current_q[range(batch_size), actions] - 
+                                  (rewards + self.gamma * np.max(next_q, axis=1) * (1 - dones)))
+                self.memory.update_priorities(indices, td_errors.tolist())
+            
+            return history.history['loss'][0]
     
-    def update_target_model(self, tau=1.0):
-        """Update target network weights with soft update (tau=1.0 for hard copy)"""
+    def update_target_model(self, tau=0.005):
+        """Soft update target network"""
         if self.target_network is not None and self.q_network is not None:
             if hasattr(self, 'use_torch') and self.use_torch:
-                if tau < 1.0:
-                    # Soft update
-                    target_state = self.target_network.state_dict()
-                    source_state = self.q_network.state_dict()
-                    for key in target_state:
-                        target_state[key] = tau * source_state[key] + (1 - tau) * target_state[key]
-                    self.target_network.load_state_dict(target_state)
-                else:
-                    self.target_network.load_state_dict(self.q_network.state_dict())
+                target_state = self.target_network.state_dict()
+                source_state = self.q_network.state_dict()
+                for key in target_state:
+                    target_state[key] = tau * source_state[key] + (1 - tau) * target_state[key]
+                self.target_network.load_state_dict(target_state)
             else:
-                if tau < 1.0:
-                    target_weights = self.target_network.get_weights()
-                    source_weights = self.q_network.get_weights()
-                    soft_weights = [
-                        tau * s + (1 - tau) * t
-                        for s, t in zip(source_weights, target_weights)
-                    ]
-                    self.target_network.set_weights(soft_weights)
-                else:
-                    self.target_network.set_weights(self.q_network.get_weights())
+                target_weights = self.target_network.get_weights()
+                source_weights = self.q_network.get_weights()
+                soft_weights = [
+                    tau * s + (1 - tau) * t
+                    for s, t in zip(source_weights, target_weights)
+                ]
+                self.target_network.set_weights(soft_weights)
     
     def save(self, path: str):
         """Save trained model"""
         if self.q_network is not None:
             if hasattr(self, 'use_torch') and self.use_torch:
-                self._torch.save(self.q_network.state_dict(), path)
+                self._torch.save({
+                    'model_state_dict': self.q_network.state_dict(),
+                    'optimizer_state_dict': self.optimizer.state_dict(),
+                    'epsilon': self.epsilon,
+                    'reward_mean': self.reward_mean,
+                    'reward_std': self.reward_std,
+                }, path)
             else:
                 self.q_network.save(path)
     
@@ -221,14 +343,25 @@ class PropagationAgent:
         """Load trained model"""
         if self.q_network is not None:
             if hasattr(self, 'use_torch') and self.use_torch:
-                self.q_network.load_state_dict(self._torch.load(path))
+                checkpoint = self._torch.load(path)
+                self.q_network.load_state_dict(checkpoint['model_state_dict'])
+                self.target_network.load_state_dict(checkpoint['model_state_dict'])
+                if 'optimizer_state_dict' in checkpoint:
+                    self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+                if 'epsilon' in checkpoint:
+                    self.epsilon = checkpoint['epsilon']
+                if 'reward_mean' in checkpoint:
+                    self.reward_mean = checkpoint['reward_mean']
+                if 'reward_std' in checkpoint:
+                    self.reward_std = checkpoint['reward_std']
             else:
                 self.q_network.load_weights(path)
+                self.target_network.set_weights(self.q_network.get_weights())
 
 
 class NetworkEnvironment:
     """
-    Simulated network environment for RL training
+    Enhanced network environment with 15 features per host
     """
     
     def __init__(self, network_size: int = 20, max_steps: int = 100):
@@ -274,23 +407,43 @@ class NetworkEnvironment:
         return self._get_state()
     
     def _get_state(self) -> np.ndarray:
-        """Get current state representation"""
+        """Get enhanced state representation (15 features per host)"""
         state = []
+        top_ports = [21, 22, 23, 25, 53, 80, 110, 135, 139, 143, 443, 445, 993, 995, 1433, 3306, 3389, 5432, 5900, 6379]
         
         for host in self.hosts:
-            state.extend([
-                host['vulnerability'] / 100.0,
-                host['difficulty'] / 10.0,
-                1.0 if host.get('infected', False) else 0.0
-            ])
+            # Core features
+            vuln = host['vulnerability'] / 100.0
+            difficulty = host['difficulty'] / 10.0
+            is_infected = 1.0 if host.get('infected', False) else 0.0
+            port_count = len(host.get('ports', [])) / 10.0
+            is_windows = 1.0 if host.get('os') == 'Windows' else 0.0
+            is_linux = 1.0 if host.get('os') == 'Linux' else 0.0
+            is_high_value = 1.0 if host.get('is_high_value', False) else 0.0
+            credentials = host.get('credentials', 0) / 5.0
+            hop_dist = host.get('hop_distance', 1) / 5.0
+            subnet = host.get('subnet', 0) / 3.0
+            
+            # Port binary features (top 5)
+            host_ports = host.get('ports', [])
+            port_features = [1.0 if p in host_ports else 0.0 for p in top_ports[:5]]
+            
+            # Combined features
+            features = [
+                vuln, difficulty, is_infected, port_count, is_windows,
+                is_linux, is_high_value, credentials, hop_dist, subnet,
+                *port_features,
+            ]
+            state.extend(features)
         
-        while len(state) < self.network_size * 3:
+        features_per_host = 15
+        while len(state) < self.network_size * features_per_host:
             state.append(0.0)
         
-        return np.array(state[:self.network_size * 3])
+        return np.array(state[:self.network_size * features_per_host], dtype=np.float32)
     
     def step(self, action: int) -> Tuple[np.ndarray, float, bool, Dict]:
-        """Execute action with shaped reward and return result"""
+        """Execute action with enhanced shaped reward"""
         self.current_step += 1
         
         if action >= len(self.hosts):
@@ -310,7 +463,7 @@ class NetworkEnvironment:
             target['infected'] = True
             self.infected.append(action)
             
-            # Shaped reward
+            # Enhanced shaped reward
             reward = 20  # Base infection reward
             
             if target.get('is_high_value', False):
@@ -320,15 +473,15 @@ class NetworkEnvironment:
             reward += target.get('credentials', 0) * 3  # Per credential discovered
             reward += len(target.get('ports', []))  # Per service discovered
             
-            # Detection (lower probability for stealthy targets)
+            # Detection penalty
             detection_prob = 0.05 + (target['difficulty'] / 100.0)
             if random.random() < detection_prob:
                 self.detected = True
                 reward -= 10
             
-            # Efficiency bonus
+            # Efficiency bonus for near-complete infection
             if len(self.infected) >= self.network_size * 0.8:
-                reward += 5  # Near-complete bonus
+                reward += 5
         else:
             reward = -5  # Failed attempt
         
@@ -379,7 +532,6 @@ class RealWorldPropagationAgent:
             return None
         
         state = self._build_state(available_targets)
-        
         action = self.agent.act(state)
         
         if action < len(available_targets):
@@ -444,32 +596,3 @@ class RealWorldPropagationAgent:
 
         if len(self.agent.memory) >= 16:
             self.agent.replay(batch_size=16)
-
-
-if __name__ == "__main__":
-    env = NetworkEnvironment(network_size=20, max_steps=100)
-    agent = PropagationAgent(state_size=60, action_size=20, use_dqn=True)
-    
-    print("Testing RL Agent...")
-    
-    for episode in range(3):
-        state = env.reset()
-        total_reward = 0
-        
-        for step in range(10):
-            available = env.get_available_actions()
-            action = agent.act(state, available_actions=available)
-            next_state, reward, done, info = env.step(action)
-            
-            agent.remember(state, action, reward, next_state, done)
-            agent.replay(batch_size=8)
-            
-            state = next_state
-            total_reward += reward
-            
-            if done:
-                break
-        
-        print(f"Episode {episode + 1}: Reward = {total_reward}, Infected = {info['infected_count']}")
-    
-    print("RL Agent test complete")
