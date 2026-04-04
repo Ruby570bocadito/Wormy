@@ -1152,6 +1152,12 @@ class WormCore:
             try:
                 self.web_dashboard.run_background()
                 logger.info("Web Dashboard started at http://0.0.0.0:5000")
+                time.sleep(1)
+                try:
+                    import webbrowser
+                    webbrowser.open('http://localhost:5000', new=2)
+                except Exception:
+                    pass
             except Exception as e:
                 logger.warning(f"Failed to start Web Dashboard: {e}")
 
@@ -1160,6 +1166,12 @@ class WormCore:
             try:
                 self.armitage_dashboard.run_background()
                 logger.info("Armitage Dashboard started at http://0.0.0.0:5001")
+                time.sleep(1)
+                try:
+                    import webbrowser
+                    webbrowser.open('http://localhost:5001', new=2)
+                except Exception:
+                    pass
             except Exception as e:
                 logger.warning(f"Failed to start Armitage Dashboard: {e}")
 
