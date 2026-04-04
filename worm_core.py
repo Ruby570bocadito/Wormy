@@ -1379,7 +1379,10 @@ class WormCore:
 
         if self.config.ml.online_learning:
             try:
-                self.rl_agent.save(self.config.ml.rl_agent_path)
+                save_path = self.config.ml.rl_agent_path
+                if os.path.isdir(save_path):
+                    save_path = os.path.join(save_path, "rl_agent.h5")
+                self.rl_agent.save(save_path)
                 logger.info("RL agent saved")
             except Exception as e:
                 logger.warning(f"Failed to save RL agent: {e}")

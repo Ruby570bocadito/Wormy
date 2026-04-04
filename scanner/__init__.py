@@ -35,12 +35,13 @@ class IntelligentScanner:
         self.discovered_hosts = []
         self.scan_results = []
         
-    def scan_network(self, target_ranges: List[str]) -> List[Dict]:
+    def scan_network(self, target_ranges: List[str], show_progress: bool = True) -> List[Dict]:
         """
         Scan target network ranges
         
         Args:
             target_ranges: List of CIDR ranges to scan
+            show_progress: Show visual progress bar
             
         Returns:
             List of discovered hosts with details
@@ -50,7 +51,7 @@ class IntelligentScanner:
         all_hosts = []
         
         for target_range in target_ranges:
-            hosts = self._scan_range(target_range)
+            hosts = self._scan_range(target_range, show_progress)
             all_hosts.extend(hosts)
         
         self.discovered_hosts = all_hosts
@@ -60,19 +61,24 @@ class IntelligentScanner:
         
         return all_hosts
     
-    def _scan_range(self, cidr: str) -> List[Dict]:
+    def _scan_range(self, cidr: str, show_progress: bool = True) -> List[Dict]:
         """Scan a single CIDR range"""
         try:
             import ipaddress
             network = ipaddress.ip_network(cidr, strict=False)
             hosts = []
             
-            logger.info(f"Scanning {cidr} ({network.num_addresses} addresses)")
+            all_ips = list(network.hosts())
+            total = len(all_ips)
+            scanned = 0
+            found = 0
+            
+            logger.info(f"Scanning {cidr} ({total} addresses)")
             
             with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
                 futures = {
                     executor.submit(self._scan_host, str(ip)): ip 
-                    for ip in network.hosts()
+                    for ip in all_ips
                 }
                 
                 for future in concurrent.futures.as_completed(futures):
@@ -80,14 +86,33 @@ class IntelligentScanner:
                         result = future.result()
                         if result:
                             hosts.append(result)
-                    except Exception as e:
+                            found += 1
+                    except Exception:
                         pass
+                    
+                    scanned += 1
+                    
+                    if show_progress:
+                        self._print_progress(scanned, total, found)
+            
+            if show_progress:
+                print()  # New line after progress bar
             
             return hosts
             
         except Exception as e:
             logger.error(f"Error scanning {cidr}: {e}")
             return []
+    
+    def _print_progress(self, scanned: int, total: int, found: int):
+        """Print visual progress bar"""
+        pct = (scanned / max(total, 1)) * 100
+        bar_len = 40
+        filled = int(bar_len * scanned // max(total, 1))
+        bar = '█' * filled + '░' * (bar_len - filled)
+        
+        # Carriage return to overwrite line
+        print(f'\r  [{bar}] {pct:5.1f}%  {scanned}/{total} hosts  |  Found: {found}', end='', flush=True)
     
     def _scan_host(self, ip: str) -> Optional[Dict]:
         """Scan a single host for open ports and services"""
