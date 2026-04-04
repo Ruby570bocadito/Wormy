@@ -355,13 +355,19 @@ class WormCore:
         if not model_loaded and self.config.ml.use_pretrained:
             try:
                 from training.realistic_training import auto_train_if_needed, RealisticTrainer
-                trainer = RealisticTrainer(self.config.ml.rl_agent_path.replace('.h5', ''))
+                save_dir = self.config.ml.rl_agent_path
+                # Handle both file path and directory
+                if save_dir.endswith(('.h5', '.zip', '.pt')):
+                    save_dir = os.path.dirname(save_dir)
+                if not save_dir:
+                    save_dir = 'saved/rl_agent'
+                trainer = RealisticTrainer(save_dir)
 
                 if trainer.needs_training():
                     logger.info("No pre-trained model found. Starting auto-training on realistic scenarios...")
                     logger.info("Scenarios: small_office → enterprise → datacenter → cloud → iot")
                     logger.info("This may take a few minutes...")
-                    auto_train_if_needed(self.config.ml.rl_agent_path.replace('.h5', ''))
+                    auto_train_if_needed(save_dir)
 
                 # Load the trained model
                 if os.path.exists(trainer.best_model_path):
@@ -1264,6 +1270,7 @@ class WormCore:
 
     def print_final_report(self):
         """Print final statistics and generate audit report"""
+        self.stats['end_time'] = self.stats.get('end_time', datetime.now())
         print(f"\n{'=' * 60}")
         print("FINAL REPORT")
         print(f"{'=' * 60}")

@@ -107,12 +107,9 @@ class RealisticTrainer:
         if scenarios is None:
             scenarios = self.curriculum_order
 
-        # Initialize agent for largest scenario
-        max_hosts = max(
-            len(get_scenario(s).generate()) for s in scenarios
-        )
-        state_size = max_hosts * 15  # 15 features per host
-        action_size = max_hosts
+        # Initialize agent with fixed sizes matching worm_core
+        state_size = 300  # 20 hosts * 15 features (matching worm_core)
+        action_size = 50
 
         self.agent = PropagationAgent(state_size, action_size, use_dqn=True)
 
@@ -160,6 +157,13 @@ class RealisticTrainer:
                 env.hosts = hosts
 
                 state = env.reset()
+                if hasattr(state, 'tolist'):
+                    state = state.tolist()
+                # Ensure state is the right size
+                while len(state) < state_size:
+                    state.append(0.0)
+                state = state[:state_size]
+
                 total_reward = 0
                 done = False
 
@@ -171,6 +175,12 @@ class RealisticTrainer:
                         action = self.agent.act(state)
 
                     next_state, reward, done, info = env.step(action)
+                    if hasattr(next_state, 'tolist'):
+                        next_state = next_state.tolist()
+                    while len(next_state) < state_size:
+                        next_state.append(0.0)
+                    next_state = next_state[:state_size]
+
                     self.agent.remember(state, action, reward, next_state, done)
                     self.agent.replay()
 

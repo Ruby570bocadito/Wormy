@@ -328,6 +328,14 @@ class MultiProtocolC2:
             'beacon_interval': self.beacon_interval
         }
 
+    def run_background(self):
+        """Run C2 server in background thread"""
+        import threading
+        thread = threading.Thread(target=self.connect, daemon=True)
+        thread.start()
+        logger.info("C2 Server running in background")
+        return thread
+
 
 if __name__ == "__main__":
     # Test multi-protocol C2
