@@ -80,8 +80,8 @@ class MLConfig:
     host_classifier_path: str = "ml_models/saved/host_classifier.pkl"
     rl_agent_path: str = "ml_models/saved/rl_agent.zip"
     evasion_model_path: str = "ml_models/saved/evasion_model.h5"
-    use_pretrained: bool = True
-    online_learning: bool = False  # Learn during operation
+    use_pretrained: bool = False  # Set True to auto-train on startup
+    online_learning: bool = True  # Learn during operation
     
 @dataclass
 class SafetyConfig:
