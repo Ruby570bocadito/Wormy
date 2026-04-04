@@ -1,0 +1,13 @@
+{
+  "best_reward": 205.0,
+  "avg_reward": 144.4,
+  "total_episodes": 5,
+  "final_epsilon": 1.0,
+  "scenarios_trained": [
+    "small_office"
+  ],
+  "state_size": 30,
+  "action_size": 10,
+  "training_time_seconds": 1.35197114944458,
+  "timestamp": 1775335413.4712968
+}
