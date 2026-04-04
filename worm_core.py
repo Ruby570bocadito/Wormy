@@ -1808,7 +1808,7 @@ class InteractiveCLI(cmd.Cmd):
 Wormy ML Network Worm v3.0 - Available Commands:
 
   SCAN & DISCOVERY:
-    scan [professional|basic]  - Scan the network
+    scan [professional|basic]  - Scan the network (with progress bar)
     targets                    - List all discovered targets
     vulns <ip>                 - Show vulnerabilities for a target
     topo                       - Generate network topology visualization
@@ -1844,6 +1844,10 @@ Wormy ML Network Worm v3.0 - Available Commands:
     run [iterations]           - Start propagation for N iterations
     stop                       - Stop propagation
     report                     - Generate full audit report
+
+  WEB DASHBOARDS:
+    Armitage Dashboard:        http://localhost:5001
+    Web Dashboard:             http://localhost:5000
 
   MISC:
     help                       - Show this help

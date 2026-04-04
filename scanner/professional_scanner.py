@@ -406,7 +406,8 @@ class ProfessionalScanner:
 
     async def scan_network(self, targets: List[str], ports: List[int] = None,
                           categories: List[str] = None,
-                          callback=None) -> List[Dict]:
+                          callback=None,
+                          show_progress: bool = True) -> List[Dict]:
         """
         Scan multiple targets
         
@@ -415,6 +416,7 @@ class ProfessionalScanner:
             ports: Specific ports to scan
             categories: Port categories
             callback: Optional callback per host
+            show_progress: Show visual progress bar
         
         Returns:
             List of host results
@@ -436,14 +438,35 @@ class ProfessionalScanner:
         logger.info(f"Scanning {len(all_ips)} hosts on {len(ports) if ports else 'default'} ports")
 
         results = []
+        scanned = 0
+        found = 0
+        total = len(all_ips)
+
         for ip in all_ips:
             try:
                 host_result = await self.scan_host(ip, ports, categories)
                 if host_result['open_ports']:
                     results.append(host_result)
+                    found += 1
                     if callback:
                         callback(host_result)
             except Exception as e:
                 logger.debug(f"Scan error for {ip}: {e}")
 
+            scanned += 1
+
+            if show_progress:
+                self._print_progress(scanned, total, found)
+
+        if show_progress:
+            print()  # New line after progress bar
+
         return results
+
+    def _print_progress(self, scanned: int, total: int, found: int):
+        """Print visual progress bar"""
+        pct = (scanned / max(total, 1)) * 100
+        bar_len = 40
+        filled = int(bar_len * scanned // max(total, 1))
+        bar = '█' * filled + '░' * (bar_len - filled)
+        print(f'\r  [{bar}] {pct:5.1f}%  {scanned}/{total} hosts  |  Found: {found}', end='', flush=True)
