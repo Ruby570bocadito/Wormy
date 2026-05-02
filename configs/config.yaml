@@ -1,0 +1,52 @@
+network:
+  target_ranges:
+    - "192.168.100.0/24"
+  excluded_ips:
+    - "192.168.100.1"
+    - "192.168.100.254"
+  scan_timeout: 5
+  max_threads: 50
+  ports_to_scan:
+    - 21
+    - 22
+    - 23
+    - 80
+    - 135
+    - 139
+    - 445
+    - 6379
+    - 3306
+    - 5432
+    - 27017
+    - 1433
+    - 8080
+    - 9200
+  self_replicate: false
+  mutation_enabled: true
+
+evasion:
+  stealth_mode: false
+  randomize_timing: false
+  detect_honeypots: false
+  detect_ids: false
+  encrypt_traffic: true
+  max_scan_rate: 500
+
+c2:
+  c2_server: "127.0.0.1"
+  c2_port: 8443
+  beacon_interval: 60
+  use_encryption: true
+  backup_c2_servers: []
+  c2_protocol: "https"
+
+safety:
+  kill_switch_enabled: true
+  kill_switch_code: "EMERGENCY_STOP_2024"
+  auto_destruct_time: 0
+  geofence_enabled: false
+  allowed_networks:
+    - "192.168.100.0/24"
+  max_runtime_hours: 24
+  enable_logging: true
+  log_encryption: true

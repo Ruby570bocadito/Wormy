@@ -1,0 +1,35 @@
+# SMB/Windows credentials
+# Format: username:password
+Administrator:Administrator
+Administrator:Password1
+Administrator:Admin123
+Administrator:P@ssw0rd
+Administrator:password
+Administrator:Welcome1
+Administrator:changeme
+admin:admin
+admin:password
+admin:123456
+admin:admin123
+root:root
+root:toor
+root:password
+user:user
+test:test
+guest:guest
+support:support
+service:service
+backup:backup
+default:default
+Public:
+IUSR:
+IWAM:
+ASPNET:ASPNET
+tomcat:tomcat
+mysql:mysql
+postgres:postgres
+oracle:oracle
+sql:sql
+dbadmin:dbadmin
+sa:sa
+sa:password

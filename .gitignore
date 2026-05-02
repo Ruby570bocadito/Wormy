@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Environment variables
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+*.coveragerc
+
+# Models (large binary files)
+models/*.pt
+models/*.pth
+models/*.h5
+models/*.zip
+!models/.gitkeep
+
+# Logs and sessions
+logs/
+*.log
+session.txt
+pip_install.log
+
+# Temp
+*.tmp
+*.bak
+*.orig
+
+# Docker volumes
+docker_volumes/

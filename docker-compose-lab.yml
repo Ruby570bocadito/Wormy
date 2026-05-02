@@ -1,0 +1,116 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: lab_redis
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.10
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass "redis123" --protected-mode no
+
+  mysql:
+    image: mysql:5.7
+    container_name: lab_mysql
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.11
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "testdb"
+
+  postgresql:
+    image: postgres:14
+    container_name: lab_postgres
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.12
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin123"
+      POSTGRES_DB: "testdb"
+
+  mongodb:
+    image: mongo:6
+    container_name: lab_mongodb
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.13
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "admin123"
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: lab_mssql
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.14
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "SqlPassword123!"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: lab_rabbitmq
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.20
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: lab_jenkins
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.30
+    ports:
+      - "8080:8080"
+
+  dvwa:
+    image: cytopia/dvwa
+    container_name: lab_dvwa
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.40
+    ports:
+      - "8081:80"
+
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: lab_juice
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.50
+    ports:
+      - "8082:3000"
+
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    container_name: lab_elasticsearch
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.60
+    ports:
+      - "9200:9200"
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+
+networks:
+  lab_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
