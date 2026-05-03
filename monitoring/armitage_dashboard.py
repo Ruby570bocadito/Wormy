@@ -589,6 +589,30 @@ class ArmitageDashboard:
                     updateStats(data.stats || {});
                     drawMap();
                 });
+            fetch('/api/training')
+                .then(r => r.json())
+                .then(data => {
+                    updateTraining(data);
+                });
+        }
+
+        function updateTraining(data) {
+            if (!data.available) return;
+            const statusEl = document.getElementById('training-status');
+            statusEl.textContent = data.trained ? 'Trained' : 'Training...';
+            statusEl.style.color = data.trained ? '#3fb950' : '#d29922';
+            
+            document.getElementById('training-episodes').textContent = data.total_episodes || 0;
+            document.getElementById('training-reward').textContent = (data.best_reward || 0).toFixed(2);
+            
+            // Fake progress if training is active but not finished (since we don't have real progress)
+            const progressEl = document.getElementById('training-progress');
+            if (data.trained) {
+                progressEl.style.width = '100%';
+            } else if (statusEl.textContent === 'Training...') {
+                const current = parseFloat(progressEl.style.width) || 0;
+                progressEl.style.width = Math.min(95, current + 5) + '%';
+            }
         }
 
         function updateStats(stats) {
