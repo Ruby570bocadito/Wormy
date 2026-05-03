@@ -10,6 +10,8 @@
     <a href="https://github.com/Ruby570bocadito/Wormy-ML-Network-Worm"><img src="https://img.shields.io/badge/exploits-28-red.svg" alt="Exploits"></a>
     <a href="https://github.com/Ruby570bocadito/Wormy-ML-Network-Worm"><img src="https://img.shields.io/badge/evasion-enterprise-purple.svg" alt="Evasion"></a>
     <a href="https://github.com/Ruby570bocadito/Wormy-ML-Network-Worm"><img src="https://img.shields.io/badge/AD-kerberoast-darkred.svg" alt="AD"></a>
+    <a href="https://github.com/Ruby570bocadito/Wormy-ML-Network-Worm"><img src="https://img.shields.io/badge/tests-72%2F73-brightgreen.svg" alt="Tests"></a>
+    <a href="https://github.com/Ruby570bocadito/Wormy-ML-Network-Worm"><img src="https://img.shields.io/badge/docker_lab-8%2F11_pwned-orange.svg" alt="Docker Lab"></a>
   </p>
   <p align="center">
     <strong>Developed by <a href="https://github.com/Ruby570bocadito">Ruby570bocadito</a></strong>
@@ -26,7 +28,9 @@
 
 - [Overview](#overview)
 - [Features](#features)
+- [v3.0 Enterprise Modules](#v30-enterprise-modules-new)
 - [Quick Start](#quick-start)
+- [One-Command Automation](#one-command-automation)
 - [Usage & Commands](#usage--commands)
 - [Web Dashboards](#web-dashboards)
 - [Interactive CLI](#interactive-cli)
@@ -38,6 +42,7 @@
 - [Active Directory Module](#active-directory-module)
 - [Persistence Engine](#persistence-engine)
 - [Docker Lab](#docker-lab)
+- [Post-Engagement](#post-engagement)
 - [Configuration](#configuration)
 - [Project Structure](#project-structure)
 - [Requirements](#requirements)
@@ -118,10 +123,72 @@ Wormy is an **ML-driven network propagation framework** for authorized red team 
 
 ### 🔄 Multi-Protocol C2 + OTA
 - HTTP/HTTPS beaconing with configurable jitter
-- Domain Fronting support
-- DNS-over-HTTPS covert channel
+- **DNS-over-HTTPS (DoH)** covert channel (1.1.1.1 / 8.8.8.8 TXT records)
+- **Domain Fronting** via CDN Host header override
+- **P2P Gossip mesh** — agents share intel without C2
+- **Encrypted SQLite command queue** — commands survive C2 downtime
+- Exponential backoff (1s → 300s) with jitter
 - OTA Brain Update: send `.pth` model weights, hot-swap without restart
-- Encrypted telemetry (AES-256)
+- Encrypted telemetry (AES-GCM)
+
+---
+
+## v3.0 Enterprise Modules (NEW)
+
+> All modules fully tested: **72/73 tests passed** | **Docker lab: 8/11 services pwned**
+
+### 🔀 Wave Propagation Engine (`core/wave_propagation.py`)
+- Wave-based spread: W0 (initial targets) → W1 (internal subnets) → WN
+- **Pivot scanner via SSH** — scans internal subnets FROM compromised hosts
+- **Self-copy transfer** — SSH (sftp + nohup) and SMB (impacket) spread
+- **Propagation graph** — directed graph prevents re-infection loops
+- Intel harvesting from each compromised host (15 commands)
+
+### 🤖 Agent Controller (`core/agent_controller.py`)
+- **Persistent SSH session pool** per compromised host
+- **Heartbeat monitor** (60s) with auto re-infection callback on dead agents
+- Per-agent task queue (persists if agent is temporarily offline)
+- **QuickIntelCollector** — hostname, sudo, SUID, env secrets, SSH keys, cloud metadata
+- Asset value scoring from live intel (root=+40, cloud IAM=+35)
+- Pivot ranking by value (`get_best_pivots(top_n=N)`)
+
+### 🔁 Resilient C2 Engine (`c2/resilient_c2.py`)
+- **DoH channel**: TXT record beaconing over 1.1.1.1/8.8.8.8
+- **Domain Fronting**: Host header override via Cloudflare/Azure CDN
+- **P2P Gossip**: agents share intel peer-to-peer without central C2
+- **Encrypted SQLite queue**: commands survive C2 downtime
+- Exponential backoff + jitter (1s → 300s)
+- OTA model delivery with SHA256 verify + atomic write
+
+### 🔬 Advanced Polymorphic Engine (`evasion/advanced_polymorphic.py`)
+- **AST-level metamorphism** — rewrites code at abstract syntax tree level
+- **Semantic NOP injection** — dead code that changes hash without changing logic
+- **Network fingerprint randomisation** — dynamic TTL, UA, jitter, HTTP headers
+- Hash-verify loop — ensures each mutation has a unique hash
+- Multi-layer string obfuscation (chr() + base64 + XOR)
+
+### 🛡️ Advanced Self-Healing (`core/advanced_self_healing.py`)
+- **SHA256 integrity check** — detects AV/EDR file modification
+- **Re-persistence guard** — recreates Registry/cron/systemd if removed
+- **Process watchdog** — guardian child relaunches parent if killed
+- Evidence cleanup — logs, shell history, temp files
+- `perform_health_check()` returns per-component health scores
+
+### 🧹 Post-Engagement Toolkit
+- **`scripts/cleanup_engagement.py`** — SSH cleanup on all compromised hosts
+  - Removes worm files, systemd/cron persistence, authorized_keys entries
+  - Clears local logs, SQLite queues, shell history, temp files
+  - Audit trail JSON for the engagement report
+- **`utils/bloodhound_export.py`** — BloodHound 4.x JSON export
+  - Computers, Users, Groups with kerberoastable/asrep flags
+  - Import directly into BloodHound for attack path visualization
+
+### 🚀 One-Command Deploy (`scripts/deploy_kali.sh`)
+- Auto-detects own IP → becomes the C2
+- Installs all system + Python dependencies
+- Builds and starts C2 server on this host
+- Patches config.yaml automatically
+- Validates all modules, pre-flight checks, kill switch setup
 
 ---
 
@@ -139,10 +206,43 @@ pip install -r requirements.txt
 docker compose -f docker-compose-lab.yml up -d
 
 # 4. Run against Docker lab (Windows-compatible injection mode)
-python tests/run_worm_vs_lab.py
+python -X utf8 tests/test_docker_lab.py
 
 # 5. Full scan + exploit mode (Linux / authorized environment)
-python worm_core.py --config configs/lab_docker.yaml
+sudo ./scripts/deploy_kali.sh --live --target 192.168.1.0/24
+```
+
+---
+
+## One-Command Automation
+
+> See [AUTOMATION.md](AUTOMATION.md) for the full guide.
+
+```bash
+# This host becomes the C2. Everything is automatic:
+sudo ./scripts/deploy_kali.sh                         # prepare (dry-run)
+sudo ./scripts/deploy_kali.sh --live                  # prepare + attack
+sudo ./scripts/deploy_kali.sh --live --target 10.0.1.0/24 --with-msf
+```
+
+What it does in ~2 minutes:
+1. Auto-detects your IP → C2 server starts on your machine
+2. Installs impacket, scapy, ldap3, pymssql, paramiko, bloodhound...
+3. Builds Go C2 or starts Python HTTPS listener on port 8443
+4. Patches `config.yaml` with your IP and target range
+5. Validates all 10 worm modules
+6. Pre-flight: C2 health, DoH, target gateway ping
+7. Launches `worm_core.py` (with `--live` only)
+
+```bash
+# Post-engagement cleanup (removes worm from all compromised hosts)
+python3 scripts/cleanup_engagement.py --agents-file data/agents.json
+
+# BloodHound export for AD visualization
+python3 utils/bloodhound_export.py --domain empresa.local
+
+# Kill switch
+touch STOP_WORMY_NOW
 ```
 
 ---
