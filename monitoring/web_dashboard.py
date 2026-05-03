@@ -14,6 +14,7 @@ import os
 import sys
 import json
 import time
+import logging
 import threading
 from datetime import datetime
 from typing import Dict, List, Optional
@@ -21,6 +22,10 @@ from typing import Dict, List, Optional
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.logger import logger
+
+# ── Silence Flask/Werkzeug access logs (they pollute Rich Live TUI) ───────────
+logging.getLogger('werkzeug').setLevel(logging.ERROR)
+logging.getLogger('flask.app').setLevel(logging.ERROR)
 
 try:
     from flask import Flask, render_template_string, jsonify, request
@@ -441,8 +446,15 @@ class WebDashboard:
     def run(self, debug: bool = False):
         if not FLASK_AVAILABLE:
             return
+        import logging as _log
+        _log.getLogger('werkzeug').setLevel(_log.ERROR)
         logger.info(f"Starting Web Dashboard v2.0 on {self.host}:{self.port}")
-        self.app.run(host=self.host, port=self.port, debug=debug, threaded=True)
+        self.app.run(
+            host=self.host, port=self.port,
+            debug=False,           # never debug — it spawns a second process
+            threaded=True,
+            use_reloader=False,    # prevents double-start on Windows
+        )
 
     def run_background(self):
         if not FLASK_AVAILABLE:
