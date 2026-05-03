@@ -2592,7 +2592,7 @@ def main():
 
     worm = WormCore(
         config_file=args.config,
-        use_cli_monitor=not args.no_monitor,
+        use_cli_monitor=not args.no_monitor and not args.interactive,
         profile=args.profile,
         dry_run=args.dry_run,
         interactive=args.interactive,
