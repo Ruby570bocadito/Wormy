@@ -107,8 +107,8 @@ class AuditReportGenerator:
             'success_rate': f"{success_rate:.1f}%",
             'total_scans': worm_stats.get('scans', 0),
             'duration': str(
-                worm_stats.get('end_time', datetime.now())
-                - worm_stats.get('start_time', datetime.now())
+                (worm_stats.get('end_time') or datetime.now())
+                - (worm_stats.get('start_time') or datetime.now())
             ) if worm_stats.get('start_time') else "N/A",
         }
 

