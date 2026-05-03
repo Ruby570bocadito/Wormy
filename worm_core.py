@@ -2521,8 +2521,7 @@ Wormy ML Network Worm v3.0 - Available Commands:
             if max_iter > 0 and iteration > max_iter:
                 break
 
-            logger.info(f"\n{'=' * 40}")
-            logger.info(f"ITERATION {iteration}")
+            logger.info(f"\n--- ITERATION {iteration} ---")
             logger.info(f"{'=' * 40}")
 
             if iteration % 5 == 0:
@@ -2546,8 +2545,6 @@ Wormy ML Network Worm v3.0 - Available Commands:
                 >= self.worm.config.propagation.max_infections
             ):
                 break
-
-            self.worm.print_status()
 
         self.worm.stats["end_time"] = datetime.now()
         self.worm.running = False
