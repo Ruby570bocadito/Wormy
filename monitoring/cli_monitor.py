@@ -198,9 +198,9 @@ class CLIMonitor:
             stats_table.add_column()
         stats_table.add_row(
             "Scans:",           str(self.stats['scans']),
+            "Scan Prog:",       f"[yellow]{self.stats.get('scan_progress', 'Idle')}[/yellow]",
             "Infected:",        str(infected),
             "Failed:",          str(self.stats['exploits_failed']),
-            "Evasions:",        str(self.stats['evasions']),
         )
         stats_table.add_row(
             "[blue]ML Decisions:[/blue]", str(self.stats['ml_decisions']),

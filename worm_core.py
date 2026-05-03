@@ -755,6 +755,13 @@ class WormCore:
         if use_professional and self.pro_scanner:
             logger.info("Using Professional Scanner")
             loop = asyncio.new_event_loop()
+            def update_progress(scanned, total, found):
+                pct = (scanned / max(total, 1)) * 100
+                bar_len = 20
+                filled = int(bar_len * scanned // max(total, 1))
+                bar = '█' * filled + '░' * (bar_len - filled)
+                self.stats['scan_progress'] = f"[{bar}] {pct:.1f}% ({scanned}/{total})"
+
             try:
                 results = loop.run_until_complete(
                     self.pro_scanner.scan_network(
@@ -767,6 +774,8 @@ class WormCore:
                             "web",
                             "remote",
                         ],
+                        progress_callback=update_progress if self.use_cli_monitor else None,
+                        show_progress=not self.use_cli_monitor
                     )
                 )
             finally:

@@ -407,6 +407,7 @@ class ProfessionalScanner:
     async def scan_network(self, targets: List[str], ports: List[int] = None,
                           categories: List[str] = None,
                           callback=None,
+                          progress_callback=None,
                           show_progress: bool = True) -> List[Dict]:
         """
         Scan multiple targets
@@ -455,10 +456,12 @@ class ProfessionalScanner:
 
             scanned += 1
 
-            if show_progress:
+            if progress_callback:
+                progress_callback(scanned, total, found)
+            elif show_progress:
                 self._print_progress(scanned, total, found)
 
-        if show_progress:
+        if show_progress and not progress_callback:
             print()  # New line after progress bar
 
         return results
