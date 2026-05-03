@@ -130,27 +130,22 @@ class WormLogger:
         self._log_json("DEBUG", message, data)
 
     def info(self, message: str, data: Optional[Dict[str, Any]] = None):
-        print(f"{Fore.CYAN}[INFO] {message}{Style.RESET_ALL}")
         self.logger.info(message)
         self._log_json("INFO", message, data)
 
     def success(self, message: str, data: Optional[Dict[str, Any]] = None):
-        print(f"{Fore.GREEN}[SUCCESS] {message}{Style.RESET_ALL}")
         self.logger.info(f"SUCCESS: {message}")
         self._log_json("SUCCESS", message, data)
 
     def warning(self, message: str, data: Optional[Dict[str, Any]] = None):
-        print(f"{Fore.YELLOW}[WARNING] {message}{Style.RESET_ALL}")
         self.logger.warning(message)
         self._log_json("WARNING", message, data)
 
     def error(self, message: str, data: Optional[Dict[str, Any]] = None, exc_info: bool = True):
-        print(f"{Fore.RED}[ERROR] {message}{Style.RESET_ALL}")
         self._log_with_traceback(self.logger.error, message, data, exc_info)
 
     def critical(self, message: str, data: Optional[Dict[str, Any]] = None):
-        print(f"{Fore.RED}{Style.BRIGHT}[CRITICAL] {message}{Style.RESET_ALL}")
-        self._log_with_traceback(self.logger.critical, message, data, exc_info)
+        self._log_with_traceback(self.logger.critical, message, data, exc_info=True)
 
     # Specialized logging
 

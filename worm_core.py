@@ -1993,15 +1993,41 @@ class InteractiveCLI(cmd.Cmd):
 
     def do_scan(self, arg):
         """Scan the network. Usage: scan [professional|basic]"""
+        from rich.console import Console
+        from rich.table import Table
+        
         use_pro = "basic" not in arg.lower()
         results = self.worm.scan_network(use_professional=use_pro)
-        print(f"\nScan complete: {len(results)} hosts found")
+        
+        console = Console()
+        console.print(f"\n[bold green]Scan complete: {len(results)} hosts found[/bold green]")
+        
+        if not results:
+            return
+            
+        table = Table(show_header=True, header_style="bold blue")
+        table.add_column("IP Address", style="cyan")
+        table.add_column("OS", style="white")
+        table.add_column("Open Ports", style="yellow")
+        table.add_column("Vulns", justify="right")
+        table.add_column("Chains", justify="right")
+        
         for host in results:
-            vulns = host.get("vulnerabilities", [])
-            chain = host.get("exploit_chain", [])
-            print(
-                f"  {host['ip']} - {host.get('os_guess', 'Unknown')} - Ports: {host.get('open_ports', [])} - Vulns: {len(vulns)} - Chains: {len(chain)}"
+            vulns = len(host.get("vulnerabilities", []))
+            chain = len(host.get("exploit_chain", []))
+            
+            vuln_style = "red" if vulns > 0 else "dim"
+            chain_style = "red bold" if chain > 0 else "dim"
+            
+            table.add_row(
+                host['ip'],
+                host.get('os_guess', 'Unknown')[:15],
+                ", ".join(map(str, host.get('open_ports', [])))[:30],
+                f"[{vuln_style}]{vulns}[/{vuln_style}]",
+                f"[{chain_style}]{chain}[/{chain_style}]"
             )
+            
+        console.print(table)
 
     def do_status(self, arg):
         """Show current status"""
