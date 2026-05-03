@@ -80,10 +80,14 @@ class ArmitageDashboard:
         def api_start_training():
             data = request.json or {}
             scenarios = data.get('scenarios', ['small_office', 'enterprise'])
+            if self.trainer:
+                threading.Thread(target=self.trainer.train, kwargs={'scenarios': scenarios, 'total_episodes': 100}, daemon=True).start()
             return jsonify({'status': 'started', 'scenarios': scenarios})
 
         @self.app.route('/api/start_propagation', methods=['POST'])
         def api_start_propagation():
+            if self.worm and not getattr(self.worm, 'running', False):
+                threading.Thread(target=self.worm.propagate, daemon=True).start()
             return jsonify({'status': 'propagation_started'})
 
         @self.app.route('/api/stop_propagation', methods=['POST'])
@@ -96,12 +100,16 @@ class ArmitageDashboard:
         def api_exploit_host():
             data = request.json or {}
             ip = data.get('ip', '')
+            if self.worm and ip:
+                target = next((t for t in self.worm.scan_results if t['ip'] == ip), None)
+                if target:
+                    threading.Thread(target=self.worm.exploit_target, args=(target,), daemon=True).start()
             return jsonify({'status': 'exploiting', 'target': ip})
 
         @self.app.route('/api/scan', methods=['POST'])
         def api_scan():
             if self.worm:
-                self.worm.scan_network()
+                threading.Thread(target=self.worm.scan_network, daemon=True).start()
             return jsonify({'status': 'scanning'})
 
     def _get_map_data(self) -> Dict:

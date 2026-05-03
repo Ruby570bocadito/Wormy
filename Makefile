@@ -6,10 +6,10 @@ setup:
 	docker-compose -f docker-compose-lab.yml up -d
 	@echo "Laboratorio activo. Revisa las IPs con 'docker ps'."
 
-# Lanza el ataque del gusano en tiempo real
+# Lanza el ataque del gusano en tiempo real con CLI interactivo
 attack:
-	@echo "Iniciando Wormy C2 y propagación..."
-	python3 worm_core.py
+	@echo "Iniciando Wormy C2 y propagación (CLI interactivo)..."
+	python3 worm_core.py -i
 
 # Detiene el laboratorio y limpia la red
 cleanup:
