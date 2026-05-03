@@ -11,6 +11,8 @@ Live terminal dashboard showing all worm activity
 
 import os
 import sys
+import logging
+
 if sys.stdout.encoding.lower() != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
 import time
@@ -25,8 +27,16 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from rich.layout import Layout
+from rich.live import Live
 from rich import box
 from rich.text import Text
+
+# ── Silence Flask / Werkzeug / HTTP server access logs ───────────────────────
+# These are the lines like: 127.0.0.1 - - [03/May/2026 08:02:26] "GET /api/map HTTP/1.1" 200 -
+# They break Rich's Live display by printing directly to stdout
+logging.getLogger('werkzeug').setLevel(logging.ERROR)
+logging.getLogger('flask').setLevel(logging.ERROR)
+logging.getLogger('http.server').setLevel(logging.ERROR)
 
 class CLIMonitor:
     """
@@ -154,101 +164,142 @@ class CLIMonitor:
         s = int(elapsed % 60)
         return f'{h:02d}:{m:02d}:{s:02d}'
     
-    def render(self):
-        """Render full dashboard using Rich"""
-        self.console.clear()
-        
-        # Header
+    def _build_renderable(self):
+        """Build and return the full dashboard as a Rich renderable (NOT printed)."""
+        layout = Layout()
+        layout.split_column(
+            Layout(name="header",  size=3),
+            Layout(name="stats",   size=6),
+            Layout(name="bottom",  ratio=1),
+            Layout(name="footer",  size=1),
+        )
+        layout["bottom"].split_row(
+            Layout(name="devices", ratio=6),
+            Layout(name="activity", ratio=4),
+        )
+
+        # ── Header ────────────────────────────────────────────────────────────
         uptime = self._format_uptime()
-        header_text = Text(f"WORMY - ML Network Worm | Uptime: {uptime}", justify="center", style="bold cyan")
-        self.console.print(Panel(header_text, box=box.DOUBLE, style="cyan"))
-        
-        # Stats Table
+        layout["header"].update(
+            Panel(
+                Text(f"WORMY - ML Network Worm | Uptime: {uptime}",
+                     justify="center", style="bold cyan"),
+                box=box.DOUBLE, style="cyan",
+            )
+        )
+
+        # ── Stats ─────────────────────────────────────────────────────────────
         total_attempts = self.stats['exploits_attempted']
-        success_rate = (self.stats['exploits_success'] / total_attempts * 100) if total_attempts > 0 else 0
-        infected = sum(1 for d in self.devices.values() if d['status'] == 'infected')
-        
+        success_rate   = (self.stats['exploits_success'] / total_attempts * 100) if total_attempts > 0 else 0
+        infected       = sum(1 for d in self.devices.values() if d['status'] == 'infected')
+
         stats_table = Table(box=box.SIMPLE, show_header=False, expand=True)
-        stats_table.add_column("C1", justify="left", style="cyan")
-        stats_table.add_column("V1", justify="left", style="white")
-        stats_table.add_column("C2", justify="left", style="green")
-        stats_table.add_column("V2", justify="left", style="white")
-        stats_table.add_column("C3", justify="left", style="yellow")
-        stats_table.add_column("V3", justify="left", style="white")
-        stats_table.add_column("C4", justify="left", style="magenta")
-        stats_table.add_column("V4", justify="left", style="white")
-        
+        for _ in range(8):
+            stats_table.add_column()
         stats_table.add_row(
-            "Scans:", str(self.stats['scans']),
-            "Infected:", str(infected),
-            "Failed:", str(self.stats['exploits_failed']),
-            "Evasions:", str(self.stats['evasions'])
+            "Scans:",           str(self.stats['scans']),
+            "Infected:",        str(infected),
+            "Failed:",          str(self.stats['exploits_failed']),
+            "Evasions:",        str(self.stats['evasions']),
         )
         stats_table.add_row(
             "[blue]ML Decisions:[/blue]", str(self.stats['ml_decisions']),
             "[white]C2 Beacons:[/white]", str(self.stats['c2_beacons']),
-            "[red]Errors:[/red]", str(self.stats['errors']),
-            "[bold green]Success Rate:[/bold green]", f"{success_rate:.0f}%"
+            "[red]Errors:[/red]",         str(self.stats['errors']),
+            "[bold green]Success Rate:[/bold green]", f"{success_rate:.0f}%",
         )
-        self.console.print(Panel(stats_table, title="[bold white]STATISTICS[/bold white]", border_style="blue"))
-        
-        # Layout for Devices and Activity
-        layout = Layout()
-        layout.split_row(
-            Layout(name="devices", ratio=6),
-            Layout(name="activity", ratio=4)
+        layout["stats"].update(
+            Panel(stats_table, title="[bold white]STATISTICS[/bold white]", border_style="blue")
         )
-        
-        # Devices Table
+
+        # ── Devices Table ─────────────────────────────────────────────────────
         dev_table = Table(box=box.ROUNDED, expand=True, style="blue")
         dev_table.add_column("IP Address", style="cyan")
         dev_table.add_column("Status")
-        dev_table.add_column("OS", style="white")
+        dev_table.add_column("OS",    style="white")
         dev_table.add_column("Ports", style="yellow")
         dev_table.add_column("Events", justify="right")
-        
-        for ip, device in sorted(self.devices.items(), key=lambda x: x[1]['last_seen'], reverse=True)[:10]:
-            ports_str = ','.join(str(p) for p in device.get('ports', [])[:4])
-            if len(device.get('ports', [])) > 4: ports_str += '+'
+
+        for ip, device in sorted(
+            self.devices.items(),
+            key=lambda x: x[1]['last_seen'], reverse=True
+        )[:15]:
+            ports = device.get('ports', [])
+            ports_str = ','.join(str(p) for p in ports[:5])
+            if len(ports) > 5:
+                ports_str += '+'
             dev_table.add_row(
-                ip, 
-                self._get_status_badge(device["status"]), 
-                device.get("os", "Unknown"), 
-                ports_str, 
-                str(device["events"])
+                ip,
+                self._get_status_badge(device['status']),
+                device.get('os', 'Unknown'),
+                ports_str,
+                str(device['events']),
             )
-        layout["devices"].update(Panel(dev_table, title=f"[bold white]DEVICES ({len(self.devices)})[/bold white]", border_style="cyan"))
-        
-        # Activity Feed
+        layout["devices"].update(
+            Panel(dev_table,
+                  title=f"[bold white]DEVICES ({len(self.devices)})[/bold white]",
+                  border_style="cyan")
+        )
+
+        # ── Activity Feed ─────────────────────────────────────────────────────
         activity_table = Table(box=None, show_header=False, expand=True)
-        activity_table.add_column("Time", style="dim white")
-        activity_table.add_column("Icon")
+        activity_table.add_column("Time",    style="dim white", no_wrap=True)
+        activity_table.add_column("Icon",    no_wrap=True)
         activity_table.add_column("Message")
-        
-        for event in list(self.events)[-15:]:
-            color = self._get_type_color(event['type'])
-            icon = self._get_type_icon(event['type'])
+
+        for event in list(self.events)[-20:]:
+            color  = self._get_type_color(event['type'])
+            icon   = self._get_type_icon(event['type'])
             target = f" [cyan]{event['target']}[/cyan]" if event.get('target') else ""
             activity_table.add_row(
-                event['time'], 
-                f"[{color}]{icon}[/{color}]", 
-                f"[{color}]{event['message']}[/{color}]{target}"
+                event['time'],
+                f"[{color}]{icon}[/{color}]",
+                f"[{color}]{event['message']}[/{color}]{target}",
             )
-        layout["activity"].update(Panel(activity_table, title="[bold white]ACTIVITY FEED[/bold white]", border_style="magenta"))
-        
-        self.console.print(layout)
-        self.console.print("[dim]Press Ctrl+C to stop | Auto-refreshing every 2s[/dim]", justify="center")
-    
+        layout["activity"].update(
+            Panel(activity_table,
+                  title="[bold white]ACTIVITY FEED[/bold white]",
+                  border_style="magenta")
+        )
+
+        # ── Footer ────────────────────────────────────────────────────────────
+        layout["footer"].update(
+            Text("Press Ctrl+C to stop | Auto-refreshing every 2s",
+                 justify="center", style="dim")
+        )
+
+        return layout
+
+    def render(self):
+        """Legacy one-shot render (kept for backward compatibility)."""
+        self.console.clear()
+        self.console.print(self._build_renderable())
+
     def start_live_monitor(self, refresh_interval: float = 2.0):
+        """
+        Run the dashboard using Rich's Live context manager.
+        This is the CORRECT way: Rich manages in-place redraw entirely,
+        no manual clear() calls, no terminal multiplication.
+        """
         self.running = True
+        console = Console()
         try:
-            while self.running:
-                self.render()
-                self._activity_event.wait(timeout=refresh_interval)
-                self._activity_event.clear()
+            with Live(
+                self._build_renderable(),
+                console=console,
+                refresh_per_second=1 / refresh_interval,
+                screen=True,           # full-screen mode — hides all other stdout
+            ) as live:
+                while self.running:
+                    self._activity_event.wait(timeout=refresh_interval)
+                    self._activity_event.clear()
+                    live.update(self._build_renderable())
         except KeyboardInterrupt:
+            pass
+        finally:
             self.running = False
-            self.console.print("[bold yellow]Monitor stopped.[/bold yellow]")
+            console.print("[bold yellow]Monitor stopped.[/bold yellow]")
+
     
     def start_background(self, refresh_interval: float = 2.0):
         self.running = True
