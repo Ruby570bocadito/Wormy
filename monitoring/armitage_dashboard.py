@@ -133,6 +133,22 @@ class ArmitageDashboard:
                     'exploit_chain': len(host.get('exploit_chain', [])),
                 })
 
+        if self.worm and self.worm.host_monitor:
+            mapped_ips = {h['ip'] for h in hosts}
+            for ip, host_state in self.worm.host_monitor.hosts.items():
+                if ip not in mapped_ips:
+                    hosts.append({
+                        'id': ip,
+                        'ip': ip,
+                        'os': host_state.os_guess,
+                        'status': host_state.status,
+                        'ports': host_state.open_ports,
+                        'vuln_score': 0,
+                        'services': {},
+                        'vulnerabilities': 0,
+                        'exploit_chain': 0,
+                    })
+
         edges = []
         if self.worm and self.worm.host_monitor:
             for ip, hs in self.worm.host_monitor.hosts.items():
