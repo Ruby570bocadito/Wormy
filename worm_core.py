@@ -774,8 +774,8 @@ class WormCore:
                             "web",
                             "remote",
                         ],
-                        progress_callback=update_progress if self.use_cli_monitor else None,
-                        show_progress=not self.use_cli_monitor
+                        progress_callback=update_progress if getattr(self, 'cli_monitor', None) else None,
+                        show_progress=not getattr(self, 'cli_monitor', None)
                     )
                 )
             finally:
