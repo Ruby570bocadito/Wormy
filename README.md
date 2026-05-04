@@ -190,6 +190,40 @@ Wormy is an **ML-driven network propagation framework** for authorized red team 
 - Patches config.yaml automatically
 - Validates all modules, pre-flight checks, kill switch setup
 
+### 🛠️ v3.0 Industrial Tier (NEW)
+
+> **High-Stealth & Low-Level Modules** | **EDR/AV Bypass** | **Multi-Operator C2**
+
+#### 🥷 Advanced Evasion Tier (`evasion/`)
+- **Real-Time Memory Patching** — Functional AMSI and ETW silencing via direct memory modification.
+- **Hardware Breakpoint Bypass** — Evasion using Debug Registers (DR0-DR7) to bypass memory hooks.
+- **Direct NT Syscalls** — Dynamic SSN resolution and clean syscall stubs to bypass EDR user-land hooks.
+- **Sleep Obfuscation** — Heap encryption + Stack spoofing during beacon sleep intervals.
+- **JA3 Fingerprint Spoofing** — Mimics Chrome 120 / Firefox TLS signatures to blend with browser traffic.
+
+#### 📡 Covert C2 & Crypto (`c2/`)
+- **Perfect Forward Secrecy (PFS)** — X25519 ECDH + AES-256-GCM authenticated encryption.
+- **ICMP Tunneling** — Full bi-directional C2 over raw ICMP Echo packets.
+- **Cloud Relay C2** — Command & Control over Telegram Bot API, Slack Webhooks, and Google Sheets.
+
+#### 💾 Professional Post-Exploit (`post_exploit/`)
+- **VSS NTDS Extraction** — Extracts `ntds.dit` using Volume Shadow Copy to bypass file locks.
+- **Cloud Recon & Attack** — Modules for AWS (IMDSv2), Azure, GCP, and Kubernetes service accounts.
+- **DCOM Lateral Movement** — Execution via ShellWindows and MMC20 without spawning `powershell.exe`.
+
+#### 🤖 Autonomous Agents & Kernel (`stager/`, `kernel/`)
+- **Go Stager** — Standalone agent without Python runtime; anti-debug/sandbox + memory injection.
+- **Windows Kernel Driver** — DKOM process hiding and PPL-like protection (.sys).
+- **Linux LKM Rootkit** — Syscall hooks (getdents64) to hide files, PIDs, and connections.
+- **eBPF Stealth Hook** — Modern Linux telemetry suppression without kernel module loading.
+
+#### 📊 Operation Management (`monitoring/`, `utils/`)
+- **Multi-Operator Server** — JWT-authenticated API with Role-Based Access Control (RBAC).
+- **Audit Trail** — Full SQLite recording of operator actions, timestamps, and targets.
+- **MITRE ATT&CK Mapper** — Auto-generation of ATT&CK Navigator JSON layers and event logs.
+- **Dynamic Plugin System** — Hot-reloadable modules with manifest-based registration.
+
+
 ---
 
 ## Quick Start
