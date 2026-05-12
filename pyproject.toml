@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "wormy"
+version = "4.0.0"
+description = "ML-Driven Autonomous Network Propagation Platform"
+authors = [
+    {name = "Ruby570bocadito", email = "ruby570bocadito@github.com"},
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["security", "red-team", "pentest", "network", "ml"]
+
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "impacket>=0.11.0",
+    "paramiko>=3.4.0",
+    "requests>=2.31.0",
+    "rich>=13.0.0",
+    "psutil>=5.9.0",
+    "pyyaml>=6.0.1",
+    "networkx>=3.0",
+    "scapy>=2.5.0",
+    "cryptography>=41.0.0",
+    "pycryptodome>=3.19.0",
+    "pymysql>=1.1.0",
+    "pymongo>=4.0.0",
+    "psycopg2-binary>=2.9.0",
+    "ldap3>=2.9.0",
+    "dnspython>=2.4.0",
+    "flask>=3.0.0",
+    "flask-socketio>=5.3.0",
+    "flask-cors>=4.0.0",
+    "matplotlib>=3.7.0",
+    "colorama>=0.4.6",
+    "tqdm>=4.66.0",
+    "urllib3>=2.0.0",
+    "msgpack>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "scikit-learn>=1.3.0",
+    "pandas>=2.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "black>=24.0.0",
+    "isort>=5.13.0",
+    "flake8>=7.0.0",
+    "mypy>=1.8.0",
+]
+test = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["wormy", "wormy.*"]
+namespaces = false
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]

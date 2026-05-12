@@ -1,0 +1,40 @@
+# Vulnerable Docker Environment for Testing
+# Build: docker build -t wormy-test-env .
+# Run: docker run -p 2222:22 -p 2121:21 -p 3306:3306 -p 5432:5432 -p 6379:6379 -p 8080:80 -p 27017:27017 --network wormy_net wormy-test-env
+
+FROM ubuntu:22.04
+
+# Install services
+RUN apt-get update && apt-get install -y \
+    openssh-server \
+    vsftpd \
+    apache2 \
+    mysql-server \
+    postgresql \
+    redis-server \
+    telnetd \
+    netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configure SSH with weak credentials
+RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+RUN echo 'root:password' | chpasswd
+
+# Configure FTP - anonymous access
+RUN echo 'anonymous_enable=YES' >> /etc/vsftpd.conf
+RUN echo 'write_enable=YES' >> /etc/vsftpd.conf
+RUN echo 'anon_upload_enable=YES' >> /etc/vsftpd.conf
+
+# Create test directories
+RUN mkdir -p /var/www/html/test
+RUN echo "<h1>Test Server</h1><p>This is a vulnerable test server</p>" > /var/www/html/index.html
+
+# Start services
+CMD service ssh start && \
+    service vsftpd start && \
+    service apache2 start && \
+    service mysql start && \
+    service postgresql start && \
+    service redis-server start && \
+    tail -f /dev/null

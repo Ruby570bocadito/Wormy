@@ -1,0 +1,37 @@
+# Database credentials (MySQL, PostgreSQL, MSSQL, Oracle, MongoDB, Redis)
+# Format: username:password
+root:root
+root:toor
+root:password
+root:
+admin:admin
+admin:password
+admin:
+mysql:mysql
+postgres:postgres
+postgres:password
+postgres:
+oracle:oracle
+oracle:password
+sa:sa
+sa:password
+sa:
+dbadmin:dbadmin
+dba:dba
+db2admin:db2admin
+test:test
+guest:guest
+monitor:monitor
+backup:backup
+replication:replication
+readonly:readonly
+readwrite:readwrite
+app:app
+appuser:appuser
+webapp:webapp
+developer:developer
+nagios:nagios
+zabbix:zabbix
+redis:redis
+mongodb:mongodb
+mongo:mongo

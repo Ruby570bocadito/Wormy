@@ -1,0 +1,217 @@
+services:
+  # ── DATABASE SERVICES ────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: lab_redis
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.10
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass "redis123" --protected-mode no
+
+  redis-noauth:
+    image: redis:7-alpine
+    container_name: lab_redis_noauth
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.11
+    ports:
+      - "6380:6379"
+    command: redis-server --protected-mode no
+
+  mysql:
+    image: mysql:5.7
+    container_name: lab_mysql
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.12
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "testdb"
+
+  postgresql:
+    image: postgres:14
+    container_name: lab_postgres
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin123"
+      POSTGRES_DB: "testdb"
+
+  mongodb:
+    image: mongo:6
+    container_name: lab_mongodb
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.14
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "admin123"
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: lab_mssql
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.15
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "SqlPassword123!"
+
+  # ── MESSAGING ─────────────────────────────────────────────────────────────
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: lab_rabbitmq
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.20
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  # ── HTTP SERVICES (Tomcat + CI + Web Apps) ───────────────────────────────
+  tomcat:
+    image: bitnami/tomcat:9.0
+    container_name: lab_tomcat
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.31
+    ports:
+      - "8080:8080"
+    environment:
+      TOMCAT_USERNAME: "admin"
+      TOMCAT_PASSWORD: "admin"
+      TOMCAT_ALLOW_REMOTE_MANAGEMENT: "yes"
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: lab_jenkins
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.32
+    ports:
+      - "8081:8080"
+
+  dvwa:
+    image: cytopia/dvwa
+    container_name: lab_dvwa
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.40
+    ports:
+      - "8082:80"
+
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: lab_juice
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.50
+    ports:
+      - "8083:3000"
+
+  elasticsearch:
+    image: elasticsearch:7.17.0
+    container_name: lab_elasticsearch
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.60
+    ports:
+      - "9200:9200"
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+
+  # ── NETWORK SERVICES (FTP, SSH, Telnet, SNMP) ────────────────────────────
+  ftp:
+    image: stilliard/pure-ftpd:latest
+    container_name: lab_ftp
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.70
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    environment:
+      FTP_USER_NAME: "ftpuser"
+      FTP_USER_PASS: "ftpuser"
+      FTP_USER_HOME: "/home/ftpuser"
+      PUBLICHOST: "localhost"
+
+  ssh:
+    image: linuxserver/openssh-server:latest
+    container_name: lab_ssh
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.71
+    ports:
+      - "2222:2222"
+    environment:
+      PUID: "1000"
+      PGID: "1000"
+      USER_PASSWORD: "password"
+      USER_NAME: "admin"
+      SUDO_ACCESS: "true"
+
+  telnet:
+    image: quay.io/sameersbn/bind:latest
+    container_name: lab_telnet
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.72
+    ports:
+      - "8023:23"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        apk add --no-cache busybox-initscripts 2>/dev/null || true
+        busybox telnetd -F -p 23 -l /bin/sh
+
+  snmp:
+    image: polinux/snmpd:latest
+    container_name: lab_snmp
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.73
+    ports:
+      - "161:161/udp"
+    environment:
+      SNMP_COMMUNITY: "public"
+      SNMP_LOCATION: "Wormy Lab DC"
+
+  # ── METASPLOITABLE (multi-service legacy target) ──────────────────────────
+  metasploitable:
+    image: tleemcjr/metasploitable2:latest
+    container_name: lab_metasploitable
+    networks:
+      lab_network:
+        ipv4_address: 192.168.100.100
+    ports:
+      - "2323:23"
+      - "2121:21"
+      - "2223:22"
+      - "8084:80"
+      - "33062:3306"
+      - "54322:5432"
+      - "59002:5900"
+      - "66672:6667"
+      - "81802:8180"
+
+networks:
+  lab_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24

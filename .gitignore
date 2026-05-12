@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.so
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Config (local overrides)
+config_local.yaml
+
+# Logs
+logs/
+
+# Reports
+reports/
+
+# Models (auto-generated)
+ml_models/saved/
+saved/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-lab/data/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
