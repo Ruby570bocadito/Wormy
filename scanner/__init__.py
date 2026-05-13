@@ -84,8 +84,10 @@ class IntelligentScanner:
                         if result:
                             hosts.append(result)
                             found += 1
-                    except Exception:
-                        pass
+                    except concurrent.futures.TimeoutError:
+                        logger.debug(f"Host scan timed out")
+                    except Exception as e:
+                        logger.debug(f"Host scan error: {e}")
 
                     scanned += 1
 

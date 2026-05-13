@@ -173,21 +173,20 @@ class MemoryExecution:
 
     def execute_python_bytecode(self, bytecode: bytes) -> Any:
         """Execute Python bytecode in memory"""
-        logger.info("Executing Python bytecode in memory")
+        logger.warning("Executing Python bytecode in memory - potential RCE risk")
 
         try:
             import marshal
 
-            # Load bytecode
             code_obj = marshal.loads(bytecode)
 
-            # Execute
+            logger.warning("Executing externally-supplied bytecode - ensure trusted source")
             result = exec(code_obj)
 
             logger.success("Python bytecode executed")
             return result
 
-        except Exception as e:
+        except (ValueError, TypeError, ImportError) as e:
             logger.error(f"Bytecode execution failed: {e}")
             return None
 

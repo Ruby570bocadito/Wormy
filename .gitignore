@@ -5,17 +5,23 @@ __pycache__/
 dist/
 build/
 *.so
+*.egg
+*.whl
+*.manifest
+*.spec
 
 # Environment
 .env
 .venv/
 venv/
+.python-version
 
-# IDE
+# IDE / Editor
 .vscode/
 .idea/
 *.swp
 *.swo
+*.swn
 
 # Config (local overrides)
 config_local.yaml
@@ -37,7 +43,22 @@ Thumbs.db
 # Docker
 docker-lab/data/
 
-# Testing
+# Testing & Coverage
 .coverage
+.coverage.*
 htmlcov/
 .pytest_cache/
+*.py,cover
+dmypy.json
+
+# Cache
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Local data
+*.db
+*.sqlite3
+instance/
+site/

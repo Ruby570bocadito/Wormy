@@ -62,7 +62,14 @@ test = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["wormy", "wormy.*"]
+include = [
+    "worm_core", "worm_core.*",
+    "attacks", "c2", "configs", "core", "evasion",
+    "exploits", "exploits.*",
+    "infection", "kernel", "ml_models", "monitoring",
+    "payloads", "post_exploit", "rl_engine", "scanner",
+    "swarm", "training", "utils",
+]
 namespaces = false
 
 [tool.black]

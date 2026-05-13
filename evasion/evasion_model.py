@@ -2,7 +2,12 @@
 
 import json
 import os
+import sys
 from typing import Dict, List, Optional
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.logger import logger
 
 import numpy as np
 
@@ -73,8 +78,9 @@ class EvasionModel:
                     self.model = tf.keras.models.load_model(self.model_path)
                     self.is_trained = True
                     return
-            except Exception:
-                pass
+            except Exception as e:
+                logger.warning(f"Failed to load model from {self.model_path}: {e}")
+                self.model = None
         self.model = self._train_synthetic()
 
     def _train_synthetic(self):
